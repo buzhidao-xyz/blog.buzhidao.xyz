@@ -1,0 +1,91 @@
+<div class="articleTpl imageTpl">
+	<h2 class="title">{$archiveInfo.title}</h2>
+	<div class="status">
+		<span class="title">点击次数:</span>
+		<span class="content">{$archiveInfo.clicknum} 次</span>
+		<span class="title">发布时间:</span>
+		<span class="content">{$archiveInfo.publishtime|mkdate}</span>
+		<span class="title">作者:</span>
+		<span class="content">{$archiveInfo.author}</span>
+	</div>
+	<div class="body">
+		<div id="container">
+			<div class="scrolltab">
+				<span id="sLeftBtnA" class="sLeftBtnABan"></span>
+				<span id="sRightBtnA" class="sRightBtnA"></span>
+				<ul class="ulBigPic">
+					{if isset($archiveInfo.archiveImage)&&!empty($archiveInfo.archiveImage)}
+					{foreach $archiveInfo.archiveImage as $image}
+					<li class="">
+						<span class="sPic">
+							<i class="iBigPic"><a href="javascript:;" target="_blank" title="{$image.imagetitle}"><img alt="{$image.imagetitle}" src="__APP__{$image.imagepath}" /></a></i>
+						</span>
+						<!-- <span class="sSideBox">
+							<span class="sTitle"><a href="javascript:;" target="_blank" title="">图片标题</a></span>
+							<span class="sIntro">简介：图片详情。</span>
+							<span class="sMore"><a href="javascript:;" target="_blank">查看详细方案&gt;&gt;</a></span>
+						</span> -->
+					</li>
+				  	{/foreach}
+				  	{/if}
+				</ul><!--ulBigPic end-->
+				<div class="dPicStatus">
+					<div class="dPicStatusTag">&gt;</div>
+					<div class="dPicStatusNav">1/8</div>
+					<div class="dPicStatusSep">|</div>
+					<div class="dPicStatusTitle"></div>
+				</div>
+				<div class="dSmallPicBox">
+					<div class="dSmallPic">
+						<ul class="ulSmallPic" style="width:2646px;left:0px" rel="stop">
+							{if isset($archiveInfo.archiveImage)&&!empty($archiveInfo.archiveImage)}
+							{foreach $archiveInfo.archiveImage as $image}
+							<li class="">
+								<span class="sPic"><img alt="{$image.imagetitle}" src="__APP__{$image.thumbpath}" width="125" height="100" /></span>
+								<span class="sTitle">{$image.imagetitle}</span>
+							</li>
+						  	{/foreach}
+						  	{/if}
+						</ul>
+					</div>
+					<span id="sLeftBtnB" class="sLeftBtnBBan"></span>
+					<span id="sRightBtnB" class="sRightBtnB"></span>
+				</div><!--dSmallPicBox end-->
+			</div>
+		</div>
+	</div>
+	<div class="operate">
+		{include file="include/share0.html"}
+		<div class="operateLink"><a href="javascript:;">[打印此页]</a>&nbsp;&nbsp;&nbsp;<a href="javascript:self.close();">[关闭]</a></div>
+	</div>
+	<div class="about">
+		<dl>
+			<dt>上一篇:</dt>
+			<dd>
+				{if !empty($archiveInfo.prev)}
+				<a href="__APP__/index.php?s=Image/view&columnid={$columnid}&archiveid={$archiveInfo.prev.id}" title="{$archiveInfo.prev.title}">{$archiveInfo.prev.title}</a>
+				{else}
+				<font color="grey">没有了！</font>
+				{/if}
+			</dd>
+		</dl>
+		<dl>
+			<dt>下一篇:</dt>
+			<dd>
+				{if !empty($archiveInfo.next)}
+				<a href="__APP__/index.php?s=Image/view&columnid={$columnid}&archiveid={$archiveInfo.next.id}" title="{$archiveInfo.next.title}">{$archiveInfo.next.title}</a>
+				{else}
+				<font color="grey">没有了！</font>
+				{/if}
+			</dd>
+		</dl>
+	</div>
+</div>
+<link type="text/css" rel="stylesheet" href="public/plugin/slidebox/slidebox.css" media="screen">
+<script type="text/javascript" src="public/plugin/slidebox/slidebox.js"></script>
+<script type="text/javascript">
+$(document).ready(function (){
+$(".scrolltab .ulSmallPic li:eq(0)").addClass("liSelected");
+$(".scrolltab .dPicStatus .dPicStatusTitle").html($(".scrolltab .ulSmallPic li:eq(0) span.sTitle").text());
+});
+</script>

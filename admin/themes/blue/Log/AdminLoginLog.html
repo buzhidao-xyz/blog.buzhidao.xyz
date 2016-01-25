@@ -1,0 +1,53 @@
+{include file="Public/control_top.html"}
+<div class="formContainer">
+    <div class="formtitle"><h5>管理员登录日志查询</h5></div>
+    <form name="newform" action="__APP__/index.php?s=Log/AdminLoginLog" method="post" class="newform">
+        <ul class="formbody">
+            <li class="formblock">
+                <span>管理员名称: </span>
+                <input type="text" name="adminname" value="{$adminname}" class="input w150" />
+            </li>
+            <li class="formblock">
+                <span>日期: </span>
+                <input type="text" name="begintime" value="{$begintime}" onClick="WdatePicker({literal}{dateFmt:'yyyy-MM-dd HH:mm:ss'}{/literal})" class="input w150" />
+                至
+                <input type="text" name="endtime" value="{$endtime}" onClick="WdatePicker({literal}{dateFmt:'yyyy-MM-dd HH:mm:ss'}{/literal})" class="input w150" />
+            </li>
+            <li class="formblock bordernone bgf6">
+                <input type="submit" name="subut" class="button btnblue2" value="查询" />
+            </li>
+        </ul>
+    </form>
+</div>
+<div class="captitle"><h5>管理后台登陆日志 【目前共有{if isset($total)}{$total}{else}0{/if}条日志】</h5></div>
+<ul class="table_list_title">
+	<li class="table_list_l table_list_l30"></li>
+	<li class="table_list_l table_list_l120">管理员名称</li>
+	<li class="table_list_l table_list_l150">登录IP</li>
+	<li class="table_list_l table_list_l150">登录时间</li>
+	{if $accessStatus == 1}
+	<!-- <li class="table_list_l table_list_l200" accessStatus={$accessStatus}>操作</li> -->
+	{/if}
+</ul>
+<div class="contentTableList">
+    {if isset($dataList)&&$dataList}
+    {foreach $dataList as $d}
+    <ul class="table_list">
+		<li class="table_list_l table_list_l30 table_list_no">{$start+1}</li>
+		<li class="table_list_l table_list_l120">{$d.adminname}</li>
+		<li class="table_list_l table_list_l150">{$d.loginip|longs2ip}</li>
+    	<li class="table_list_l table_list_l150">{$d.logintime|mkdate}</li>
+    	{if $accessStatus == 1}
+    	<!-- <li class="table_list_l table_list_l200" accessStatus={$accessStatus}>
+    		<a delurl="__APP__/index.php?s=Log/AdminLoginLogDelete&logid={$d.logid}" href="javascript:;" name="del" msg="确定删除吗？">删除</a>
+    	</li> -->
+    	{/if}
+    </ul>
+    {/foreach}
+    {else}
+    <ul class="table_list"><li class="table_list_center">空</li></ul>
+    {/if}
+</div>
+{include file="Public/page.html"}
+<script src="public/plugin/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+{include file="Public/control_bottom.html"}

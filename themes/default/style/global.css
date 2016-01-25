@@ -1,0 +1,342 @@
+/**********************************公共CSS**********************************/
+.wrap {
+	/*width: 1000px;*/
+	width: 85%;
+	min-width: 1000px;
+	padding: 0 10px;
+}
+.block {
+    margin: 10px auto 0;
+	/*background: #CACCCD;*/
+}
+.adBanner {
+	width: 100%;
+	height: 80px;
+}
+
+.w50 {
+	width: 50px;
+}
+.w100 {
+	width: 100px;
+}
+.w150 {
+	width: 150px;
+}
+.w200 {
+	width: 200px;
+}
+.w250 {
+	width: 250px;
+}
+.w300 {
+	width: 300px;
+}
+.w350 {
+	width: 350px;
+}
+.w450 {
+	width: 450px;
+}
+.w640 {
+	width: 640px;
+}
+.w690 {
+	width: 690px;
+}
+.w740 {
+	width: 740px;
+}
+
+.h50 {
+	height: 50px;
+}
+.h170 {
+	height: 170px;
+}
+.h200 {
+	height: 200px;
+}
+.h250 {
+	height: 250px;
+}
+.h300 {
+	height: 300px;
+}
+.h335 {
+	height: 335px;
+}
+.h350 {
+	height: 350px;
+}
+.h550 {
+	height: 550px;
+}
+
+.pleft10 {
+	padding-left: 10px;
+}
+
+.mleft10 {
+	margin-left: 10px;
+}
+.mleft20 {
+	margin-left: 20px;
+}
+
+.mtop5 {
+	margin-top: 5px;
+}
+.mtop10 {
+	margin-top: 10px;
+}
+.mtop15 {
+	margin-top: 15px;
+}
+
+.vcode {
+    vertical-align: middle;
+}
+
+/**********************************flash图片caption**********************************/
+#ImageFlash #SImageCaption h1 {
+	color: #BF691A;
+	font-size: 23px;
+}
+#ImageFlash #SImageCaption h2 {
+	color: #525252;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 20px;
+}
+#ImageFlash #SImageCaption h3 {
+	color: #333;
+	font-size: 13px;
+	font-weight: 700;
+	line-height: 20px;
+}
+#ImageFlash #SImageCaption h4 {
+	color: #747474;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 20px;
+}
+
+/**********************************boxBlock**********************************/
+.boxBlock {
+    /*border: 1px solid #DEDEDE;*/
+    /*border-top: none;*/
+	background: #CCC;
+}
+.boxBlock .boxBlockTitle {
+	height: 35px;
+	color: #FFFFFF;
+	font-weight: 700;
+	text-indent: 10px;
+	background: url("../images/navigation_bg.gif") repeat scroll left top transparent;
+}
+.boxBlock .boxBlockTitle span.title {
+	float: left;
+	line-height: 35px;
+}
+.boxBlock .boxBlockTitle span.link {
+	float: right;
+	padding-right: 10px;
+	line-height: 35px;
+}
+.boxBlock .boxBlockTitle span.link a {
+	color: #FFFFFF;
+	font-weight: 500;
+}
+.boxBlock .boxBlockBody {
+	background: #FFFFFF;
+	margin: 0 1px;
+	padding: 0 1px;
+	overflow: hidden;
+	border-bottom: 1px solid #CCCCCC;
+}
+.boxBlock .boxBlockBody .boxBlockImg {
+	padding:10px 20px 5px 20px;
+}
+.boxBlock .boxBlockBody .boxBlockText {
+	word-wrap: break-word;
+	padding: 10px 0 0 0;
+}
+.boxBlock .boxBlockBody .boxBlockText span.text {
+	display: block;
+	margin-top: 5px;
+	line-height: 18px;
+	text-indent: 26px;
+}
+.boxBlock .boxBlockBody .boxBlockText a.viewbtn {
+	float: right;
+	display: block;
+	padding: 0 10px 0 15px;
+	background: url("../images/morebtn.png") no-repeat left 2px;
+}
+.boxBlock .boxBlockBody .contentBlock {
+	padding: 10px;
+}
+
+/**********************************articleList文档列表样式**********************************/
+ul.articleList {
+	width: auto;
+	height: auto;
+	overflow: hidden;
+	padding: 5px 5px 10px 10px;
+}
+ul.articleList li {
+	height: 30px;
+	line-height: 30px;
+	text-indent: 10px;
+	border-bottom: 1px dashed #DEDEDE;
+	background: url("../images/arrow-0.png") no-repeat 0 11px;
+}
+ul.articleList li a {
+	color: #333333;
+}
+ul.articleList li a:hover {
+	color: #5F9729;
+}
+ul.articleList li span.pubdate {
+	float: right;
+	color: #999999;
+	padding-right: 10px;
+}
+
+/**********************************图集列表样式**********************************/
+ul.ImageList {
+	padding: 5px 7px;
+	overflow: hidden;
+}
+ul.ImageList li {
+	float: left;
+	width: 180px;
+	height: 170px;
+	padding-top: 10px;
+}
+ul.ImageList li img {
+	width: 153px;
+	height: 113px;
+}
+ul.ImageList li a {
+	padding: 5px 0 0 0;
+	display: block;
+	text-align: center;
+}
+ul.ImageList li a.ImageBG {
+	padding: 3px 3px 3px 4px;
+	background: url("../images/ImageList_bg.gif") no-repeat 12px;
+}
+ul.ImageList li span {
+	padding: 8px 5px 0 5px;
+	display: block;
+	text-align: center;
+	color: #747474;
+}
+
+/**********************************招贤纳士样式**********************************/
+.CooperateList {
+	overflow: hidden;
+	padding: 10px 5px;
+}
+.CooperateList .CooperateListTitle {
+	padding: 5px 20px;
+	margin: 5px auto;
+	border-bottom: 1px dashed #333333;
+	background: url("../images/arrow-1.gif") no-repeat 10px;
+}
+.CooperateList .CooperateListTitle a {
+	color: #333333;
+	font-size: 16px;
+	font-weight: 700;
+	text-decoration: none;
+}
+.CooperateList .CooperateListTitle a:hover {
+	color: #5F9729;
+}
+.CooperateList ul {
+	overflow: hidden;
+	padding: 5px 30px;
+}
+.CooperateList ul li {
+	float: left;
+	width: 330px;
+	padding: 5px 0;
+}
+.CooperateList ul li.caption {
+	width: 100%;
+}
+.CooperateList ul li span.title {
+	color: #333333;
+	float: left;
+	display: block;
+	width: 60px;
+	text-align: right;
+}
+.CooperateList ul li span.content {
+	color: #666666;
+	padding-left: 5px;
+	float: left;
+	display: block;
+}
+.CooperateList ul li.caption span.title {
+	float: left;
+	display: block;
+}
+.CooperateList ul li.caption span.content {
+	float: left;
+	display: block;
+	width: 601px;
+	line-height: 20px;
+}
+
+/**********************************问答QA列表样式**********************************/
+.qaList {
+	padding: 5px;
+}
+.qaList dl {
+	margin: 5px auto;
+	padding-bottom: 5px;
+	border-bottom: 1px dotted #AAAAAA;
+}
+.qaList dl dt, .qaList dl dd {
+	padding: 5px 20px;
+}
+.qaList dl dt {
+	background: url("../images/arrow-1.gif") no-repeat 10px;
+}
+.qaList dl dd {
+	padding-top: 3px;
+	line-height: 20px;
+	text-indent: 26px;
+}
+
+/**********************************boxTab样式**********************************/
+ul.boxTab {
+	float: right;
+	text-indent: 0;
+}
+ul.boxTab li {
+	float: left;
+	margin-left: 3px;
+	text-indent: 0;
+	margin-top: 5px;
+	height: 30px;
+	line-height: 30px;
+}
+ul.boxTab li a {
+	color: #FFFFFF;
+    padding: 6px 10px;
+    text-decoration: none;
+	background: #747474;
+    border-bottom: 1px solid #747474;
+}
+ul.boxTab li a.selected {
+	color: #333;
+	background: #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+}
+.boxTabContent {
+	overflow: hidden;
+}

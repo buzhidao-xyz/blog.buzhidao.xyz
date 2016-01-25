@@ -1,0 +1,56 @@
+<div id="opBottom" class="opBottom">
+	<a href="javascript:;" name="checkAll">全选</a>
+	<a href="javascript:;" name="unCheckAll">取消</a>
+	<a href="javascript:;" name="archiveUpdate">更新</a>
+	<a href="javascript:;" name="archiveReview">审核</a>
+	<a href="__APP__/index.php?s={$Control}/moveArchive" name="archiveMove">移动</a>
+	<a href="javascript:;" name="archiveDelete">删除</a>
+</div>
+<script type="text/javascript">
+$(document).ready(function (){
+var archiveClass = function (){
+	var archiveObj = {
+		checkAll: $("#opBottom a[name=checkAll]"),
+		unCheckAll: $("#opBottom a[name=unCheckAll]"),
+		archiveUpdate: $("#opBottom a[name=archiveUpdate]"),
+		archiveReview: $("#opBottom a[name=archiveReview]"),
+		archiveMove: $("#opBottom a[name=archiveMove]"),
+		archiveDelete: $("#opBottom a[name=archiveDelete]")
+	}
+	var getArchiveID = function (){
+		var archiveid= "";
+		$("input[name='archiveid[]']").each(function (){
+			if ($(this).attr("checked")) archiveid += archiveid ? ","+$(this).val() : $(this).val();
+		});
+		return archiveid;
+	};
+	archiveObj.checkAll.click(function (){
+		$("input[flag=archiveID]").attr("checked","checked");
+	});
+	archiveObj.unCheckAll.click(function (){
+		$("input[flag=archiveID]").attr("checked",false);
+	});
+
+	//移动栏目
+	archiveObj.archiveMove.colorbox();
+	archiveObj.archiveMove.click(function (){
+		var href = $(this).attr("href")+"&archiveid="+getArchiveID();
+		window.parent.colorboxAjaxHtml(href);
+		return false;
+	});
+	
+	//删除文档
+	archiveObj.archiveDelete.click(function (){
+		var archiveid = getArchiveID();
+		var d = {
+			archiveid: archiveid
+		};
+		$.post("__APP__/index.php?s=Archive/recoverArchive",d,function (data){
+			alert(data.info);
+			if (!data.status) location.href = location.href;
+		},'json');
+	});
+}
+archiveClass();
+});
+</script>

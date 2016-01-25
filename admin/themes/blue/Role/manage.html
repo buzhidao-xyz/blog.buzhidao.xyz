@@ -1,0 +1,35 @@
+{include file="Public/control_top.html"}
+<div class="captitle"><h5>角色列表 【目前共有{if $total}{$total}{else}0{/if}条数据】</h5></div>
+<ul class="table_list_title">
+	<li class="table_list_l table_list_l150">角色名</li>
+	<li class="table_list_l table_list_l200">描述</li>
+	<li class="table_list_l table_list_l150">创建时间</li>
+    {if $accessStatus == 1}
+	<li class="table_list_l table_list_l100" accessStatus={$accessStatus}>状态</li>
+	<li class="table_list_l table_list_l150" accessStatus={$accessStatus}>操作</li>
+    {/if}
+</ul>
+<div class="contentTableList">
+    {if $roleList}
+    {foreach $roleList as $d}
+    <ul class="table_list">
+		<li class="table_list_l table_list_l150">{$d.name}</li>
+		<li class="table_list_l table_list_l200" title="{$d.remark}">{$d.remark}</li>
+    	<li class="table_list_l table_list_l150">{$d.createtime|mkdate}</li>
+        {if $accessStatus == 1}
+    	<li class="table_list_l table_list_l100" accessStatus={$accessStatus}>
+    		<a delurl="__APP__/index.php?s=Role/upRoleStatus&id={$d.id}&status={if $d.status}0{else}1{/if}" href="javascript:;" name="del" msg="确定{if $d.status}禁用{else}启用{/if}吗？">{if $d.status}启用{else}禁用{/if}</a>
+    	</li>
+    	<li class="table_list_l table_list_l150" accessStatus={$accessStatus}>
+    		<a href="__APP__/index.php?s=Role/newRole&id={$d.id}">修改</a>&nbsp;&nbsp;
+    		<a delurl="__APP__/index.php?s=Role/deleteRole&id={$d.id}" href="javascript:;" name="del" msg="确定删除吗？">删除</a>
+    	</li>
+        {/if}
+    </ul>
+    {/foreach}
+    {else}
+    <ul class="table_list"><li class="table_list_center">空</li></ul>
+    {/if}
+</div>
+{include file="Public/page.html"}
+{include file="Public/control_bottom.html"}

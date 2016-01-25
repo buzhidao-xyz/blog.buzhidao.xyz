@@ -1,0 +1,120 @@
+{include file="Public/control_top.html"}
+<div class="opTop">
+	<a href="__APP__/index.php?s=Topic/TopicArticleList&archiveid={$archiveid}">专题文档列表</a> |
+	<a href="__APP__/index.php?s=Topic/newTopicArticle&archiveid={$archiveid}">新增专题文档</a>
+</div>
+<div class="formContainer">
+	<div class="formtitle"><h5>编辑专题文档</h5></div>
+	<form name="newform" action="__APP__/index.php?s=Topic/TopicArticleEditSave" enctype="multipart/form-data" method="post" class="newform">
+		<input type="hidden" name="archiveid" value="{$topicarticleid}" />
+		<input type="hidden" name="columnid" value="0" />
+		<input type="hidden" name="topicid" value="{$TopicInfo.id}" />
+		<ul class="formbody">
+			<div class="shtabtitlec">
+				<div class="shtabtitle shtabcurrent"><a href="javascript:;"><span>常规内容</span></a></div>
+				<div class="shtabtitle"><a href="javascript:;"><span>高级内容</span></a></div>
+				<div class="shtabtitle"><a href="javascript:;"><span>文档内容</span></a></div>
+			</div>
+			<div class="shtabcontentc">
+			<div class="shtabcontent shtabcontentcurrent">
+				<li class="formblock">
+					<span>文档标题:</span>
+					<input type="text" name="title" value="{$TopicArticleInfo.title}" class="input w300" />
+				</li>
+				<li class="formblock">
+					<span>文档标签:</span>
+					<input type="text" name="tag" value="{$TopicArticleInfo.tag}" class="input w300" /> (','号分开)
+				</li>
+				<li class="formblock">
+					<span>文档主栏目: </span>
+					<b>{$TopicInfo.columnname}</b>
+				</li>
+				<li class="formblock">
+					<span>所属专题: </span>
+					<b>{$TopicInfo.title}</b>
+				</li>
+				<li class="formblock">
+					<span>所属专题项: </span>
+					<select name="topiccardid" style="width:200px;">
+						<option value="">-请选择-</option>
+						{foreach $TopicCardList as $d}
+						<option value="{$d.id}" {if $TopicArticleInfo.topiccardid==$d.id}selected{/if}>{$d.title}</option>
+						{/foreach}
+					</select>
+					<font color="red">*不属于任何专题项可留空</font>
+				</li>
+				<li class="formblock">
+					<span>文档缩略图:</span>
+					<input type="file" name="image" value="" class="input w150 inputfile" />
+					<font color="red">*不修改请留空</font>
+				</li>
+				<li class="formblock">
+					<span>文档来源:</span>
+					<input type="text" name="source" value="{$TopicArticleInfo.source}" class="input w200" />
+				</li>
+				<li class="formblock">
+					<span>作者:</span>
+					<input type="text" name="author" value="{$TopicArticleInfo.author}" class="input w150" />
+				</li>
+				<li class="formblock">
+					<span>发布时间:</span>
+					<input type="text" id="dpicker0" name="publishtime" value="{$TopicArticleInfo.publishtime|mkdate}" onClick="WdatePicker({literal}{dateFmt:'yyyy-MM-dd HH:mm:ss'}{/literal})" class="input w150" />
+					<img width="16" height="22" align="absmiddle" onclick="WdatePicker({literal}{el:'dpicker0',dateFmt:'yyyy-MM-dd HH:mm:ss'}{/literal})" style="cursor:pointer" src="public/plugin/My97DatePicker/skin/datePicker.gif">
+				</li>
+				<li class="formblock">
+					<span>是否允许评论: </span>
+					<div class="item_list fleft">
+						<label><input type="radio" name="status" value="1" class="radio" {if $TopicArticleInfo.status==1}checked="checked"{/if} />允许</label>
+						<label><input type="radio" name="status" value="0" class="radio" {if $TopicArticleInfo.status==0}checked="checked"{/if} />禁止</label>
+					</div>
+				</li>
+			</div>
+			<div class="shtabcontent">
+				<li class="formblock">
+					<span>SEO标题:</span>
+					<input type="text" name="seotitle" value="{$TopicArticleInfo.seotitle}" class="input w300" />
+				</li>
+				<li class="formautoblock">
+					<span>关键字:</span>
+					<textarea name="keyword" rows="1" cols="47">{$TopicArticleInfo.keyword}</textarea>
+				</li>
+				<li class="formautoblock">
+					<span>摘要内容:</span>
+					<textarea name="description" rows="2" cols="47">{$TopicArticleInfo.description}</textarea>
+				</li>
+			</div>
+			<div class="shtabcontent">
+				<li class="formautoblock">
+					<span>文档内容:</span>
+					<div class="FullTextEditor">
+						<textarea name="content" id="myEditor" rows="3" cols="50">{$TopicArticleInfo.content}</textarea>
+					</div>
+				</li>
+			</div>
+			</div>
+			<li class="formblock bordernone bgf6">
+				<input type="submit" name="subut" class="button btnblue2" value="确定" />
+			</li>
+		</ul>
+	</form>
+</div>
+<script src="public/plugin/UEditor/editor_config.js" type="text/javascript"></script>
+<script src="public/plugin/UEditor/editor_all_min.js" type="text/javascript"></script>
+<script src="public/plugin/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+<script type="text/javascript">
+UE.getEditor('myEditor',{
+});
+$("form[name=newform]").submit(function(){
+	var title = $(this).find("input[name=title]").val();
+	if (!title) {
+		alert("请填写文档标题!");
+		return false;
+	}
+	var columnid = $(this).find("input[name=columnid]").val();
+	if (!columnid) {
+		alert("请选择文档所在主栏目!");
+		return false;
+	}
+});
+</script>
+{include file="Public/control_bottom.html"}

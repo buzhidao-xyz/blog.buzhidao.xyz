@@ -1,0 +1,24 @@
+<!-- header -->
+<div class="logo">
+    <h1>管理中心</h1>
+</div>
+<div class="uinfo">
+    <p>您好 , <em>{$adminInfo.adminname}</em> [ <a target="_top" href="__APP__/?s=index/logout">退出</a> ]</p>
+</div>
+<div class="nav">
+    <ul class="hmenu">
+        <li class="navon"><em><a hidefocus="true" href="javascript:;" groupid="0" title="管理中心" class="navHeadMenu">管理中心</a></em></li>
+        {foreach $AdminAccess as $value}
+        <li><em><a href="javascript:;" groupid="{$value.id}" title="{$value.title|html_entity_decode}" class="navHeadMenu">{$value.title|html_entity_decode}</a></em></li>
+        {/foreach}
+    </ul>
+    <div id="navlink" class="navlink">
+        <p>管理中心&nbsp;&gt;</p>
+    </div>
+    <div class="navbd"></div>
+    <div class="sitemapbtn">
+        <p><a target="_blank" href="__APPM__/?s=index">网站首页</a></p>
+        <p><a hidefocus="true" href="javascript:;" groupid="0" class="navHeadMenu">管理中心</a></p>
+        <p><a href="javascript:;">网站地图</a></p>
+    </div>
+</div>

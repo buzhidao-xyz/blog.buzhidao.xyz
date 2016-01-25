@@ -1,0 +1,61 @@
+{include file="Public/control_top.html"}
+{if $accessStatus == 1}
+<div class="formContainer" accessStatus={$accessStatus}>
+	<div class="formtitle"><h5>添加新导航</h5></div>
+	<form name="newform" action="__APP__/index.php?s=Plugin/sideNavigationSave" method="post" id="ajaxform" class="newform">
+		<ul class="formbody">
+			<li class="formblock">
+				<span>导航名称: </span>
+				<input type="text" name="title" value="" class="input w200" />
+			</li>
+			<li class="formblock">
+				<span>导航地址: </span>
+				<input type="text" name="link" value="" class="input w350" />
+			</li>
+			<li class="formblock bordernone bgf6">
+				<input type="submit" name="subut" class="button btnblue2" value="添加" />
+			</li>
+		</ul>
+	</form>
+</div>
+{/if}
+<div class="captitle"><h5>快捷导航列表【总计{if $total}{$total}{else}0{/if}】</h5></div>
+<ul class="table_list_title">
+	<li class="table_list_l table_list_l30"></li>
+	<li class="table_list_l table_list_l120">导航标题</li>
+	<li class="table_list_l table_list_l500">导航地址</li>
+	<li class="table_list_l table_list_l150">添加时间</li>
+	{if $accessStatus == 1}
+	<li class="table_list_l table_list_l100" accessStatus={$accessStatus}>操作</li>
+	{/if}
+</ul>
+<div class="contentTableList">
+    {if $dataList}
+    {foreach $dataList as $d}
+    <ul class="table_list">
+		<li class="table_list_l table_list_l30 table_list_no">1</li>
+		<li class="table_list_l table_list_l120">{$d.title}</li>
+		<li class="table_list_l table_list_l500"><a href="{$d.link}" target="_blank">{$d.link}</a></li>
+    	<li class="table_list_l table_list_l150">{$d.createtime|mkdate}</li>
+    	{if $accessStatus == 1}
+    	<li class="table_list_l table_list_l100" accessStatus={$accessStatus}>
+    		<a name="NavigationEdit" href="__APP__/index.php?s=Plugin/NavigationEdit&id={$d.id}">修改</a>
+    		<a delurl="__APP__/index.php?s=Plugin/NavigationDelete&id={$d.id}" href="javascript:;" name="del" msg="确定删除吗？">删除</a>
+    	</li>
+    	{/if}
+    </ul>
+    {/foreach}
+    {else}
+    <ul class="table_list"><li class="table_list_center">空</li></ul>
+    {/if}
+</div>
+{include file="Public/page.html"}
+<script type="text/javascript">
+$(document).ready(function (){
+	$("a[name=NavigationEdit]").click(function (){
+		window.parent.colorboxAjaxHtml($(this).attr("href"));
+		return false;
+	});
+});
+</script>
+{include file="Public/control_bottom.html"}

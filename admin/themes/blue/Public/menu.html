@@ -1,0 +1,20 @@
+<!-- menu -->
+<div class="menu">
+    <ul>
+        {foreach $menu as $m}
+		<li class="menulist">
+			<div class="menutree1"><a target="main" hidefocus="true" href="javascript:;" class="mius">{$m.title}</a></div>
+			{if array_key_exists('cnode',$m)}
+			<ul class="menusub">
+				{foreach $m.cnode as $m1}
+				<li><a target="main" hidefocus="true" href="__APP__/index.php?s={$m1.control}/{$m1.action}" class="">{$m1.title|html_entity_decode}</a></li>
+				{/foreach}
+			</ul>
+			{/if}
+		</li>
+        {/foreach}
+    </ul>
+</div>
+<div id="menuSlide" class="menuSlide">
+	<div class="menuSlidebg menuSlidebg1"></div>
+</div>

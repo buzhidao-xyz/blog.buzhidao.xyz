@@ -1,0 +1,63 @@
+{include file="Mobile/head.html"}
+<div id="Location">
+	<div id="LocationStatus">Location Status</div>
+	<div id="LocationGMap">
+		GPS定位中...
+	</div>
+</div>
+<style type="text/css">
+#Location {
+	width: 500px;
+	height: 350px;
+}
+#Location #LocationStatus {
+	width: 100%;
+	height: 50px;
+}
+#Location #LocationGMap {
+	width: 100%;
+	height: 100%;
+}
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=E3fece660564907bd5c3b7332cd46c67"></script>
+<script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
+<script type="text/javascript">
+$(document).on('pageshow', function () {
+	if (navigator.onLine) {
+		$("#LocationStatus").text('网络连接正常');    
+	} else {
+		$("#LocationStatus").text('没有网络连接');    
+	}
+
+	if(navigator.geolocation) {  
+    	$("#LocationStatus").text('GPS定位中......');
+		navigator.geolocation.getCurrentPosition(function(position) {
+	        $("#LocationStatus").text('GPS定位完成，' + position.coords.latitude + ',' + position.coords.longitude);
+	        
+	        var lat = position.coords.latitude;
+	        var lng = position.coords.longitude;
+	        
+	        //百度地图
+			var map = new BMap.Map("LocationGMap");            // 创建Map实例
+			var gpspoint = new BMap.Point(lng,lat);
+			map.centerAndZoom(gpspoint,15);  //初始化时，即可设置中心点和地图缩放级别
+
+			map.addControl(new BMap.NavigationControl());  //添加默认缩放平移控件
+			map.enableScrollWheelZoom();    //启用滚轮放大缩小，默认禁用
+			map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+
+			var marker = new BMap.Marker(gpspoint);  // 创建标注
+			map.addOverlay(marker);              // 将标注添加到地图中
+
+			BMap.Convertor.translate(gpspoint,0,function(point) {
+				var marker = new BMap.Marker(point);
+				map.addOverlay(marker);
+				map.setCenter(point);
+			});
+        });
+	} else {
+		$("#LocationStatus").text('GPS定位失败');  
+	}
+});
+</script>
+{include file="Mobile/foot.html"}

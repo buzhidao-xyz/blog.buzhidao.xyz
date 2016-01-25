@@ -1,0 +1,20 @@
+<!-- menu -->
+<div class="menu">
+    <ul>
+        <li class="menulist">
+			<div class="menutree1"><a target="main" hidefocus="true" href="javascript:;" class="mius">基本信息</a></div>
+			<ul class="menusub">
+				<li><a hidefocus="true" href="__APP__/index.php?s=Public/welcome" target="main">系统主页</a></li>
+				<li><a hidefocus="true" href="__APP__/index.php?s=Admin/profile" target="main">个人信息</a></li>
+			</ul>
+		</li>
+    </ul>
+</div>
+<div id="menuSlide" class="menuSlide">
+	<div class="menuSlidebg menuSlidebg1"></div>
+</div>
+<script type="text/javascript">
+$(document).ready(function (){
+	$("li.menulist:eq(0) > ul.menusub > li:eq(0) > a").addClass('tabon');
+});
+</script>

@@ -1,0 +1,142 @@
+{include file="Public/control_top.html"}
+{if $accessStatus == 1}
+<div class="formContainer" accessStatus={$accessStatus}>
+	<div class="formtitle"><h5>修改文档资料</h5></div>
+	<form name="newform" action="__APP__/index.php?s=Product/saveEdit" enctype="multipart/form-data" method="post" class="newform">
+		<input type="hidden" name="archiveid" value="{$ArchiveInfo.id}" />
+		<ul class="formbody">
+			<div class="shtabtitlec">
+				<div class="shtabtitle shtabcurrent"><a href="javascript:;"><span>常规内容</span></a></div>
+				<div class="shtabtitle"><a href="javascript:;"><span>高级内容</span></a></div>
+				<div class="shtabtitle"><a href="javascript:;"><span>产品详情</span></a></div>
+				<div class="shtabtitle"><a href="javascript:;"><span>产品图片</span></a></div>
+				<div class="shtabtitle"><a href="javascript:;"><span>产品描述</span></a></div>
+			</div>
+			<div class="shtabcontentc">
+			<div class="shtabcontent shtabcontentcurrent">
+				<li class="formblock">
+					<span>文档标题:</span>
+					<input type="text" name="title" value="{$ArchiveInfo.title}" class="input w300" />
+				</li>
+				<li class="formblock">
+					<span>文档标签:</span>
+					<input type="text" name="tag" value="{$ArchiveInfo.tag}" class="input w300" /> (','号分开)
+				</li>
+				<li class="formblock">
+					<span>文档主栏目: </span>
+					<select id="select" name="columnid" style="width:230px;">
+						{$columnTree}
+					</select>
+				</li>
+				<li class="formblock">
+					<span>文档缩略图:</span>
+					<input type="file" name="image" value="{$ArchiveInfo.thumbimage}" class="input w150" style="height: 22px;" />
+				</li>
+				<li class="formblock">
+					<span>文档来源:</span>
+					<input type="text" name="source" value="{$ArchiveInfo.source}" class="input w200" />
+				</li>
+				<li class="formblock">
+					<span>作者:</span>
+					<input type="text" name="author" value="{$ArchiveInfo.author}" class="input w150" />
+				</li>
+				<li class="formblock">
+					<span>更新时间:</span>
+					<input type="text" id="dpicker0" name="publishtime" value="{$ArchiveInfo.updatetime|mkdate}" onClick="WdatePicker({literal}{dateFmt:'yyyy-MM-dd HH:mm:ss'}{/literal})" class="input w150" />
+					<img width="16" height="22" align="absmiddle" onclick="WdatePicker({literal}{el:'dpicker0',dateFmt:'yyyy-MM-dd HH:mm:ss'}{/literal})" style="cursor:pointer" src="public/plugin/My97DatePicker/skin/datePicker.gif">
+				</li>
+				<li class="formblock">
+					<span>是否允许评论: </span>
+					<div class="item_list fleft">
+						<label><input type="radio" name="status" value="1" class="radio" {if $ArchiveInfo.status==1}checked{/if} />允许</label>
+						<label><input type="radio" name="status" value="0" class="radio" {if $ArchiveInfo.status==0}checked{/if} />禁止</label>
+					</div>
+				</li>
+			</div>
+			<div class="shtabcontent">
+				<li class="formblock">
+					<span>SEO标题:</span>
+					<input type="text" name="seotitle" value="{$ArchiveInfo.seotitle}" class="input w300" />
+				</li>
+				<li class="formautoblock">
+					<span>关键字:</span>
+					<textarea name="keyword" rows="1" cols="47">{$ArchiveInfo.keyword}</textarea>
+				</li>
+				<li class="formautoblock">
+					<span>摘要内容:</span>
+					<textarea name="description" rows="2" cols="47">{$ArchiveInfo.description}</textarea>
+				</li>
+			</div>
+			<div class="shtabcontent">
+				<li class="formblock">
+					<span>型号:</span>
+					<input type="text" name="model" value="{$ArchiveInfo.model}" class="input w150" />
+				</li>
+				<li class="formblock">
+					<span>品牌:</span>
+					<input type="text" name="brand" value="{$ArchiveInfo.brand}" class="input w200" />
+				</li>
+				<li class="formblock">
+					<span>颜色:</span>
+					<input type="text" name="color" value="{$ArchiveInfo.color}" class="input w200" />
+					多种颜色逗号,隔开
+				</li>
+				<li class="formblock">
+					<span>材质:</span>
+					<input type="text" name="material" value="{$ArchiveInfo.material}" class="input w300" />
+				</li>
+				<li class="formblock">
+					<span>尺寸:</span>
+					<input type="text" name="size" value="{$ArchiveInfo.size}" class="input w100" />
+				</li>
+				<li class="formblock">
+					<span>价格:</span>
+					<input type="text" name="price" value="{$ArchiveInfo.price}" class="input w150" />
+				</li>
+				<li class="formblock">
+					<span>数量:</span>
+					<input type="text" name="total" value="{$ArchiveInfo.total}" class="input w200" />
+				</li>
+			</div>
+			<div class="shtabcontent">
+				{include file="Public/imageUpload.html"}
+			</div>
+			<div class="shtabcontent">
+				<li class="formautoblock">
+					<span>详细描述:</span>
+					<div class="FullTextEditor">
+						<textarea name="content" id="myEditor" rows="3" cols="50">{$ArchiveInfo.instruction}</textarea>
+					</div>
+				</li>
+			</div>
+			</div>
+			<li class="formblock bordernone">
+				<input type="submit" name="subut" class="button btngreen2" value="修改" />
+			</li>
+		</ul>
+	</form>
+</div>
+{/if}
+<script src="public/plugin/UEditor/editor_config.js" type="text/javascript"></script>
+<script src="public/plugin/UEditor/editor_all_min.js" type="text/javascript"></script>
+<script src="public/plugin/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+<script type="text/javascript">
+    UE.getEditor('myEditor',{
+    });
+    $("form[name=newform]").submit(function(){
+    	var title = $(this).find("input[name=title]").val();
+    	if (!title) {
+    		alert("请填写文档标题!");
+    		return false;
+    	}
+    	var columnid = $(this).find("select[name=columnid]").val();
+    	if (!columnid) {
+    		alert("请选择文档所在主栏目!");
+    		return false;
+    	}
+    });
+    $("select[name=columnid]").find("option").each(function (){
+    	if ($(this).val()=="{$ArchiveInfo.columnid}") $(this).attr("selected",true);
+    });
+</script>
+{include file="Public/control_bottom.html"}

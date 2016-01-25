@@ -1,0 +1,32 @@
+<div class="box">
+<div class="boxContent">
+<div class="boxPopupForm">
+	<div class="boxTitle">
+		<h5>编辑广告信息</h5>
+	</div>
+	<form name="boxform" action="__APP__/index.php?s=Advertise/AdvertiseEditSave" method="post" id="colorBoxAjaxForm">
+	<input type="hidden" name="advertiseid" value="{$AdvertiseInfo.id}" />
+	<ul>
+		<li class="formblock">
+			<span>标题：</span>
+			<input type="text" name="title" value="{$AdvertiseInfo.title}" class="input" style="width:250px;" />
+		</li>
+		<li class="formblock">
+			<span>链接：</span>
+			<input type="text" name="link" value="{$AdvertiseInfo.link}" class="input w350" />
+		</li>
+		<li class="formblock">
+			<span>是否启用: </span>
+			<div class="item_list fleft">
+				<label><input type="radio" name="status" value="1" class="radio" {if $AdvertiseInfo.status==1}checked="checked"{/if} />启用</label>
+				<label><input type="radio" name="status" value="0" class="radio" {if $AdvertiseInfo.status==0}checked="checked"{/if} />禁用</label>
+			</div>
+		</li>
+		<li class="bordernone bgf6">
+			<input type="submit" name="subut" class="button btnblue2" value="编辑" />
+		</li>
+	</ul>
+	</form>
+</div>
+</div>
+</div>

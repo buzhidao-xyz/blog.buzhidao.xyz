@@ -1,0 +1,64 @@
+{include file="include/head.html"}
+<div class="box">
+<div class="boxContent">
+<div class="boxPopupForm">
+	<div class="boxTitle">
+		<h5>{$msgTitle}</h5>
+	</div>
+	<div class="boxMessage">
+		<div class="message">{$message}</div>
+		<div class="jump">
+			页面即将自动跳转 
+			等待时间 <b id="wait">{$waitSecond}</b> 秒
+		</div>
+		<div class="jumpUrl">
+			<a id="href" href="{$jumpUrl}">如果你的浏览器没反应，请点击这里...</a>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+<style type="text/css">
+.box {
+	float: none;
+	margin-top: 30px;
+	margin: 30px auto;
+}
+.box .boxContent {
+	width: 470px;
+	margin: 0 auto;
+	border: 1px solid #3A6EA5;
+}
+.box .boxMessage {
+	height: 150px;
+}
+.box .boxMessage .message {
+	padding-top: 30px;
+	text-align: center;
+	color: #FF6600;
+}
+.box .boxMessage .jump {
+	padding-top: 5px;
+	text-align: center;
+}
+.box .boxMessage .jumpUrl {
+	padding-top: 5px;
+	text-align: center;
+}
+.box .boxMessage .jumpUrl a {
+	text-decoration: underline;
+}
+</style>
+<script type="text/javascript">
+(function(){
+var interval = setInterval(function(){
+	var time = parseInt($("#wait").text())-1;
+	$("#wait").text(time);
+	if(time == 0) {
+		location.href = $("#href").attr("href");
+		clearInterval(interval);
+	};
+}, 1000);
+})();
+</script>
+{include file="include/foot.html"}

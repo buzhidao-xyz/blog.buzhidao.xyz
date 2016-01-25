@@ -1,0 +1,6 @@
+{include file="Log/menu.html"}
+<ul id="filelist">
+    {foreach $filelist as $d}
+    <li><a href="?s=logs/index&f={$d}">{$d}</a></li>
+    {/foreach}
+</ul>

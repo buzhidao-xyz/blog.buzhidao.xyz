@@ -1,0 +1,54 @@
+{include file="include/head.html"}
+<div id="perstatus" pers="{$perstatus}"></div>
+<div id="control">
+	<div class="control_nav">
+		<h3>添加模块</h3>
+		<!--
+		<ul class="control_nav_tab">
+			<li><a href="__APP__/?r=system/role"><span>角色列表</span></a></li>
+			<li class="current"><a href="__APP__/?r=system/newRole"><span>新角色</span></a></li>
+		</ul>
+		-->
+	</div>
+	<div class="captitle"><h5>新节点表单</h5></div>
+	<form name="newform" action="__APP__/?s=Node/saveNode" method="post" id="ajaxform">
+		<input type="hidden" name="" />
+		<ul class="formbody">
+			<li class="formblock colorblock">
+				<span>组: </span>
+				<select name="groupid" class="input" style="width:150px;">
+					<option value="" >|-组菜单</option>
+					{foreach $groupTree as $g}
+					<option value="{$g.id}">&nbsp;|-{$g.title}</option>
+					{/foreach}
+				</select>
+			</li>
+			<li class="formblock colorblock">
+				<span>父节点: </span>
+				<select name="pid" flag="nodepid" class="input" style="width:150px;">
+					<option value="" >|-节点菜单</option>
+				</select>
+			</li>
+			<li class="formblock colorblock">
+				<span>名称:</span>
+				<input type="text" name="title" value="" class="input" style="width:150px;" />
+			</li>
+			<li class="formblock colorblock">
+				<span>描述: </span>
+				<input type="text" name="remark" value="" class="input" style="width:150px;" />
+			</li>
+			<li class="formblock colorblock">
+				<span>Control: </span>
+				<input type="text" name="control" value="" class="input" style="width:150px;" />
+			</li>
+			<li class="formblock colorblock">
+				<span>Action: </span>
+				<input type="text" name="action" value="" class="input" style="width:150px;" />
+			</li>
+			<li class="formblock">
+				<input type="submit" name="subut" class="button" value="完成提交" />
+			</li>
+		</ul>
+	</form>
+</div>
+{include file="include/foot.html"}

@@ -1,0 +1,111 @@
+{include file="Public/control_top.html"}
+<div class="captitle">
+	<h5>当前目录 <font color="red">{$fileArray.cdir}</font></h5> |
+	<h5>权限 <font color="red">{$fileArray.perms}</font></h5> |
+	<h5><font color="red">.</font> 表示根目录</h5>
+</div>
+<ul class="table_list_title">
+	<li class="table_list_l table_list_l350">文件名</li>
+	<li class="table_list_l table_list_l150">文件大小</li>
+	<li class="table_list_l table_list_l150">最后修改时间</li>
+	{if $accessStatus == 1}
+	<li class="table_list_l table_list_l200" accessStatus={$accessStatus}>操作</li>
+	{/if}
+</ul>
+<div class="contentTableList">
+	<ul class="table_list">
+		<li class="table_list_l table_list_l350"><a class="nonetextdecoration" href="__APP__/index.php?s=Plugin/fileManage&dir={$fileArray.pdir}"><span class="icon" style="background:url(themes/blue/images/fileicon/dir1.gif) no-repeat;">上级目录</span></a></li>
+    </ul>
+    {if $fileArray.filelist}
+    {foreach $fileArray.filelist as $d}
+    <ul class="table_list">
+		<li class="table_list_l table_list_l350">
+			{if $d.filetype=="dir"}
+			<a class="nonetextdecoration" href="__APP__/index.php?s=Plugin/fileManage&dir={$fileArray.cdir|urlencode}/{$d.filename|urlencode}"><span class="icon" style="background:url(themes/blue/images/fileicon/{$d.filetype}.gif) no-repeat;">{$d.filename}</span></a>
+			{else}
+			<span class="icon" style="background:url(themes/blue/images/fileicon/{$d.filetype}.gif) no-repeat;">{$d.filename}</span>
+			{/if}
+		</li>
+    	<li class="table_list_l table_list_l150">{$d.filesize}</li>
+    	<li class="table_list_l table_list_l150">{$d.filemtime}</li>
+    	{if $accessStatus == 1}
+    	<li class="table_list_l table_list_l200" accessStatus={$accessStatus}>
+    		{if $d.editable}
+    			<a name="fileEdit" href="__APP__/index.php?s=Plugin/fileEdit&dir={$fileArray.cdir|urlencode}&filename={$d.filename|urlencode}">编辑</a>
+    		{/if}
+    		<a name="fileRename" href="__APP__/index.php?s=Plugin/fileRename&dir={$fileArray.cdir|urlencode}&filename={$d.filename|urlencode}">改名</a>
+    		<a name="fileDelete" href="__APP__/index.php?s=Plugin/fileDelete&dir={$fileArray.cdir|urlencode}&filename={$d.filename|urlencode}">删除</a>
+    		{if $d.filetype!="dir"}
+    			<a name="fileMove" href="__APP__/index.php?s=Plugin/fileMove&dir={$fileArray.cdir|urlencode}&filename={$d.filename|urlencode}">移动</a>
+    		{/if}
+    	</li>
+    	{/if}
+    </ul>
+    {/foreach}
+    {else}
+    <ul class="table_list"><li class="table_list_center">空</li></ul>
+    {/if}
+</div>
+<div id="opBottom" class="opBottom">
+	<a href="__APP__/index.php?s=Plugin/fileManage&dir=.">根目录</a>
+	<a name="newfile" href="__APP__/index.php?s=Plugin/newFile&dir={$fileArray.cdir|urlencode}">新建文件</a>
+	<a name="newdir" href="__APP__/index.php?s=Plugin/newDir&dir={$fileArray.cdir|urlencode}">新建目录</a>
+	<a name="fileupload" href="__APP__/index.php?s=Plugin/fileUpload&dir={$fileArray.cdir|urlencode}">文件上传</a>
+	<a name="spacecheck" href="__APP__/index.php?s=Plugin/spaceCheck&dir={$fileArray.cdir|urlencode}">目录空间</a>
+</div>
+<script type="text/javascript">
+$(document).ready(function (){
+var fileClass = function (){
+	var Obj = {
+		fileRename: $("a[name=fileRename]"),
+		fileDelete: $("a[name=fileDelete]"),
+		fileMove: $("a[name=fileMove]"),
+		newfile: $("a[name=newfile]"),
+		newdir: $("a[name=newdir]"),
+		spacecheck: $("a[name=spacecheck]"),
+		fileupload: $("a[name=fileupload]")
+	}
+	Obj.fileRename.click(function (){
+		window.parent.colorboxAjaxHtml($(this).attr("href"));
+		return false;
+	});
+
+	//文件删除
+	Obj.fileDelete.click(function (){
+		if (window.confirm("确定删除吗？")) {
+			var d = {
+			};
+			$.post($(this).attr("href"),d,function (data){
+				alert(data.info);
+				if (!data.status) location.href = location.href;
+			},'json');
+		}
+		return false;
+	});
+
+	//文件移动
+	Obj.fileMove.click(function (){
+		window.parent.colorboxAjaxHtml($(this).attr("href"));
+		return false;
+	});
+	//新建目录
+	Obj.newdir.click(function (){
+		window.parent.colorboxAjaxHtml($(this).attr("href"));
+		return false;
+	});
+	//文件上传
+	Obj.fileupload.click(function (){
+		// window.parent.colorboxAjaxHtml($(this).attr("href"));
+		colorboxAjaxHtml($(this).attr("href"));
+		return false;
+	});
+	//空间检查
+	Obj.spacecheck.click(function (){
+		window.parent.colorboxAjaxHtml($(this).attr("href"));
+		return false;
+	});
+}
+fileClass();
+});
+</script>
+{include file="Public/control_bottom.html"}

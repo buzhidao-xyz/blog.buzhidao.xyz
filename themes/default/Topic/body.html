@@ -1,0 +1,57 @@
+{include file="include/head.html"}
+{include file="Common/GlobalBar.html"}
+{include file="Common/Header.html"}
+<div id="WrapContainer" class="wrap">
+	<div class="adBanner block">
+		{cmstag_advertise flag=2 html='<a href="[field.link]" target="_blank"><img src="[field.path]" width="1000" height="80" /></a>'}
+	</div>
+	<div id="CenterShow" class="block mtop5">
+		<div id="TopicBlock" class="fleft w740">
+			<div id="Topic" class="boxBlock">
+				<div class="TopicTitle">
+					<span class="title">{$archiveInfo.title}</span>
+					<ul id="TopicboxTab" class="boxTab fleft">
+						{if isset($archiveInfo.cardList)&&!empty($archiveInfo.cardList)}
+						{foreach $archiveInfo.cardList as $d}
+						<li><a tabid="#TopicboxTab{$d.AutoIndex}" href="javascript:;" {if $d.AutoIndex==1}class="bordernone"{/if}>{$d.title}</a></li>
+						{/foreach}
+						{/if}
+					</ul>
+				</div>
+				<div class="TopicBody">
+					{if isset($archiveInfo.cardList)&&!empty($archiveInfo.cardList)}
+					{foreach $archiveInfo.cardList as $d}
+					<div id="TopicboxTab{$d.AutoIndex}" class="boxTabContent">
+						{$d.description|html_entity_decode}
+					</div>
+					{/foreach}
+					{else}
+					<div class="boxTabContent">
+						{$archiveInfo.content|html_entity_decode}
+					</div>
+					{/if}
+				</div>
+			</div>
+		</div>
+		{include file="Topic/SideBlock.html"}
+		<div class="clear"></div>
+	</div>
+</div>
+<link type="text/css" rel="stylesheet" href="themes/default/style/topic.css" media="screen">
+<style type="text/css">
+#Flink {
+	display: block;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+//友情链接切换tab
+$("#Topic ul#TopicboxTab").idTabs(function(id,list,set){
+	$("a",set).removeClass("selected").filter("[tabid='"+id+"']",set).addClass("selected"); 
+	for(i in list) $(list[i]).hide();
+	$(id).fadeIn();
+	return false;
+});
+});
+</script>
+{include file="include/foot.html"}

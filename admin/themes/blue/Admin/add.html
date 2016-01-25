@@ -1,0 +1,93 @@
+{include file="Public/control_top.html"}
+<!-- <div class="control_nav">
+	<h3>添加组</h3>
+</div> -->
+{if $accessStatus == 1}
+<div class="formContainer" accessStatus={$accessStatus}>
+	<div class="formtitle"><h5>新管理员表单</h5></div>
+	<form name="newform" action="__APP__/index.php?s=Admin/saveAdmin" method="post" id="ajaxform" class="newform">
+		<ul class="formbody">
+			<li class="formblock">
+				<span>账户:</span>
+				<input type="text" name="adminname" autocomplete="off" value="" class="input w150" />
+			</li>
+			<li class="formblock">
+				<span>密码:</span>
+				<input type="password" name="password" autocomplete="off" value="" class="input w150" />
+			</li>
+			<li class="formblock">
+				<span>重复密码:</span>
+				<input type="password" name="password1" autocomplete="off" value="" class="input w150" />
+			</li>
+			<li class="formblock">
+				<span>是否启用: </span>
+				<div class="item_list fleft">
+					<label><input type="radio" name="status" value="1" class="radio" checked="checked" />启用</label>
+					<label><input type="radio" name="status" value="0" class="radio" />禁用</label>
+				</div>
+			</li>
+			<li class="formautoblock">
+				<span>选择管理栏目:</span>
+				<div id="ColumnList" class="ColumnList">
+					<div class="ColumnBlock">
+						<div class="ColumnBox">
+							<input type="checkbox" name="ColumnID[]" value="1" />栏目1
+						</div>
+						<div class="ColumnList">
+							<div class="ColumnBlock">
+								<div class="ColumnBox">
+									<input type="checkbox" name="ColumnID[]" value="1" />栏目11
+								</div>
+								<div class="ColumnList">
+									<div class="ColumnBlock">
+										<div class="ColumnBox">
+											<input type="checkbox" name="ColumnID[]" value="1" />栏目111
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="ColumnBlock">
+								<div class="ColumnBox">
+									<input type="checkbox" name="ColumnID[]" value="1" />栏目12
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="ColumnBlock">
+						<div class="ColumnBox">
+							<input type="checkbox" name="ColumnID[]" value="1" />栏目2
+						</div>
+						<div class="ColumnList">
+							<div class="ColumnBlock">
+								<div class="ColumnBox">
+									<input type="checkbox" name="ColumnID[]" value="1" />栏目21
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="formblock bordernone bgf6">
+				<input type="submit" name="subut" class="button btnblue2" value="添加" />
+			</li>
+		</ul>
+	</form>
+</div>
+{/if}
+<style type="text/css">
+#ColumnList {
+	float: left;
+}
+.ColumnBlock .ColumnList {
+	padding: 0 25px;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function (){
+var ColumnObject = function (){
+
+}
+ColumnObject();
+});
+</script>
+{include file="Public/control_bottom.html"}

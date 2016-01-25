@@ -1,0 +1,32 @@
+{include file="Public/control_top.html"}
+<div class="opTop">
+	<a href="__APP__/index.php?s=Topic/TopicCardList&archiveid={$archiveid}" class="opTopOn">专题项列表</a> |
+	<a href="__APP__/index.php?s=Topic/newTopicCard&archiveid={$archiveid}">新增专题项</a>
+</div>
+<div class="captitle"><h5>专题项列表</h5></div>
+<ul class="table_list_title">
+	<li class="table_list_l table_list_l30"></li>
+	<li class="table_list_l table_list_l120">专题项</li>
+	<li class="table_list_l table_list_l150">所属专题</li>
+	<li class="table_list_l table_list_l120">添加时间</li>
+	<li class="table_list_l table_list_l150">操作</li>
+</ul>
+<div class="contentTableList">
+    {if isset($dataList)&&$dataList}
+    {foreach $dataList as $d}
+    <ul class="table_list">
+		<li class="table_list_l table_list_l30 table_list_no">1</li>
+        <li class="table_list_l table_list_l120">{$d.title}</li>
+		<li class="table_list_l table_list_l150" title="{$d.topictitle}">{$d.topictitle}</li>
+    	<li class="table_list_l table_list_l120">{$d.createtime|mkdate}</li>
+    	<li class="table_list_l table_list_l200">
+    		<a href="__APP__/index.php?s=Topic/TopicCardEdit&archiveid={$archiveid}&id={$d.id}">修改</a>
+    		<a delurl="__APP__/index.php?s=Topic/deleteTopicCard&archiveid={$archiveid}&id={$d.id}" href="javascript:;" name="del" msg="确定删除吗？">删除</a>
+    	</li>
+    </ul>
+    {/foreach}
+    {else}
+    <ul class="table_list"><li class="table_list_center">空</li></ul>
+    {/if}
+</div>
+{include file="Public/control_bottom.html"}

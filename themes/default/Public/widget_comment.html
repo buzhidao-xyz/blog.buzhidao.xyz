@@ -1,0 +1,19 @@
+<div class="Widget Widget_Comment nowrap">
+	<h3>最新评论({$commentList.total})</h3>
+	<ul>
+		{if is_array($commentList.data) && !empty($commentList.data)}
+		{foreach $commentList.data as $d}
+		<li>
+			<img width="34" height="34" src="{$d.email|get_gravatar}" alt="{$d.username}">
+			{if $d.site}
+			<a href="{$d.site|httpType}" target="_blank" style="color:#1B918B;text-decoration:underline;">{$d.username}</a>:
+			{else}
+			{$d.username}:
+			{/if}
+			<br>
+			<a title="评论来源: {$d.title}" href="__APP__/?s=a.v.{$d.archiveid}#comment{$d.id}">{$d.content}</a>
+		</li>
+		{/foreach}
+		{/if}
+	</ul>
+</div>

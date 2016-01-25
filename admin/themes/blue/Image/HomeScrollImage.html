@@ -1,0 +1,82 @@
+{include file="Public/control_top.html"}
+{if $accessStatus == 1}
+<div class="formContainer" accessStatus={$accessStatus}>
+	<div class="formtitle"><h5>添加首页轮播图片</h5></div>
+	<form name="newform" action="__APP__/index.php?s=Image/saveHomeScrollImage" method="post" class="newform" enctype="multipart/form-data">
+		<ul class="formbody">
+			<li class="formblock">
+				<span>图片:</span>
+				<input type="file" name="scrollImage" class="input inputfile" style="width:230px;" />
+				*尺寸 730*300
+			</li>
+			<li class="formblock">
+				<span>标题:</span>
+				<input type="text" name="title" value="" class="input" style="width:250px;" />
+			</li>
+			<li class="formblock">
+				<span>链接:</span>
+				<input type="text" name="link" value="" class="input" style="width:300px;" />
+			</li>
+			<li class="formblock bordernone bgf6">
+				<input type="submit" name="subut" class="button btnblue2" value="添加" />
+			</li>
+		</ul>
+	</form>
+</div>
+{/if}
+<div class="captitle"><h5>内容模型列表【目前共有{if $total}{$total}{else}0{/if}条数据】</h5></div>
+<ul class="table_list_title">
+	<li class="table_list_l table_list_l250">标题</li>
+	<li class="table_list_l table_list_l350">链接</li>
+	<li class="table_list_l table_list_l50">状态</li>
+	{if $accessStatus == 1}
+	<li class="table_list_l table_list_l170" accessStatus={$accessStatus}>管理操作</li>
+	{/if}
+</ul>
+<div class="contentTableList">
+	{if $dataList}
+	{foreach $dataList as $d}
+	<ul class="table_list">
+		<li class="table_list_l table_list_l250" title="{$d.title}">{$d.title}</li>
+		<li class="table_list_l table_list_l350" title="{$d.link}">{$d.link}</li>
+		<li class="table_list_l table_list_l50">{if $d.isshow}<font color="green">显示</font>{else}<font color="gray">隐藏</font>{/if}</li>
+		{if $accessStatus == 1}
+		<li class="table_list_l table_list_l200" accessStatus={$accessStatus}>
+			<a name="imageview" href="__APPM__{$d.path}">查看图片</a>
+			<a href="__APP__/index.php?s=Image/UpdateHomeScrollImage&id={$d.id}">修改</a>
+			<a name="ajax" href="__APP__/index.php?s=Image/UpdateHomeScrollImageStatus&id={$d.id}&isshow={if $d.isshow}0{else}1{/if}">显示/隐藏</a>
+			<a name="ajax" msg="确定删除吗？" href="__APP__/index.php?s=Image/DeleteHomeScrollImage&id={$d.id}">删除</a>
+		</li>
+		{/if}
+	</ul>
+	{/foreach}
+	{else}
+	<ul class="table_list"><li class="table_list_center">空</li></ul>
+	{/if}
+</div>
+<script type="text/javascript">
+$(document).ready(function (){
+$("form[name=newform]").submit(function (){
+	if (!$("input[name=scrollImage]").val()) {
+		alert("请选择图片！");
+		return false;
+	}
+	if (!$("input[name=link]").val()) {
+		alert("请填写链接！");
+		return false;
+	}
+});
+var ImageClass = function (){
+	var Obj = {
+		imageview: $("a[name=imageview]"),
+		updatestatus: $("a[name=updatestatus]")
+	}
+	Obj.imageview.click(function (){
+		window.parent.colorboxImage($(this).attr("href"));
+		return false;
+	});
+}
+ImageClass();
+});
+</script>
+{include file="Public/control_bottom.html"}

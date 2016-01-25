@@ -1,0 +1,77 @@
+{include file="Public/control_top.html"}
+<div class="opTop">
+	<a href="__APP__/index.php?s=System/systemInfo" class="opTopOn">系统参数设置</a> |
+	<a href="__APP__/index.php?s=System/addSystemcfg">添加新变量</a>
+	<a href="__APP__/index.php?s=System/makeCacheConfig">生成配置缓存文件</a>
+</div>
+{if $accessStatus == 1}
+<div class="formContainer" accessStatus={$accessStatus}>
+	<div class="formtitle"><h5>系统参数设置</h5></div>
+	<form name="newform" action="__APP__/index.php?s=System/saveSystemInfo" method="post" class="newform">
+		<ul class="formbody">
+			<div class="shtabtitlec">
+				<div class="shtabtitle shtabcurrent"><a href="javascript:;"><span>站点设置</span></a></div>
+				<div class="shtabtitle"><a href="javascript:;"><span>核心设置</span></a></div>
+			</div>
+			<div class="shtabcontentc">
+			{if isset($SystemInfo)&&is_array($SystemInfo)&&!empty($SystemInfo)}
+			{foreach $SystemInfo as $k=>$d}
+			<div class="shtabcontent {if $k==1}shtabcontentcurrent{/if}">
+				{foreach $d as $sinfo}
+					{if $sinfo['cfgtype']=='string'}
+					<li class="formblockauto">
+						<span>{$sinfo.cfginfo}:</span>
+						<input type="text" name="{$sinfo.cfgname}" value="{$sinfo.cfgvalue}" class="input w350" />
+					</li>
+					{else if $sinfo['cfgtype']=='number'}
+					<li class="formblockauto">
+						<span>{$sinfo.cfginfo}:</span>
+						<input type="text" name="{$sinfo.cfgname}" value="{$sinfo.cfgvalue}" class="input w350" />
+					</li>
+					{else if $sinfo['cfgtype']=='boolean'}
+					<li class="formblockauto">
+						<span>{$sinfo.cfginfo}:</span>
+						<div class="item_list fleft">
+							<label><input type="radio" name="{$sinfo.cfgname}" value="1" class="radio" {if $sinfo.cfgvalue==1}checked="checked"{/if} />是</label>
+							<label><input type="radio" name="{$sinfo.cfgname}" value="0" class="radio" {if $sinfo.cfgvalue==0}checked="checked"{/if} />否</label>
+						</div>
+					</li>
+					{else if $sinfo['cfgtype']=='text'}
+					<li class="formblockauto">
+						<span>{$sinfo.cfginfo}:</span>
+						<textarea name="{$sinfo.cfgname}" rows="4" cols="47">{$sinfo.cfgvalue}</textarea>
+					</li>
+					{/if}
+				{/foreach}
+			</div>
+			{/foreach}
+			{/if}
+			</div>
+			<li class="formblock bordernone bgf6">
+				<input type="submit" name="subut" class="button btnblue2" value="确定" />
+			</li>
+		</ul>
+	</form>
+</div>
+{/if}
+<style type="text/css">
+ul.formbody li.formblockauto {
+    border-bottom: 1px dashed #E1E1E1;
+    height: auto;
+    overflow: hidden;
+    padding: 5px 0;
+    width: auto;
+}
+ul.formbody li.formblockauto span {
+	width: 300px;
+    padding-top: 10px;
+    text-indent: 0;
+    padding-left: 30px;
+    text-align: center;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function (){
+});
+</script>
+{include file="Public/control_bottom.html"}

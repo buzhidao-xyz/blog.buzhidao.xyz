@@ -1,0 +1,54 @@
+{include file="Public/control_top.html"}
+<div class="opTop">
+	<a href="__APP__/index.php?s=Article/index" class="opTopOn">文章列表</a> |
+	<a href="__APP__/index.php?s=Article/add">发布新文章</a> |
+	<a href="__APP__/index.php?s=Article/recover">回收站</a>
+</div>
+<div class="captitle"><h5>文档列表 【目前共有{if $total}{$total}{else}0{/if}条文档】</h5></div>
+<ul class="table_list_title">
+	<li class="table_list_l table_list_l30"></li>
+	<li class="table_list_l table_list_l30">ID</li>
+	<li class="table_list_l table_list_l250">文档标题</li>
+	<li class="table_list_l table_list_l130">创建时间</li>
+	<li class="table_list_l table_list_l130">更新时间</li>
+	<li class="table_list_l table_list_l100">所属栏目</li>
+	<li class="table_list_l table_list_l70">文档作者</li>
+	<li class="table_list_l table_list_l50">点击数</li>
+	<li class="table_list_l table_list_l50">评论数</li>
+	{if $accessStatus == 1}
+	<li class="table_list_l table_list_l120" accessStatus={$accessStatus}>操作</li>
+	{/if}
+</ul>
+<div class="contentTableList">
+    {if $dataList}
+    {foreach $dataList as $d}
+    <ul class="table_list">
+		<li class="table_list_l table_list_l30">
+			<input type="checkbox" name="archiveid[]" value="{$d.id}" flag="archiveID" class="checkbox" />
+		</li>
+		<li class="table_list_l table_list_l30">{$d.id}</li>
+		<li class="table_list_l table_list_l250" title="{$d.title}">
+			{$d.title}
+		</li>
+    	<li class="table_list_l table_list_l130">{$d.publishtime|mkdate}</li>
+    	<li class="table_list_l table_list_l130">{$d.updatetime|mkdate}</li>
+    	<li class="table_list_l table_list_l100">{$d.columnname}</li>
+		<li class="table_list_l table_list_l70">{$d.author}</li>
+		<li class="table_list_l table_list_l50">{$d.clicknum}</li>
+		<li class="table_list_l table_list_l50">{$d.commentnum}</li>
+    	{if $accessStatus == 1}
+    	<li class="table_list_l table_list_l120" accessStatus={$accessStatus}>
+    		<a href="__APPM__/index.php?s=Article/View&columnid={$d.columnid}&archiveid={$d.id}" target="_blank">预览</a>
+    		<a href="__APP__/index.php?s=Article/edit&archiveid={$d.id}">修改</a>
+    		<a delurl="__APP__/index.php?s=Archive/recoverArchive&archiveid={$d.id}" href="javascript:;" name="del" msg="确定删除吗？">删除</a>
+    	</li>
+    	{/if}
+    </ul>
+    {/foreach}
+    {else}
+    <ul class="table_list"><li class="table_list_center">空</li></ul>
+    {/if}
+</div>
+{include file="Public/page.html"}
+{include file="Archive/archiveOpBottom.html"}
+{include file="Public/control_bottom.html"}

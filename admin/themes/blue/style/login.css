@@ -1,0 +1,70 @@
+/* login */
+body {
+    background: #02609B;
+}
+#loginPanel {
+    color: #FFFFFF;
+    height: 243px;
+    margin: 170px auto 0;
+    width: 511px;
+    background: url("../images/admin_logo_bg.png") no-repeat scroll 0 0 transparent;
+}
+.logTop {
+    border-bottom: 1px solid #7FA0CE;
+    color: #FFFFFF;
+    font-family: 'Microsoft YaHei';
+    font-size: 14px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 10px;
+    text-align: center;
+}
+.logForm {
+    height: 150px;
+    text-align:center;
+}
+.logForm .Loglogo {
+    float: left;
+    margin-top: 20px;
+    margin-left: 18px;
+}
+.logForm form {
+    float: left;
+}
+.logForm ul li {
+    width:300px;
+    height:auto;
+    margin:0 auto;
+    clear:both;
+    text-align: left;
+}
+.logForm ul li span {
+    float:left;
+    width:110px;
+    height:35px;
+    line-height:35px;
+    display:block;
+    text-indent:30px;
+    font-size:13px;
+    font-weight:600;
+    color:#FFFFFF;
+}
+.logForm .input {
+    float: left;
+    width: 150px;
+    margin-top: 6px;
+}
+.logForm .vcode {
+    margin-top:6px;
+    cursor: pointer;
+}
+#logError {
+    height:30px;
+    line-height:30px;
+    color:#FF0000;
+    text-align: center;
+}
+.logForm ul li input.btngreen2 {
+    background: url("../images/btn_green_bg2.png") no-repeat scroll 0 0 transparent;
+}

@@ -1,0 +1,85 @@
+#SImageContainer {
+	position:relative;
+	z-index:10;
+}
+
+.slides_container {
+	width:730px;
+	height:300px;
+	overflow:hidden;
+	position:relative;
+}
+
+#SImageContainer .next, #SImageContainer .prev {
+	position:absolute;
+	top:107px;
+	left:10px;
+	width:27px;
+	height:27px;
+	display:none;
+	z-index:11;
+	overflow: hidden;
+	background-image:url("image/arrow.png");
+}
+
+#SImageContainer .next {
+	background-position: left top;
+}
+
+#SImageContainer .prev {
+	left:693px;
+	background-position: right top;
+}
+
+.pagination {
+	position: absolute;
+	margin:-50px auto auto 630px;
+	width:95px;
+	z-index: 999;
+	display: none;
+}
+
+.pagination li {
+	float:left;
+	margin:0 1px;
+}
+
+.pagination li a {
+	display:block;
+	width:12px;
+	height:0;
+	padding-top:12px;
+	background-image:url("image/pagination.png");
+	background-position:0 0;
+	float:left;
+	overflow:hidden;
+}
+
+.pagination li.current a {
+	background-position:0 -12px;
+}
+
+.caption {
+	position:relative;
+	height:25px;
+	line-height: 25px;
+	padding:0 20px;
+	background:#000;
+	background:rgba(0,0,0,.5);
+	width:690px;
+	font-size:13px;
+	color:#fff;
+	border-top:1px solid #000;
+	text-shadow:none;
+	margin-top: -29px;
+}
+
+a:link,a:visited {
+	color:#599100;
+	text-decoration:none;
+}
+
+a:hover,a:active {
+	color:#599100;
+	text-decoration:underline;
+}

@@ -1,0 +1,174 @@
+/* header */
+#header {
+    width: 100%;
+    height: 95px;
+    overflow: hidden;
+    background: none repeat scroll 0 0 #3A6EA5;
+}
+#header .headerTop {
+    width: 100%;
+    height: 80px;
+}
+#header .headerFoot {
+    background: none repeat scroll 0 0 #E2E9EA;
+    display: inline-block;
+    height: 15px;
+    line-height: 15px;
+    overflow: hidden;
+    width: 100%;
+}
+#header .logo {
+    float: left;
+    width:191px;
+    text-align:center;
+    height:60px;
+    margin-top:7px;
+}
+#header .headerNav {
+    float: left;
+    overflow: hidden;
+}
+#header .uinfo {
+    height: 25px;
+    margin-top: 16px;
+    padding-left: 10px;
+    color: #4782B4;
+    color: #93C9FF;
+}
+#header .uinfo a {
+    color:#FFF;
+}
+#header .nav {
+    width:100%;
+    font-size: 14px;
+    padding-top: 5px;
+    overflow: hidden;
+    clear: both;
+}
+#header .nav .hmenu {
+    padding-left: 0;
+}
+#header .nav .hmenu li {
+    float: left;
+    margin-right: 2px;
+    padding-left: 8px;
+    background: url("../images/admin_nav_bg.png") repeat scroll 0 0 transparent;
+}
+#header .nav .hmenu li a {
+    color: #FFFFFF;
+    font-weight: 700;
+    display: block;
+    padding: 0 18px 0 10px;
+    text-decoration: none;
+    float: left;
+    height: 34px;
+    line-height: 35px;
+    background: url("../images/admin_nav_bg.png") repeat scroll right 0 transparent;
+}
+#header .nav .hmenu li a:hover {
+    color: #E9FFFF;
+    text-decoration: underline;
+}
+#header .nav .hmenu li.navon {
+    background: url("../images/admin_nav_bg.png") repeat scroll 0 -43px transparent;
+}
+#header .nav .hmenu li.navon a {
+    color: #367ABB;
+    background: url("../images/admin_nav_bg.png") repeat scroll right -43px transparent;
+}
+#header .kjdh {
+    position: absolute;
+    right: 30px;
+    height: 25px;
+    margin-top: 16px;
+    color: #4782B4;
+    color: #93C9FF;
+}
+#header .kjdh a {
+    color: #FFFFFF;
+}
+/** menu */
+.menu {
+    float: left;
+    position: relative;
+    width: 185px;
+    height:100%;
+    z-index: 20;
+    overflow: hidden;
+    overflow-y: auto;
+    background: #F7FBFC;
+}
+.menu ul {
+    width: 175px;
+    height:auto;
+    overflow: visible;
+    margin-left: 10px;
+}
+.menu ul li.menulist {
+    height: auto;
+    overflow: hidden;
+}
+.menu ul li.menulist .menutree1 {
+    margin-top: 10px;
+}
+.menu ul li.menulist .menutree1 a {
+    display: block;
+    height:27px;
+    line-height:27px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    text-indent: 35px;
+    border-bottom: 1px solid #E2E9EA;
+}
+.menu ul li.menulist .menutree1 .plus {
+    background: url("../images/arrow_plus.gif") no-repeat scroll 14px 4px;
+}
+.menu ul li.menulist .menutree1 .mius {
+    background: url("../images/arrow_mius.gif") no-repeat scroll 12px 6px;
+}
+.menu .menusub {
+	display: block;
+    margin: 0;
+}
+.menu .menusub li {
+    padding: 1px 0;
+    border-bottom: 1px solid #EAEFF4;
+}
+.menu .menusub li a {
+    color: #444444;
+    display: block;
+    height: 27px;
+    line-height: 27px;
+    padding-left: 35px;
+    background: url("../images/admin_dot.gif") no-repeat scroll 18px 9px;
+}
+.menu .menusub li a:hover {
+    color: #333333;
+    text-decoration: none;
+    background: url("../images/admin_dot.gif") no-repeat scroll 18px 9px #E2E9EA;
+}
+.menu .menusub li a.tabon, .menu .menusub li a.tabon:hover {
+    color: #333333;
+    background: url("../images/admin_dot.gif") no-repeat scroll 18px 9px #E2E9EA;
+}
+.menuSlide {
+    float: left;
+    width: 6px;
+    height:100%;
+    display: inline-block;
+    overflow: hidden;
+    background: #E2E9EA;
+}
+.menuSlide .menuSlidebg {
+    margin-top: 220px;
+    cursor: pointer;
+    width: 6px;
+    height: 60px;
+}
+.menuSlide .menuSlidebg1 {
+    background: url("../images/admin_barclose.gif");
+}
+.menuSlide .menuSlidebg2 {
+    background: url("../images/admin_baropen.gif");
+}

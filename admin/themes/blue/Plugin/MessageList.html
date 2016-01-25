@@ -1,0 +1,73 @@
+{include file="Public/control_top.html"}
+<div class="captitle"><h5>留言信息列表 【总计{if $total}{$total}{else}0{/if}】</h5></div>
+<ul class="messageTitle">
+</ul>
+<div class="messageList">
+    {if isset($dataList)&&is_array($dataList)&&!empty($dataList)}
+    {foreach $dataList as $d}
+    <div class="messageBlock">
+    	<div class="content">
+    		{$d.content}
+    	</div>
+    	<div class="status">
+	    	<div class="fleft"><input type="checkbox" name="messageid[]" value="{$d.id}" /></div>
+	    	<div class="username fleft">{$d.username}</div>
+	    	<div class="email fleft">邮箱: <a href="mailto:{$d.email}">{$d.email}</a></div>
+	    	{if $accessStatus == 1}
+	    	<div class="delete" accessStatus={$accessStatus}>
+	    		[<a delurl="__APP__/index.php?s=Plugin/MessageDelete&messageid={$d.id}" href="javascript:;" name="del" msg="确定删除吗？">删除</a>]
+	    	</div>
+	    	{/if}
+	    	<div class="time">{$d.createtime|mkdate}</div>
+	    </div>
+    </div>
+    {/foreach}
+    {else}
+    <div class="messageBlockNull">暂无留言信息！</div>
+    {/if}
+</div>
+<div id="opBottom" class="opBottom">
+	<a href="javascript:;" name="checkAll">全选</a>
+	<a href="javascript:;" name="unCheckAll">取消</a>
+	<a href="javascript:;" name="messageDelete">删除</a>
+</div>
+{include file="Public/page.html"}
+<link type="text/css" rel="stylesheet" href="themes/blue/style/messageBoard.css" media="screen">
+<script type="text/javascript">
+$(document).ready(function (){
+var messageClass = function (){
+	var messageObj = {
+		checkAll: $("#opBottom a[name=checkAll]"),
+		unCheckAll: $("#opBottom a[name=unCheckAll]"),
+		messageDelete: $("#opBottom a[name=messageDelete]")
+	}
+	var getMessageID = function (){
+		var messageid= "";
+		$("input[name='messageid[]']").each(function (){
+			if ($(this).attr("checked")) messageid += messageid ? ","+$(this).val() : $(this).val();
+		});
+		return messageid;
+	};
+	messageObj.checkAll.click(function (){
+		$("input[name='messageid[]']").attr("checked","checked");
+	});
+	messageObj.unCheckAll.click(function (){
+		$("input[name='messageid[]']").attr("checked",false);
+	});
+	
+	//删除文档
+	messageObj.messageDelete.click(function (){
+		var messageid = getMessageID();
+		var d = {
+			messageid: messageid
+		};
+		$.post("__APP__/index.php?s=Plugin/messageDelete",d,function (data){
+			alert(data.info);
+			if (!data.status) location.href = location.href;
+		},'json');
+	});
+}
+messageClass();
+});
+</script>
+{include file="Public/control_bottom.html"}

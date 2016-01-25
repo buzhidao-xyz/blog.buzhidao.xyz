@@ -1,0 +1,42 @@
+{include file="Public/control_top.html"}
+<div class="formContainer">
+	<div class="formtitle"><h5>备份数据库</h5></div>
+	<form name="newform" action="__APP__/index.php?s=DataBase/DataBaseBackup" method="post" class="newform">
+		<ul class="formbody">
+			<li class="formblock">
+				<span>数据库备份文件存储路径: </span>
+				<span style="width:350px;">{if isset($backupdir)}{$backupdir}{/if}</span>
+			</li>
+			<li class="formblock bordernone bgf6">
+				<input type="submit" name="subut" class="button btnblue2" value="备份" />
+			</li>
+		</ul>
+	</form>
+</div>
+<div class="captitle"><h5>备份的Sql文件列表 【{if isset($total)&&$total}{$total}{else}0{/if}条数据】</h5></div>
+<ul class="table_list_title">
+	<li class="table_list_l table_list_l30"></li>
+	<li class="table_list_l table_list_l250">文件名</li>
+	<li class="table_list_l table_list_l100">文件大小</li>
+	<li class="table_list_l table_list_l150">备份日期</li>
+	<li class="table_list_l table_list_l100">操作</li>
+</ul>
+<div class="contentTableList">
+    {if isset($dataList)&&is_array($dataList)&&!empty($dataList)}
+    {foreach $dataList as $d}
+    <ul class="table_list">
+		<li class="table_list_l table_list_l30 table_list_no">1</li>
+		<li class="table_list_l table_list_l250">{$d.SqlFileName}</li>
+		<li class="table_list_l table_list_l100">{$d.FileSize}</li>
+    	<li class="table_list_l table_list_l150">{$d.CreateTime|mkdate}</li>
+    	<li class="table_list_l table_list_l100">
+    		<a href="__APP__/index.php?s=DataBase/DataBaseRestore&SqlFileName={$d.SqlFileName}">还原</a>
+    	</li>
+    </ul>
+    {/foreach}
+    {else}
+    <ul class="table_list"><li class="table_list_center">空</li></ul>
+    {/if}
+</div>
+{include file="Public/page.html"}
+{include file="Public/control_bottom.html"}

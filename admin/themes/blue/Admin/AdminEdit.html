@@ -1,0 +1,31 @@
+<div class="box">
+<div class="boxContent">
+<div class="boxPopupForm">
+	<div class="boxTitle">
+		<h5>编辑管理员信息</h5>
+	</div>
+	<form name="boxform" action="__APP__/index.php?s=Admin/AdminEditSave" method="post" id="colorBoxAjaxForm">
+	<input type="hidden" name="adminid" value="{$adminid}" />
+	<ul>
+		<li class="formblock">
+			<span>账户: </span>
+			<span style="text-align:left;">{$adminInfo.adminname}</span>
+		</li>
+		<li class="formblock">
+			<span>选择角色: </span>
+			<div class="item_list fleft" style="padding-top:5px;">
+				{if is_array($roleList)&&!empty($roleList)}
+				{foreach $roleList as $d}
+				<input type="checkbox" name="roleid[]" value="{$d.id}" {if in_array($d.id,$adminInfo.roleid)}checked{/if} />{$d.name}&nbsp;&nbsp;
+				{/foreach}
+				{/if}
+			</div>
+		</li>
+		<li class="formblock bordernone">
+			<input type="submit" name="subut" class="button btnblue2" value="确定" />
+		</li>
+	</ul>
+	</form>
+</div>
+</div>
+</div>

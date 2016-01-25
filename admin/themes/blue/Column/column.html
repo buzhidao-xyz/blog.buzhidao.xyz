@@ -1,0 +1,74 @@
+{include file="Public/control_top.html"}
+<div class="captitle"><h5>栏目列表</h5></div>
+<div id="columnList">
+	<div class="ul columnListTitle">
+		<div class="li columnListd700" flag="columnListTitle" style="text-indent:0;">栏目名称</div>
+		<div class="li columnListd300" flag="columnListTitle">操作</div>
+	</div>
+	<div class="ul columnListTable">
+		{if $dataList}
+		{foreach $dataList as $d}
+		<div class="ul columnlistd">
+			<div class="li columnplusmius columnplus" columnid="{$d.id}"></div>
+			<div class="li columnListd700" flag="columnTableList">
+				<a href="__APP__/index.php?s={$d.control}/index&columnid={$d.id}">{$d.columnname}</a>
+				{if $d.isshow==1}<font color="green"></font>{else}<font color="red">[隐]</font>{/if}
+			</div>
+			<div class="li columnListd300" flag="columnTableList">
+				<a href="javascript:;">预览</a> |
+				<a href="__APP__/index.php?s=Article/index&columnid={$d.id}">栏目文档</a> |
+				<a href="__APP__/index.php?s=Column/newColumn&columnid={$d.id}">增加子栏目</a> |
+				<a href="__APP__/index.php?s=Column/updateColumn&columnid={$d.id}">编辑</a> |
+				<a delurl="__APP__/index.php?s=Column/deleteColumn&columnid={$d.id}" href="javascript:;" name="del" msg="确定删除该栏目吗？">删除</a>
+			</div>
+		</div>
+		<div class="ul columnSubList"></div>
+		{/foreach}
+		{/if}
+	</div>
+	<div class="columnList">
+	</div>
+</div>
+<link rel="stylesheet" type="text/css" href="themes/blue/style/column.css" media="screen" />
+<script type="text/javascript">
+$(document).ready(function(){
+	var column = function (){
+		var columnObj = {
+			columnplusmius: $("#columnList .columnListTable .columnlistd div.columnplusmius"),
+			columnmius: $("#columnList .columnListTable .columnlistd div.columnmius"),
+		}
+
+		columnObj.showSubColumn = function (){
+			columnObj.columnplusmius.live("click", function (){
+				var that = $(this);
+				var subthat = that.parent().next();
+				if (subthat.css("display") == 'block') {
+					that.removeClass("columnmius");
+					that.addClass("columnplus");
+					subthat.css("display","none");
+				} else {
+					that.removeClass("columnplus");
+					that.addClass("columnmius");
+					subthat.css("display","block");
+					if (!subthat.text().trim()) {
+						var d = {
+							columnid: $(this).attr("columnid")
+						}
+						$.post(JS_APP+"/index.php?s=Column/getSubColumn",d,function(data){
+							if (!data.status) {
+								subthat.html(data.data);
+							} else {
+								alert(data.info);
+							}
+						},'json')
+					}
+				}
+			});
+		}(window)
+	}
+	if ($("#columnList .columnListTable .columnlistd").length) {
+		column();
+	}
+});
+</script>
+{include file="Public/control_bottom.html"}

@@ -1,0 +1,107 @@
+
+/*** ESSENTIAL STYLES ***/
+.headerNavigation, .headerNavigation * {
+	margin:			0;
+	padding:		0;
+	list-style:		none;
+}
+.headerNavigation {
+	line-height:	1.0;
+}
+.headerNavigation ul {
+	position:		absolute;
+	top:			-999px;
+	width:			120px; /* left offset of submenus need to match (see below) */
+}
+.headerNavigation ul li {
+	width:			100%;
+}
+.headerNavigation li:hover {
+	visibility:		inherit; /* fixes IE7 'sticky bug' */
+}
+.headerNavigation li {
+	float:			left;
+	position:		relative;
+}
+.headerNavigation a {
+	display:		block;
+	position:		relative;
+}
+.headerNavigation li:hover ul,
+.headerNavigation li.sfHover ul {
+	left:			0;
+	top:			35px; /* match top ul list item height */
+	z-index:		99;
+}
+ul.headerNavigation li:hover li ul,
+ul.headerNavigation li.sfHover li ul {
+	top:			-999px;
+}
+ul.headerNavigation li li:hover ul,
+ul.headerNavigation li li.sfHover ul {
+	left:			121px; /* match ul width */
+	top:			0;
+}
+ul.headerNavigation li li:hover li ul,
+ul.headerNavigation li li.sfHover li ul {
+	top:			-999px;
+}
+ul.headerNavigation li li li:hover ul,
+ul.headerNavigation li li li.sfHover ul {
+	left:			121px; /* match ul width */
+	top:			0;
+}
+
+/*** arrows **/
+.headerNavigation a.sf-with-ul {
+	padding-right: 	2.25em;
+	min-width:		1px; /* trigger IE7 hasLayout so spans position accurately */
+}
+.sf-sub-indicator {
+	position:		absolute;
+	display:		block;
+	right:			.75em;
+	top:			1.05em; /* IE6 only */
+	width:			10px;
+	height:			10px;
+	text-indent: 	-999px;
+	overflow:		hidden;
+	background:		url('../images/arrows-ffffff.png') no-repeat -10px -100px; /* 8-bit indexed alpha png. IE6 gets solid image only */
+}
+a > .sf-sub-indicator {  /* give all except IE6 the correct values */
+	top: 13px;
+	background-position: 0 -100px; /* use translucent arrow for modern browsers*/
+}
+/* apply hovers to modern browsers */
+a:focus > .sf-sub-indicator,
+a:hover > .sf-sub-indicator,
+a:active > .sf-sub-indicator,
+li:hover > a > .sf-sub-indicator,
+li.sfHover > a > .sf-sub-indicator {
+	background-position: -10px -100px; /* arrow hovers for modern browsers*/
+}
+
+/* point right for anchors in subs */
+.headerNavigation ul .sf-sub-indicator { background-position:  -10px 0; }
+.headerNavigation ul a > .sf-sub-indicator { background-position:  0 0; }
+/* apply hovers to modern browsers */
+.headerNavigation ul a:focus > .sf-sub-indicator,
+.headerNavigation ul a:hover > .sf-sub-indicator,
+.headerNavigation ul a:active > .sf-sub-indicator,
+.headerNavigation ul li:hover > a > .sf-sub-indicator,
+.headerNavigation ul li.sfHover > a > .sf-sub-indicator {
+	background-position: -10px 0; /* arrow hovers for modern browsers*/
+}
+
+/*** shadows for all but IE6 ***/
+.sf-shadow ul {
+	background:	url('../images/shadow.png') no-repeat bottom right;
+	padding: 0 8px 9px 0;
+	-moz-border-radius-bottomleft: 17px;
+	-moz-border-radius-topright: 17px;
+	-webkit-border-top-right-radius: 17px;
+	-webkit-border-bottom-left-radius: 17px;
+}
+.sf-shadow ul.sf-shadow-off {
+	background: transparent;
+}

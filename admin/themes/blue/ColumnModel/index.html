@@ -1,0 +1,39 @@
+{include file="Public/control_top.html"}
+<div class="opTop">
+	<a href="__APP__/index.php?s=CTModel/addColumnModel">新增模型</a>
+	<a href="__APP__/index.php?s=CTModel/ColumnModel" class="opTopOn">模型管理</a>
+</div>
+<div class="captitle"><h5>内容模型列表【目前共有{if $total}{$total}{else}0{/if}条数据】</h5></div>
+<ul class="table_list_title">
+	<li class="table_list_l table_list_l120">模型名称</li>
+	<li class="table_list_l table_list_l120">模型表名</li>
+	<li class="table_list_l table_list_l100">控制器</li>
+	<li class="table_list_l table_list_l300">模型描述</li>
+	{if $accessStatus == 1}
+	<li class="table_list_l table_list_l170" accessStatus={$accessStatus}>管理操作</li>
+	{/if}
+</ul>
+<div class="contentTableList">
+	{if $dataList}
+	{foreach $dataList as $d}
+	<ul class="table_list">
+		<li class="table_list_l table_list_l120">{$d.name}</li>
+		<li class="table_list_l table_list_l120">{$d.table}</li>
+		<li class="table_list_l table_list_l100">{$d.control}</li>
+		<li class="table_list_l table_list_l300">{$d.description}</li>
+		{if $accessStatus == 1}
+		<li class="table_list_l table_list_l170" accessStatus={$accessStatus}>
+			<a href="__APP__/index.php?s=CTModel/ModelField">模型字段</a>
+			<a href="__APP__/index.php?s=CTModel/UpdateModel">修改</a>
+			<a href="__APP__/index.php?s=CTModel/UpdateModelStatus&status=0">已启用</a>
+			<a href="__APP__/index.php?s=CTModel/DeleteModel">删除</a>
+		</li>
+		{/if}
+	</ul>
+	{/foreach}
+	{else}
+	<ul class="table_list"><li class="table_list_center">空</li></ul>
+	{/if}
+</div>
+{include file="Public/page.html"}
+{include file="Public/control_bottom.html"}

@@ -1,0 +1,29 @@
+{include file="include/head.html"}
+{include file="Common/GlobalBar.html"}
+{include file="Common/Header.html"}
+<div id="WrapContainer" class="wrap">
+	<div class="adBanner block">
+		{cmstag_advertise flag=2 html='<a href="[field.link]" target="_blank"><img src="[field.path]" width="1000" height="80" /></a>'}
+	</div>
+	<div class="CurPosition mtop5">
+		当前位置: {$CurrentPosition}
+	</div>
+	<div id="CenterShow" class="block mtop5">
+		<div id="mainBlock" class="fleft w740">
+			<div class="boxBlock">
+				<div class="boxBlockTitle">
+					<span class="title">{$archiveInfo.title}</span>
+				</div>
+				<div class="boxBlockBody">
+					<div class="contentBlock">
+						{include file="Image/image.html"}
+					</div>
+				</div>
+			</div>
+		</div>
+		{include file="Common/SideBlock.html"}
+		<div class="clear"></div>
+	</div>
+	{include file="Common/Flink.html"}
+</div>
+{include file="include/foot.html"}

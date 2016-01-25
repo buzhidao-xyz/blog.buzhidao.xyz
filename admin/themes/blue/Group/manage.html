@@ -1,0 +1,47 @@
+{include file="Public/control_top.html"}
+{if $accessStatus == 1}
+<div class="formContainer" accessStatus={$accessStatus}>
+	<div class="formtitle"><h5>新增组菜单</h5></div>
+	<form name="newform" action="__APP__/index.php?s=Group/saveGroup" method="post" id="ajaxform" class="newform">
+		<input type="hidden" name="" />
+		<ul class="formbody">
+			<li class="formblock">
+				<span>菜单名称:</span>
+				<input type="text" name="title" value="" class="input" style="width:150px;" />
+			</li>
+			<li class="formblock bordernone bgf6">
+				<input type="submit" name="subut" class="button btnblue2" value="添加" />
+			</li>
+		</ul>
+	</form>
+</div>
+{/if}
+<div class="captitle"><h5>组菜单列表【菜单数{if $total}{$total}{else}0{/if}】</h5></div>
+<ul class="table_list_title">
+	<li class="table_list_l table_list_l150">组菜单名称</li>
+	<li class="table_list_l table_list_l170">创建时间</li>
+	<li class="table_list_l table_list_l100">是/否显示</li>
+	{if $accessStatus == 1}
+	<li class="table_list_l table_list_l150" accessStatus={$accessStatus}>操作</li>
+	{/if}
+</ul>
+<div class="contentTableList">
+	{if $groupList}
+	{foreach $groupList as $d}
+	<ul class="table_list">
+		<li class="table_list_l table_list_l150">{$d.title}</li>
+		<li class="table_list_l table_list_l170">{$d.createtime|mkdate}</li>
+		<li class="table_list_l table_list_l100">{if $d.isshow}显{else}隐{/if}</li>
+		{if $accessStatus == 1}
+		<li class="table_list_l table_list_l150" accessStatus={$accessStatus}>
+    		<a name="colorboxEdit" href="__APP__/index.php?s=Group/GroupEdit&id={$d.id}">修改</a>
+			<a delurl="__APP__/index.php?s=Group/GroupDelete" href="javascript:;" name="del" msg="确定删除吗？">删除</a>
+		</li>
+		{/if}
+	</ul>
+	{/foreach}
+	{else}
+	<ul class="table_list"><li class="table_list_center">空</li></ul>
+	{/if}
+</div>
+{include file="Public/control_bottom.html"}

@@ -1,0 +1,32 @@
+<div class="box">
+<div class="boxContent">
+<div class="boxPopupForm">
+	<div class="boxTitle">
+		<h5>编辑链接分类信息</h5>
+	</div>
+	<form name="boxform" action="__APP__/index.php?s=Plugin/FlinkCatalogEditSave" method="post" id="colorBoxAjaxForm">
+	<input type="hidden" name="catalogid" value="{$CatalogInfo.id}" />
+	<ul>
+		<li class="formblock">
+			<span>分类名称：</span>
+			<input type="text" name="catalogname" value="{$CatalogInfo.catalogname}" class="input w200" />
+		</li>
+		<li class="formblock">
+			<span>排序位置：</span>
+			<input type="text" name="sort" value="{$CatalogInfo.sort}" class="input w200" />
+		</li>
+		<li class="formblock">
+			<span>是/否显示：</span>
+			<div class="item_list fleft">
+				<label><input type="radio" name="state" value="1" class="radio" {if $CatalogInfo.state==1}checked="checked"{/if} />显示</label>
+				<label><input type="radio" name="state" value="0" class="radio" {if $CatalogInfo.state==0}checked="checked"{/if} />隐藏</label>
+			</div>
+		</li>
+		<li class="bordernone bgf6">
+			<input type="submit" name="subut" class="button btnblue2" value="修改" />
+		</li>
+	</ul>
+	</form>
+</div>
+</div>
+</div>

@@ -1,0 +1,137 @@
+<link rel="stylesheet" type="text/css" href="themes/blue/style/nodeTree.css" media="screen" />
+<div id="nodeTree">
+	<div id="notice">*注意操作权限包含浏览权限 如果两个都勾选则只赋予操作权限</div>
+	<div class="nodeTreeTitle">
+		<span class="titleNode w726">节点名称</span>
+		<span class="titleAccess w120">浏览权限</span>
+		<span class="titleManage w120">操作权限</span>
+	</div>
+	{if $nodeTree}
+	{foreach $nodeTree as $d}
+	<div ul=1 class="ul groupTree">
+		<div class="li" li=1>
+			<span class="expand"></span>
+			<span class="w700">{$d.title}</span>
+			<span class="w120"><input type="checkbox" name="group{$d.id}" value="{$d.id}" flag="groupNode1" class="checkbox" /></span>
+			<span class="w120"><input type="checkbox" name="group{$d.id}" value="{$d.id}" flag="groupNode2" class="checkbox" /></span>
+		</div>
+		<div class="ul parentNode" ul=1>
+		{if isset($d.cnode)}
+		{foreach $d.cnode as $d1}
+			<div title="{$d1.remark}" li=1 class="li">
+				<span class="expand"></span>
+				<span class="w670">{$d1.title}</span>
+				<span class="w120"><input type="checkbox" name="node[]" value="{$d1.id},0" {if in_array($d1.id,$roleInfo.node)&&$roleInfo.access[$d1.id]==0}checked{/if} node="pNode" flag="pNode1" class="checkbox" /></span>
+				<span class="w120"><input type="checkbox" name="node[]" value="{$d1.id},1" {if in_array($d1.id,$roleInfo.node)&&$roleInfo.access[$d1.id]==1}checked{/if} node="pNode" flag="pNode2" class="checkbox" /></span>
+			</div>
+			<div class="ul childNode" ul=1>
+			{if isset($d1.cnode)}
+			{foreach $d1.cnode as $d2}
+				<div flag=1 title="{$d2.remark}" li=1 class="li">
+					<span class="w656">{$d2.title}</span>
+					<span class="w120"><input type="checkbox" name="node[]" value="{$d2.id},0" {if in_array($d2.id,$roleInfo.node)&&$roleInfo.access[$d2.id]==0}checked{/if} node="cNode" flag="cNode1" class="checkbox" /></span>
+					<span class="w120"><input type="checkbox" name="node[]" value="{$d2.id},1" {if in_array($d2.id,$roleInfo.node)&&$roleInfo.access[$d2.id]==1}checked{/if} node="cNode" flag="cNode2" class="checkbox" /></span>
+				</div>
+			{/foreach}
+			{/if}
+			</div>
+		{/foreach}
+		{/if}
+		</div>
+	</div>
+	{/foreach}
+	{/if}
+</div>
+<script type="text/javascript">
+var nodeTreeClass = function(){
+	//定义对象属性
+	var nodeTree = {
+		expand: $("#nodeTree div[ul=1] div[li=1] span.expand"),
+		node: $("#nodeTree div[ul=1] div[li=1] input[type=checkbox]"),
+		pNode: $("#nodeTree div[ul=1] div[li=1] input[node=pNode]"),
+		cNode: $("#nodeTree div[ul=1] div[li=1] input[node=cNode]")
+	}
+
+	//展开收缩 toggle动态
+	nodeTree.ehNode = function() {
+		nodeTree.expand.click(function (){
+			if ($(this).attr("class").indexOf("back")<0) $(this).addClass("back");
+			else $(this).removeClass("back");
+			$(this).parent().next("div[ul=1]").slideToggle(300);
+		})
+	}(window);
+
+	//选中/不选中全部
+	nodeTree.check = function(){
+		nodeTree.node.click(function (){
+			var nodeObj;
+			if ($(this).attr("flag") == "groupNode1") {
+				var nodeObj = $(this).parent().parent().next("div[ul=1]").find("input[flag=pNode1],input[flag=cNode1]");
+			} else if ($(this).attr("flag") == "groupNode2") {
+				var nodeObj = $(this).parent().parent().next("div[ul=1]").find("input[flag=pNode2],input[flag=cNode2]");
+			} else if ($(this).attr("flag") == "pNode1") {
+				var nodeObj = $(this).parent().parent().next("div[ul=1]").find("input[flag=cNode1]");
+			} else if ($(this).attr("flag") == "pNode2") {
+				var nodeObj = $(this).parent().parent().next("div[ul=1]").find("input[flag=cNode2]");
+			}
+			if (nodeObj) {
+				if ($(this).attr("checked")) nodeObj.attr("checked",true);
+				else nodeObj.attr("checked",false);
+			}
+		})
+
+		//选中子节点 默认选中父节点
+		nodeTree.cNode.click(function (){
+			if ($(this).attr("flag") == "cNode1") {
+				var nodeObj = $(this).parent().parent().parent().prev("div[li=1]").find("input[flag=pNode1]");
+				var groupObj = $(this).parent().parent().parent().parent().prev("div[li=1]").find("input[flag=groupNode1]");
+			} else if ($(this).attr("flag") == "cNode2") {
+				var nodeObj = $(this).parent().parent().parent().prev("div[li=1]").find("input[flag=pNode2]");
+				var groupObj = $(this).parent().parent().parent().parent().prev("div[li=1]").find("input[flag=groupNode2]");
+			}
+			if ($(this).attr("checked")) {
+				nodeObj.attr("checked",true);
+				groupObj.attr("checked",true);
+			}
+		})
+
+		//选中父节点 默认选中组节点
+		nodeTree.pNode.click(function (){
+			if ($(this).attr("flag") == "pNode1") {
+				var nodeObj = $(this).parent().parent().parent().prev("div[li=1]").find("input[flag=groupNode1]");
+			} else if ($(this).attr("flag") == "pNode2") {
+				var nodeObj = $(this).parent().parent().parent().prev("div[li=1]").find("input[flag=groupNode2]");
+			}
+			if ($(this).attr("checked")) nodeObj.attr("checked",true);
+		})
+	}(window);
+
+	//选中组
+	var checkGroup = function (){
+		nodeTree.pNode.each(function (){
+			if ($(this).attr("checked")) {
+				if ($(this).attr("flag") == "pNode1") {
+					$(this).parent().parent().parent().prev("div[li=1]").find("input[flag=groupNode1]").attr("checked",true);
+				} else if ($(this).attr("flag") == "pNode2") {
+					$(this).parent().parent().parent().prev("div[li=1]").find("input[flag=groupNode2]").attr("checked",true);
+				}
+			}
+		});
+	}
+
+	//选中组
+	if (nodeTree.pNode.length > 0) {
+		if ($("input[name=id]").val()>0) {
+			$("input[isSetNode=1]").click();
+			$("#nodeTree").slideDown(300);
+		}
+		checkGroup();
+		$("#nodeTree ul li").each(function (){
+			if (!$(this).next().attr("flag"))
+				$(this).css("border-bottom",0);
+		});
+
+	}
+}
+new nodeTreeClass();
+</script>

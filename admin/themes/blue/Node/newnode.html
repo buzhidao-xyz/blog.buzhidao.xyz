@@ -1,0 +1,48 @@
+{include file="Public/control_top.html"}
+<!-- <div class="control_nav">
+	<h3>添加组</h3>
+</div> -->
+{if $accessStatus == 1}
+<div class="formContainer" accessStatus={$accessStatus}>
+	<div class="formtitle"><h5>新操作节点表单</h5></div>
+	<form name="newform" action="__APP__/index.php?s=Node/saveNode" method="post" id="ajaxform" class="newform">
+		<ul class="formbody">
+			<li class="formblock">
+				<span>组: </span>
+				<select id="select" name="groupid" style="width:150px;">
+					<option value="">|-组菜单</option>
+					{foreach $groupTree as $g}
+					<option value="{$g.id}">&nbsp;|-{$g.title}</option>
+					{/foreach}
+				</select>
+			</li>
+			<li class="formblock">
+				<span>父节点: </span>
+				<select name="pid" flag="nodepid" style="width:150px;">
+					<option value="">|-节点菜单</option>
+				</select>
+			</li>
+			<li class="formblock">
+				<span>名称: </span>
+				<input type="text" name="title" autocomplete="off" value="" class="input w150" />
+			</li>
+			<li class="formblock">
+				<span>描述: </span>
+				<input type="text" name="remark" autocomplete="off" value="" class="input w250" />
+			</li>
+			<li class="formblock">
+				<span>Control: </span>
+				<input type="text" name="control" autocomplete="off" value="" class="input w100" />
+			</li>
+			<li class="formblock">
+				<span>Action: </span>
+				<input type="text" name="action" autocomplete="off" value="" class="input w150" />
+			</li>
+			<li class="formblock bordernone bgf6">
+				<input type="submit" name="subut" class="button btnblue2" value="添加" />
+			</li>
+		</ul>
+	</form>
+</div>
+{/if}
+{include file="Public/control_bottom.html"}

@@ -1,0 +1,25 @@
+<div class="box">
+<div class="boxContent">
+<div class="boxPopupForm">
+	<div class="boxTitle">
+		<h5>编辑导航信息</h5>
+	</div>
+	<form name="boxform" action="__APP__/index.php?s=Plugin/NavigationEditSave" method="post" id="colorBoxAjaxForm">
+	<input type="hidden" name="navigationid" value="{$navigationInfo.id}" />
+	<ul>
+		<li class="formblock">
+			<span>导航名称：</span>
+			<input type="text" name="title" value="{$navigationInfo.title}" class="input w200" />
+		</li>
+		<li class="formblock">
+			<span>导航地址：</span>
+			<input type="text" name="link" value="{$navigationInfo.link}" class="input w350" />
+		</li>
+		<li class="bordernone bgf6">
+			<input type="submit" name="subut" class="button btnblue2" value="编辑" />
+		</li>
+	</ul>
+	</form>
+</div>
+</div>
+</div>

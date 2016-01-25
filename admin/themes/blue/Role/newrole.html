@@ -1,0 +1,39 @@
+{include file="Public/control_top.html"}
+{if $accessStatus == 1}
+<div class="formContainer" accessStatus={$accessStatus}>
+	<div class="formtitle"><h5>新角色表单</h5></div>
+	<form name="newform" action="__APP__/index.php?s=Role/saveRole" method="post" method="post" id="ajaxform" class="newform">
+		<input type="hidden" name="id" id="id" value="{$roleInfo.id}" />
+		<ul class="formbody">
+			<li class="formblock">
+				<span>角色名:</span>
+				<input type="text" name="name" value="{$roleInfo.name}" class="input w150" />
+			</li>
+			<li class="formblock">
+				<span>描述:</span>
+				<input type="text" name="remark" value="{$roleInfo.remark}" class="input w250" />
+			</li>
+			<li class="formblock">
+				<span>状态:</span>
+				<div class="item_list fleft">
+					<label><input type="radio" name="status" value="1" class="radio" {if $roleInfo.status == 1}checked="checked"{/if} />启用</label>
+					<label><input type="radio" name="status" value="0" class="radio" {if $roleInfo.status == 0}checked="checked"{/if} />禁用</label>
+				</div>
+			</li>
+			<li class="formblock">
+				<span>配置角色的权限节点:</span>
+				<div class="item_list fleft">
+					<label><input type="radio" name="nodeAccess" isSetNode=1 class="radio" />是</label>
+				</div>
+			</li>
+			<li style="height:auto;overflow:hidden;">
+				{include file="Common/nodeTree.html"}
+			</li>
+			<li class="formblock bordernone bgf6">
+				<input type="submit" name="newRoleButton" class="button btnblue4 mauto" value="完成提交" />
+			</li>
+		</ul>
+	</form>
+</div>
+{/if}
+{include file="Public/control_bottom.html"}

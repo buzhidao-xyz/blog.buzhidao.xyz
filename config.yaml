@@ -1,0 +1,16 @@
+handle:
+#Image/Html/CSS文件压缩输出
+- compress: if ( out_header["Content-type"] ~ "text/css" ) compress
+- compress: if ( out_header["Content-type"] ~ "text/javascript" ) compress
+- compress: if ( out_header["Content-type"] ~ "text/html" ) compress
+- compress: if ( out_header["Content-type"] ~ "image/jpeg" ) compress
+- compress: if ( out_header["Content-type"] ~ "image/png" ) compress
+- compress: if ( out_header["Content-type"] ~ "image/pjpeg" ) compress
+- compress: if ( out_header["Content-type"] ~ "image/gif" ) compress
+#缓存iconfont文件 过期时间30天
+- expire:  if( path ~ "iconfont.eot" ) time 2592000 
+- expire:  if( path ~ "iconfont.woff" ) time 2592000
+- expire:  if( path ~ "iconfont.ttf" ) time 2592000
+- expire:  if( path ~ "iconfont.svg" ) time 2592000
+#woff类型文件解析
+- mime: if( path ~ "\.woff$" ) type "application/font-woff"

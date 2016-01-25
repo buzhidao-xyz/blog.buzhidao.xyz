@@ -1,0 +1,98 @@
+{if isset($page) && $page && $page.page|@count >1}
+<div id="{if isset($isface)}facepage{else}compage{/if}" class="pagination">
+	{if $page.firstpage.row}
+	<a class="pageprev graya fleft" href="{if $page.firstpage.href}{$page.firstpage.href}{else}javascript:;{/if}">首页</a>
+	{/if}
+	<a class="pageprev graya fleft" href="{if $page.prev.href}{$page.prev.href}{else}javascript:;{/if}">上一页</a> 
+	<span class="pageList none">
+	{foreach from=$page.page key=k item=v}
+		{if $v}
+			<a class="jumpPageBtn fleft" href="{$v}"> {$k} </a>
+		{else}
+			{$nowpage=$k}
+			<span class="current fleft" href="{$v}" style=""> {$k} </span>
+		{/if}
+	{/foreach}
+	</span>
+	<a class="pagenext graya fleft" href="{if $page.next.href}{$page.next.href}{else}javascript:;{/if}">下一页</a>
+	{if $page.endpage.row}
+	<a class="pageprev graya fleft" href="{if $page.endpage.href}{$page.endpage.href}{else}javascript:;{/if}">末页</a>
+	{/if}
+</div>
+<style type="text/css">
+.pagination {
+	float: right;
+	zoom: 1;
+	clear: both;
+	position: relative;
+	padding: 10px;
+	overflow: hidden;
+	/*font-family: "Simsun";*/
+}
+.pagination a {
+	color: #333333;
+	border: 1px solid #BBBBBB;
+    display: inline-block;
+    padding: 2px 7px;
+    margin: 0 2px;
+    text-align: center;
+    text-decoration: none;
+    width: auto;
+}
+.pagination a:hover {
+	background: #F0F0F0;
+    border: 1px solid #888888;
+    color: #333333;
+    text-decoration: none;
+}
+/*a.pagenext, a.pageprev {
+	display: inline-block;
+	margin: 0 3px;
+	padding: 4px 5px;
+	color: #40661C;
+	text-align: center;
+	border: 1px solid #40661C;
+}
+a.pagenext:hover, a.pageprev:hover {
+	color: #FF6633;
+}*/
+.pageList {
+	overflow: hidden;
+	background: #FFFFFF;
+}
+.pageList a, .pageList .current {
+	color: #333333;
+	border: 1px solid #BBBBBB;
+    display: inline-block;
+    padding: 2px 7px;
+    margin: 0 2px;
+    text-align: center;
+    text-decoration: none;
+    width: auto;
+}
+.pageList .current {
+	background: #F0F0F0;
+    border: 1px solid #CCCCCC;
+    color: #FF6600;
+    font-weight: bold;
+}
+/*.pageList a:hover {
+	color: #FF6600;
+	background: #E7E7E7;
+}*/
+</style>
+<script>
+var bindpage = function($obj){
+    $obj.find('.pagecur').hover(function(){
+		$obj.find('.pageList').show();
+	},function(){
+		$obj.find('.pageList').hide();
+	})
+}
+if($('#compage').length>0){
+    //bindpage($('#compage'));
+} else if ($('#facepage').length>0) {
+    //bindpage($('#facepage'));   
+}
+</script>
+{/if}

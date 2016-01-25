@@ -1,0 +1,57 @@
+{include file="include/head.html"}
+{include file="Common/GlobalBar.html"}
+{include file="Common/Header.html"}
+<div id="WrapContainer" class="wrap">
+	<div id="MainBlock">
+		{if isset($ArchiveList)&&!empty($ArchiveList)}
+		{foreach $ArchiveList as $d}
+		<div class="ArchiveBlock">
+			<div class="title">
+				<h2><a href="__APP__/index.php?s={$d.control}/View&columnid={$d.columnid}&archiveid={$d.id}">{$d.title}</a></h2>
+			</div>
+			<div class="info">
+				步知道 | 
+				<a href="javascript:;">服务器</a>,
+				<a href="javascript:;">数据库</a>
+				 | {$d.updatetime|mkdate}
+			</div>
+			<div class="preview">
+				{$d.content|html_entity_decode|htmlSubString:170}
+				<span class="more">[<a href="__APP__/index.php?s={$d.control}/View&columnid={$d.columnid}&archiveid={$d.id}">阅读全文</a>]</span>
+			</div>
+			<div class="meta">
+				<span class="d"><i class="iconfont">ė</i>1,576次浏览</span>
+				<span class="d"><i class="iconfont">6</i><a href="javascript:;">5条评论</a></span>
+				<span class="d">
+					<i class="iconfont">0</i><a href="javascript:;">PHP技术</a>,
+					<a href="javascript:;">PHP技术</a>,
+					<a href="javascript:;">PHP技术</a>,
+					<a href="javascript:;">PHP技术</a>,
+					<a href="javascript:;">PHP技术</a>,
+					<a href="javascript:;">PHP技术</a>,
+					<a href="javascript:;">PHP技术</a>,
+					<a href="javascript:;">PHP技术</a>,
+					<a href="javascript:;">PHP技术</a>
+				</span>
+			</div>
+		</div>
+		{/foreach}
+		{else}
+		<div class="ArchiveBlock">
+			<div class="title">
+				<h2><a href="javascript:;"><font color="#333333">未找到文章</font></a></h2>
+			</div>
+			<div class="meta">
+			</div>
+		</div>
+		{/if}
+		{include file="Common/Page.html"}
+	</div>
+	<div id="SideBlock" class="mleft20">
+		<div class="SideBlockTap"></div>
+		<div class="SideBlockBox">
+			{include file="Common/SideBlock.html"}
+		</div>
+	</div>
+</div>
+{include file="include/foot.html"}

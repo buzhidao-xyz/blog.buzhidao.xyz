@@ -1,0 +1,44 @@
+{if isset($ArchiveList)&&!empty($ArchiveList)}
+{foreach $ArchiveList as $d}
+<div class="ArchiveBlock">
+	<div class="title">
+		<h2><a href="__APP__/?s=a.v.{$d.id}">{$d.title}</a></h2>
+	</div>
+	<div class="info">
+		{$d.author} | 
+		<a href="__APP__/?s=a.l.{$d.columnid}">{$d.columnname}</a>
+		 | {$d.publishtime|mkdate}
+	</div>
+	<div class="preview">
+		{$d.content|html_entity_decode|htmlSubString:170}
+		<span class="more">[<a href="__APP__?s=a.v.{$d.id}">阅读全文</a>]</span>
+	</div>
+	<div class="meta">
+		<span class="d">
+			<i class="iconfont">&#x351a;</i>
+			{$d.clicknum|number_format:0:null:","}次浏览
+		</span>
+		<span class="d">
+			<i class="iconfont">&#13463;</i>
+			<a href="javascript:;">{$d.commentnum|number_format:0:null:","}条评论</a>
+		</span>
+		<span class="d tag">
+			<i class="iconfont">&#x3548;</i>
+			{if isset($d.tag)&&is_array($d.tag)&&!empty($d.tag)}
+			{foreach $d.tag as $kt=>$t}
+			<a href="__APP__/?s=t.s.{$t}">{$t}</a>&nbsp;
+			{/foreach}
+			{/if}
+		</span>
+	</div>
+</div>
+{/foreach}
+{else}
+<div class="ArchiveBlock">
+	<div class="title">
+		<h2><a href="javascript:;"><font color="#333333">未找到博文</font></a></h2>
+	</div>
+	<div class="meta">
+	</div>
+</div>
+{/if}

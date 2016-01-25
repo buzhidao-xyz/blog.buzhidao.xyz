@@ -1,0 +1,48 @@
+{include file="Public/control_top.html"}
+<div class="opTop">
+	<a href="__APP__/index.php?s=System/systemInfo">系统参数设置</a> |
+	<a href="__APP__/index.php?s=System/addSystemcfg" class="opTopOn">添加新变量</a>
+	<a href="__APP__/index.php?s=System/makeCacheConfig">生成配置缓存文件</a>
+</div>
+{if $accessStatus == 1}
+<div class="formContainer" accessStatus={$accessStatus}>
+	<div class="formtitle"><h5>添加新系统变量参数</h5></div>
+	<form name="newform" action="__APP__/index.php?s=System/saveSystemcfg" method="post" class="newform" id="ajaxform">
+		<ul class="formbody">
+			<li class="formblock">
+				<span>变量名称:</span>
+				<input type="text" name="cfgname" value="" class="input w200" />
+			</li>
+			<li class="formblock">
+				<span>变量值:</span>
+				<input type="text" name="cfgvalue" value="" class="input w200" />
+			</li>
+			<li class="formblock">
+				<span>参数说明:</span>
+				<input type="text" name="cfginfo" value="" class="input w300" />
+			</li>
+			<li class="formblock">
+				<span>变量类型:</span>
+				<div class="item_list fleft">
+					<label><input type="radio" name="cfgtype" value="string" class="radio" checked="checked" />文本</label>
+					<label><input type="radio" name="cfgtype" value="number" class="radio" />数字</label>
+					<label><input type="radio" name="cfgtype" value="boolean" class="radio" />布尔(Y/N)</label>
+					<label><input type="radio" name="cfgtype" value="text" class="radio" />多行文本</label>
+				</div>
+			</li>
+			<li class="formblock">
+				<span>所属组:</span>
+				<select name="cfggroupid" style="width:200px;">
+					<option value="">--请选择--</option>
+					<option value="1">站点设置</option>
+					<option value="2">核心设置</option>
+				</select>
+			</li>
+			<li class="formblock bordernone bgf6">
+				<input type="submit" name="subut" class="button btnblue2" value="确定" />
+			</li>
+		</ul>
+	</form>
+</div>
+{/if}
+{include file="Public/control_bottom.html"}

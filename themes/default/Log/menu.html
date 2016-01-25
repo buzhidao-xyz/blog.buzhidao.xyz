@@ -1,0 +1,47 @@
+<style>
+#menu {
+    width:95%;
+    height:30px;
+    text-indent:30px;
+    margin-top:20px;
+    margin-left:5px;
+    border-bottom:1px solid #999999;
+}
+#menu a {
+    font-weight:bold;
+    margin:10px;
+}
+ul {
+    margin-bottom:30px;
+}
+ul li {
+    margin:10px 5px;
+}
+ul#filelist li {
+    margin:1px 5px;
+}
+#logtitle {
+    width:95%;
+    height:20px;
+    line-height:20px;
+    margin:10px 5px;
+    color:#0099cc;
+    font-weight:bold;
+}
+</style>
+
+<script language="javascript">
+$(document).ready(function () {
+    $("body").scrollTop(100000);
+});
+</script>
+
+<div id="menu">
+    {if $logfile}
+    <a href="?s=logs">当前日志</a> |
+    {else}
+    <a href="?s=logs/backup">备份当前日志</a> |
+    <a href="?s=logs/clear">清空日志</a> |
+    {/if}
+    <a href="?s=logs/logflist">日志列表</a>
+</div>

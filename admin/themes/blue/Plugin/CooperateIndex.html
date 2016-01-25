@@ -1,0 +1,45 @@
+{include file="Public/control_top.html"}
+<div class="opTop">
+	<a href="__APP__/index.php?s=Plugin/CooperateIndex" class="opTopOn">人才招聘列表</a>
+	<a href="__APP__/index.php?s=Plugin/CooperateAdd">发布新招聘信息</a>
+</div>
+<div class="captitle"><h5>人才招聘信息列表 【信息数{if $total}{$total}{else}0{/if}】</h5></div>
+<ul class="table_list_title">
+	<li class="table_list_l table_list_l30"></li>
+	<li class="table_list_l table_list_l200">招聘职位</li>
+	<li class="table_list_l table_list_l80">招聘人数</li>
+	<li class="table_list_l table_list_l100">学历要求</li>
+	<li class="table_list_l table_list_l100">工作性质</li>
+	<li class="table_list_l table_list_l150">发布时间</li>
+	<li class="table_list_l table_list_l150">更新时间</li>
+	<li class="table_list_l table_list_l100">工资待遇</li>
+	{if $accessStatus == 1}
+	<li class="table_list_l table_list_l100" accessStatus={$accessStatus}>操作</li>
+	{/if}
+</ul>
+<div class="contentTableList">
+    {if $dataList}
+    {foreach $dataList as $d}
+    <ul class="table_list">
+		<li class="table_list_l table_list_l30">{$start+1}</li>
+		<li class="table_list_l table_list_l200">{$d.position}</li>
+		<li class="table_list_l table_list_l80">{$d.quantity}</li>
+		<li class="table_list_l table_list_l100">{$d.education}</li>
+		<li class="table_list_l table_list_l100">{$d.nature}</li>
+    	<li class="table_list_l table_list_l150">{$d.publishtime|mkdate}</li>
+    	<li class="table_list_l table_list_l150">{$d.updatetime|mkdate}</li>
+		<li class="table_list_l table_list_l100">{$d.salary}</li>
+    	{if $accessStatus == 1}
+    	<li class="table_list_l table_list_l100" accessStatus={$accessStatus}>
+    		<a href="__APP__/index.php?s=Plugin/CooperateEdit&id={$d.id}">修改</a>
+    		<a delurl="__APP__/index.php?s=Plugin/CooperateDelete&id={$d.id}" href="javascript:;" name="del" msg="确定删除吗？">删除</a>
+    	</li>
+    	{/if}
+    </ul>
+    {/foreach}
+    {else}
+    <ul class="table_list"><li class="table_list_center">空</li></ul>
+    {/if}
+</div>
+{include file="Public/page.html"}
+{include file="Public/control_bottom.html"}

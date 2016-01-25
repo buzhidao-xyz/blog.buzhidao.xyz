@@ -1,0 +1,25 @@
+<div class="box">
+<div class="boxContent">
+<div class="boxPopupForm">
+	<div class="boxTitle">
+		<h5>快捷操作</h5>
+	</div>
+	<form name="boxform" action="__APP__/index.php?s=Plugin/fileRename&action=save" method="post" id="colorBoxAjaxForm">
+	<input type="hidden" name="dir" value="{$dir}" />
+	<ul>
+		<li class="formblock">
+			<span>原名称: </span>
+			<input type="text" name="oldfilename" value="{$oldfilename}" readonly class="input w200" />
+		</li>
+		<li class="formblock">
+			<span>新名称: </span>
+			<input type="text" name="newfilename" value="" class="input w200" />
+		</li>
+		<li class="bordernone bgf6">
+			<input type="submit" name="subut" class="button btnblue2" value="修改" />
+		</li>
+	</ul>
+	</form>
+</div>
+</div>
+</div>

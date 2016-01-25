@@ -1,0 +1,83 @@
+<div id="TagCloud" class="TagCloud">
+	<h3>标签云</h3>
+	<span>
+		{cmstag_tag number=70 minusecount=1 maxusecount=100}
+		<a href="__APP__?s=t.s.[field.tagname]" hot="[field.usecount]" title="[field.tagname]">[field.tagname]</a>
+		{/cmstag_tag}
+	</span>
+</div>
+<style type="text/css">
+#portamento_container {
+	position: relative;
+}
+#portamento_container #TagCloud {
+	float: none;
+    position: absolute;
+}
+#portamento_container #TagCloud.fixed {
+    position: fixed;
+}
+#TagCloud {
+	line-height: 26px;
+    background: #FFFFFF;
+    overflow: hidden;
+}
+#TagCloud span {
+	display: block;
+	overflow: hidden;
+	clear: both;
+	padding: 5px 15px;
+}
+#TagCloud a {
+	margin: 0;
+	padding: 0;
+}
+#TagCloud a:hover {
+	text-decoration: underline;
+}
+</style>
+<script type="text/javascript" src="{$STATIC_FILE_HOST}public/js/portamento.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+/**
+ * 标签云 TagCloud
+ * fontsize 12px-26px
+ */
+var TagCloud = function() {
+	var sizeMin = 12;
+	var sizeMax = 26;
+	//最大size和最小size值差 相差多少个刻度
+	var sizeSplit = sizeMax-sizeMin;
+	var hotMin=0, hotMax=0;
+	var TCObject = $("#TagCloud");
+
+	//获取hot最小值和最大值
+	TCObject.find("a").each(function() {
+		var hot = $(this).attr("hot");
+		hotMin = hotMin&&hotMin<hot ? hotMin : hot;
+		hotMax = hotMax&&hotMax>hot ? hotMax : hot;
+	});
+
+	var initialize = function() {
+		TCObject.find("a").each(function() {
+			//根据sizeSplit计算每个刻度的区间值
+			var grad = (hotMax-hotMin)/sizeSplit;
+			var hot = $(this).attr("hot");
+			//当前标签hot值减去最小hot值除以刻度区间值得到其hot值落到哪个刻度区间
+			//最小size加上其所在的刻度区间即为该标签的字体size
+			//由于刻度是由最大size和最小size相减得出 所以标签的size不会超出最大size 并且均匀落在不同size内
+			var size = sizeMin+Math.floor((hot-hotMin)/grad);
+			var size = size<sizeMax ? size : sizeMax;
+			var color = System.getRandomColor();
+			$(this).css("font-size",size+"px").css("color",color);
+		});
+	}
+	initialize();
+}();
+
+//标签云滑动
+$('#TagCloud').portamento({
+	gap: 30
+});
+});
+</script>

@@ -1,0 +1,59 @@
+#imageUpload {
+	padding: 10px 30px;
+	height: auto;
+	clear: both;
+	overflow: hidden;
+}
+#imageUpload #imageTitle {
+	float: left;
+	width: 150px;
+	text-align: right;
+	margin-right: 15px;
+}
+#imageUpload #imageBody {
+	float: left;
+	width: 715px;
+	padding: 10px;
+	overflow: hidden;
+	border: 1px solid #3A6EA5;
+}
+#imageUpload #imageBox {
+	clear: both;
+	overflow: hidden;
+	padding-bottom: 20px;
+}
+#imageUpload #imageBox .imageBlock {
+	float: left;
+	margin: 10px;
+	padding: 3px;
+	border: 1px solid #498CD0;
+}
+#imageUpload #imageBox .imageBlock span.imageBlockimage {
+	width: 150px;
+	height: 106px;
+	display: block;
+	padding-bottom: 3px;
+}
+#imageUpload #imageBox .imageBlock span.imageBlockimage img {
+	max-width: 150px;
+	max-height: 106px;
+}
+#imageUpload #imageBox .imageBlock span.imageBlocktitle {
+	height: 20px;
+	line-height: 20px;
+	display: block;
+	border-top: 1px dashed #E2E9EA;
+}
+#imageUpload #imageUploadBox {
+	clear: both;
+	overflow: hidden;
+	padding: 10px;
+	border-top: 1px dashed #3A6EA5;
+}
+#imageUpload #imageUploadBox span {
+	float: left;
+}
+#imageUpload #imageUploadBox .btupload {
+	margin-top: 2px;
+	margin-left: 20px;
+}

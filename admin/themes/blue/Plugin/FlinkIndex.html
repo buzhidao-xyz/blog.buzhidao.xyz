@@ -1,0 +1,76 @@
+{include file="Public/control_top.html"}
+<div class="opTop">
+	<a href="__APP__/index.php?s=Plugin/FlinkIndex" class="opTopOn">友情链接管理</a>
+	<a href="__APP__/index.php?s=Plugin/FlinkCatalogIndex">分类管理</a>
+</div>
+{if $accessStatus == 1}
+<div class="formContainer" accessStatus={$accessStatus}>
+	<div class="formtitle"><h5>添加友情链接</h5></div>
+	<form name="newform" action="__APP__/index.php?s=Plugin/FlinkSave" method="post" id="ajaxform" class="newform">
+		<ul class="formbody">
+			<li class="formblock">
+				<span>选择分类: </span>
+				<select name="catalogid" style="width:150px;">
+					<option value="">|-分类列表</option>
+					{foreach $catalogList as $c}
+					<option value="{$c.id}">&nbsp;|-{$c.catalogname}</option>
+					{/foreach}
+				</select>
+			</li>
+			<li class="formblock">
+				<span>链接名称: </span>
+				<input type="text" name="linkname" value="" class="input w150" />
+			</li>
+			<li class="formblock">
+				<span>链接地址: </span>
+				<input type="text" name="linkurl" value="" class="input w250" />
+			</li>
+			<li class="formblock bordernone bgf6">
+				<input type="submit" name="subut" class="button btnblue2" value="添加" />
+			</li>
+		</ul>
+	</form>
+</div>
+{/if}
+<div class="captitle"><h5>友情链接列表 【链接数{if $total}{$total}{else}0{/if}】</h5></div>
+<ul class="table_list_title">
+	<li class="table_list_l table_list_l30"></li>
+	<li class="table_list_l table_list_l170">链接名称</li>
+	<li class="table_list_l table_list_l400">链接地址</li>
+	<li class="table_list_l table_list_l150">分类</li>
+	<li class="table_list_l table_list_l150">添加时间</li>
+	{if $accessStatus == 1}
+	<li class="table_list_l table_list_l100" accessStatus={$accessStatus}>操作</li>
+	{/if}
+</ul>
+<div class="contentTableList">
+    {if $dataList}
+    {foreach $dataList as $d}
+    <ul class="table_list">
+		<li class="table_list_l table_list_l30">{$d.id}</li>
+		<li class="table_list_l table_list_l170">{$d.linkname}</li>
+		<li class="table_list_l table_list_l400"><a href="{$d.linkurl}" target="_blank">{$d.linkurl}</a></li>
+		<li class="table_list_l table_list_l150">{$d.catalogname}</li>
+    	<li class="table_list_l table_list_l150">{$d.createtime|mkdate}</li>
+    	{if $accessStatus == 1}
+    	<li class="table_list_l table_list_l100" accessStatus={$accessStatus}>
+    		<a name="FlinkEdit" href="__APP__/index.php?s=Plugin/FlinkEdit&id={$d.id}">修改</a>
+    		<a delurl="__APP__/index.php?s=Plugin/FlinkDelete&id={$d.id}" href="javascript:;" name="del" msg="确定删除吗？">删除</a>
+    	</li>
+    	{/if}
+    </ul>
+    {/foreach}
+    {else}
+    <ul class="table_list"><li class="table_list_center">空</li></ul>
+    {/if}
+</div>
+{include file="Public/page.html"}
+<script type="text/javascript">
+$(document).ready(function (){
+	$("a[name=FlinkEdit]").click(function (){
+		window.parent.colorboxAjaxHtml($(this).attr("href"));
+		return false;
+	});
+});
+</script>
+{include file="Public/control_bottom.html"}

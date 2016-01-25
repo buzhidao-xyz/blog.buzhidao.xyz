@@ -1,0 +1,68 @@
+{include file="Public/control_top.html"}
+<div class="opTop">
+	<a href="__APP__/index.php?s=Plugin/FlinkIndex">友情链接管理</a>
+	<a href="__APP__/index.php?s=Plugin/FlinkCatalogIndex" class="opTopOn">分类管理</a>
+</div>
+{if $accessStatus == 1}
+<div class="formContainer" accessStatus={$accessStatus}>
+	<div class="formtitle"><h5>新链接分类</h5></div>
+	<form name="newform" action="__APP__/index.php?s=Plugin/FlinkCatalogSave" method="post" id="ajaxform" class="newform">
+		<ul class="formbody">
+			<li class="formblock">
+				<span>分类名称:</span>
+				<input type="text" name="catalogname" value="" class="input w200" />
+			</li>
+			<li class="formblock">
+				<span>是/否显示: </span>
+				<div class="item_list fleft">
+					<label><input type="radio" name="state" value="1" class="radio" checked="checked" />显示</label>
+					<label><input type="radio" name="state" value="0" class="radio" />隐藏</label>
+				</div>
+			</li>
+			<li class="formblock bordernone bgf6">
+				<input type="submit" name="subut" class="button btnblue2" value="确定" />
+			</li>
+		</ul>
+	</form>
+</div>
+{/if}
+<div class="captitle"><h5>链接分类列表【目前共有{if $total}{$total}{else}0{/if}条数据】</h5></div>
+<ul class="table_list_title">
+	<li class="table_list_l table_list_l50"></li>
+	<li class="table_list_l table_list_l150">链接分类名称</li>
+	<li class="table_list_l table_list_l170">创建时间</li>
+	<li class="table_list_l table_list_l100">是/否显示</li>
+	{if $accessStatus == 1}
+	<li class="table_list_l table_list_l150" accessStatus={$accessStatus}>操作</li>
+	{/if}
+</ul>
+<div class="contentTableList">
+	{if isset($dataList)&&!empty($dataList)}
+	{foreach $dataList as $d}
+	<ul class="table_list">
+		<li class="table_list_l table_list_l50">{$d.sort}</li>
+		<li class="table_list_l table_list_l150">{$d.catalogname}</li>
+		<li class="table_list_l table_list_l170">{$d.createtime|mkdate}</li>
+		<li class="table_list_l table_list_l100">{if $d.state}显示{else}隐藏{/if}</li>
+		{if $accessStatus == 1}
+		<li class="table_list_l table_list_l150" accessStatus={$accessStatus}>
+			<a name="FlinkCatalogEdit" href="__APP__/index.php?s=Plugin/FlinkCatalogEdit&id={$d.id}">修改</a>
+			<a delurl="__APP__/index.php?s=Plugin/FlinkCatalogDelete&id={$d.id}" href="javascript:;" name="del" msg="确定删除吗？">删除</a>
+		</li>
+		{/if}
+	</ul>
+	{/foreach}
+	{else}
+	<ul class="table_list"><li class="table_list_center">空</li></ul>
+	{/if}
+</div>
+{include file="Public/page.html"}
+<script type="text/javascript">
+$(document).ready(function (){
+	$("a[name=FlinkCatalogEdit]").click(function (){
+		window.parent.colorboxAjaxHtml($(this).attr("href"));
+		return false;
+	});
+});
+</script>
+{include file="Public/control_bottom.html"}

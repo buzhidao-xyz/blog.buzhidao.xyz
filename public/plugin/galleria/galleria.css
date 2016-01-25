@@ -1,0 +1,48 @@
+.galleria{
+	list-style: none;
+	width: auto;
+}
+.galleria li{
+	display:block;
+	width:50px;
+	height:55px;
+	overflow:hidden;
+	float:left;
+	margin:0 10px 10px 0;
+}
+.galleria li a{
+	display:none;
+}
+.galleria li div{
+	position:absolute;
+	display:none;
+	top:0;
+	left:180px;
+}
+.galleria li div img{
+	cursor:pointer;
+}
+.galleria li.active div img,.galleria li.active div{
+	display:block;
+}
+.galleria li img.thumb{
+	cursor:pointer;
+	top:auto;
+	left:auto;
+	display:block;
+	width:auto;
+	height:auto;
+}
+.galleria li .caption{
+	display:block;
+	padding-top:.5em;
+}
+/* MSIE bug */
+* html .galleria li div span{
+	width:400px;
+}
+.galleria_wrapper {
+	height: 350px;
+	margin-bottom: 5px;
+	text-align: center;
+}

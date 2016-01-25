@@ -1,0 +1,39 @@
+{include file="Public/control_top.html"}
+<div class="opTop">
+	<a href="__APP__/index.php?s=CTModel/addColumnModel" class="opTopOn">新增模型</a>
+	<a href="__APP__/index.php?s=CTModel/ColumnModel">模型管理</a>
+</div>
+{if $accessStatus == 1}
+<div class="formContainer" accessStatus={$accessStatus}>
+	<div class="formtitle"><h5>添加新内容模型</h5></div>
+	<form name="newcolumnform" action="__APP__/index.php?s=CTModel/saveColumnModel" method="post" class="newform">
+		<ul class="formbody">
+			<li class="formblock">
+				<span>模型名称: </span>
+				<input type="text" name="name" value="" class="input w200" />
+			</li>
+			<li class="formblock">
+				<span>模型表名: </span>
+				<input type="text" name="table" value="" class="input w150" />
+			</li>
+			<li class="formblock">
+				<span>模型控制器: </span>
+				<input type="text" name="control" value="" class="input w150" />
+			</li>
+			<li class="formblock">
+				<span>前台调用字段:</span>
+				<input type="text" name="" value="*" class="input w250" />
+				*代表所有字段
+			</li>
+			<li class="formautoblock">
+				<span>模型简介:</span>
+				<textarea name="description" rows="4" cols="47"></textarea>
+			</li>
+			<li class="formblock bordernone">
+				<input type="submit" name="subut" class="button btngreen2" value="添加" />
+			</li>
+		</ul>
+	</form>
+</div>
+{/if}
+{include file="Public/control_bottom.html"}

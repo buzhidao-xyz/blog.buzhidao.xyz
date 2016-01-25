@@ -1,0 +1,33 @@
+<div id="imageUpload">
+	<div id="imageTitle">产品图片:</div>
+	<div id="imageBody">
+		<div id="imageBox">
+			{if isset($ArchiveInfo.archiveImage)&&is_array($ArchiveInfo.archiveImage)}
+			{foreach $ArchiveInfo.archiveImage as $image}
+			<div class="imageBlock">
+				<input type="hidden" name="imageids[]" value="{$image.id}" />
+				<span class="imageBlockimage">
+					<img src="__APPM__{$image.thumbpath}" width="150" height="auto" />
+				</span>
+				<span class="imageBlocktitle">{$image.imagetitle}</span>
+			</div>
+			{/foreach}
+			{/if}
+		</div>
+		<div id="imageUploadBox" ajaxUrl="__APP__/index.php?s=Image/saveUploadImage">
+			<span>
+				图片: <input type="file" id="images" name="images" class="input w230 inputfile" />
+			</span>
+			<span>
+				描述: <input type="text" name="imageTitle" value="" class="input w300" />
+			</span>
+			<span>
+				<input type="hidden" name="imageUploadAction" value="{$imageUploadAction}" />
+				<input type="button" name="imageUploadButton" class="button btnblue2 btupload" value="上传" />
+			</span>
+		</div>
+	</div>
+</div>
+<link type="text/css" rel="stylesheet" href="themes/blue/style/imageUpload.css" media="screen">
+<script type="text/javascript" src="themes/blue/js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="themes/blue/js/imageUpload.js"></script>

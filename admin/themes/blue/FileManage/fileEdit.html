@@ -1,0 +1,30 @@
+{include file="Public/control_top.html"}
+<div class="captitle">
+	<h5>文件管理 >> 修改文件</h5>
+</div>
+<div class="formContainer">
+	<div class="formtitle"><h5>修改文件</h5></div>
+	<form name="newform" action="__APP__/index.php?s=Plugin/fileEdit&action=save" method="post" class="newform">
+		<input type="hidden" name="dir" value="{$dir}" />
+		<input type="hidden" name="oldfilename" value="{$oldfilename}" />
+		<ul class="formbody">
+			<li class="formblock">
+				<span>文件目录:</span>
+				<input type="text" name="newdir" value="{$dir}" class="input w250" />（. 表示根目录 ，不允许用 “..” 形式的路径） 
+			</li>
+			<li class="formblock">
+				<span>文件名称:</span>
+				<input type="text" name="newfilename" value="{$oldfilename}" class="input w250" />
+			</li>
+			<li class="formautoblock">
+				<span>文件内容:</span>
+				<textarea name="filecontent" rows="35" cols="110">{$filecontent}</textarea>
+			</li>
+			<li class="formblock bordernone bgf6">
+				<input type="submit" name="subut" class="button btnblue2 fleft" value="保存" />
+				<input type="button" id="goback" name="goback" class="button btngreen2 fleft" value="返回" style="margin-left:50px;" />
+			</li>
+		</ul>
+	</form>
+</div>
+{include file="Public/control_bottom.html"}

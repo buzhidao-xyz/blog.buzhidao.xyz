@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="{$Config.keywords}{if isset($SEOInfo)&&is_array($SEOInfo)&&isset($SEOInfo.keywords)}{$SEOInfo.keywords}{/if}">
+<meta name="description" content="{$Config.description}{if isset($SEOInfo)&&is_array($SEOInfo)&&isset($SEOInfo.description)}{$SEOInfo.description}{/if}">
+<link type="image/ico" rel="shortcut icon" href="favicon.ico">
+<link type="text/css" rel="stylesheet" href="{$STATIC_FILE_HOST}themes/default/style/common.css" media="screen">
+<link type="text/css" rel="stylesheet" href="{$STATIC_FILE_HOST}themes/default/style/frame.css" media="screen">
+<link type="text/css" rel="stylesheet" href="{$STATIC_FILE_HOST}themes/default/style/global.css" media="screen">
+<link type="text/css" rel="stylesheet" href="{$STATIC_FILE_HOST}themes/default/style/style.css" media="screen">
+<link type="text/css" rel="stylesheet" href="themes/default/style/font.css" media="screen">
+<script type="text/javascript" src="{$STATIC_FILE_HOST}public/js/jquery.js"></script>
+<script type="text/javascript" src="{$STATIC_FILE_HOST}public/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="{$STATIC_FILE_HOST}public/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="{$STATIC_FILE_HOST}themes/default/js/common.js"></script>
+<script type="text/javascript" src="{$STATIC_FILE_HOST}themes/default/js/frame.js"></script>
+<title>
+	{if isset($SEOInfo)&&is_array($SEOInfo)&&isset($SEOInfo.title)}
+	{$SEOInfo.title} --- {$Config.sitename}
+	{else}
+	{$Config.sitename}
+	{/if}
+</title>
+<script type="text/javascript">
+var JS_APP = '__APP__';
+var JS_STATIC_FILE_HOST = '{$STATIC_FILE_HOST}';
+</script>
+</head>
+
+<body>

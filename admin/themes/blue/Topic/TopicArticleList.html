@@ -1,0 +1,42 @@
+{include file="Public/control_top.html"}
+<div class="opTop">
+	<a href="__APP__/index.php?s=Topic/TopicArticleList&archiveid={$archiveid}" class="opTopOn">专题文档列表</a> |
+	<a href="__APP__/index.php?s=Topic/newTopicArticle&archiveid={$archiveid}">新增专题文档</a>
+</div>
+<div class="captitle"><h5>文档列表 【目前共有{if $total}{$total}{else}0{/if}条文档】</h5></div>
+<ul class="table_list_title">
+	<li class="table_list_l table_list_l30"></li>
+	<li class="table_list_l table_list_l50">ID</li>
+	<li class="table_list_l table_list_l150">文档标题</li>
+	<li class="table_list_l table_list_l150">所属专题</li>
+	<li class="table_list_l table_list_l150">所属专题项</li>
+	<li class="table_list_l table_list_l120">所属栏目</li>
+	<li class="table_list_l table_list_l130">更新时间</li>
+	<li class="table_list_l table_list_l80">文档作者</li>
+	<li class="table_list_l table_list_l120">操作</li>
+</ul>
+<div class="contentTableList">
+    {if isset($dataList)&&!empty($dataList)}
+    {foreach $dataList as $d}
+    <ul class="table_list">
+		<li class="table_list_l table_list_l30 table_list_no">{$start+1}</li>
+		<li class="table_list_l table_list_l50">{$d.id}</li>
+		<li class="table_list_l table_list_l150" title="{$d.title}">{$d.title}</li>
+		<li class="table_list_l table_list_l150" title="{$d.topictitle}">{$d.topictitle}</li>
+		<li class="table_list_l table_list_l150" title="{$d.topiccardname}">{$d.topiccardname}</li>
+		<li class="table_list_l table_list_l120">{$d.columnname}</li>
+    	<li class="table_list_l table_list_l130">{$d.updatetime|mkdate}</li>
+		<li class="table_list_l table_list_l80">{$d.author}</li>
+    	<li class="table_list_l table_list_l120">
+    		<a href="__APPM__/index.php?s=Topic/ArticleView&columnid={$d.columnid}&archiveid={$d.archiveid}" target="_blank">预览</a>
+    		<a href="__APP__/index.php?s=Topic/TopicArticleEdit&archiveid={$d.topicid}&topicarticleid={$d.archiveid}">修改</a>
+    		<a delurl="__APP__/index.php?s=Archive/recoverArchive&archiveid={$d.archiveid}" href="javascript:;" name="del" msg="确定删除吗？">删除</a>
+    	</li>
+    </ul>
+    {/foreach}
+    {else}
+    <ul class="table_list"><li class="table_list_center">空</li></ul>
+    {/if}
+</div>
+{include file="Public/page.html"}
+{include file="Public/control_bottom.html"}

@@ -1,0 +1,9 @@
+{include file="Log/menu.html"}
+
+<div id="logtitle">{$logfile}</div>
+
+<ul id="logcontent">
+    {foreach $logcontent as $d}
+    <li>{$d}</li>
+    {/foreach}
+</ul>

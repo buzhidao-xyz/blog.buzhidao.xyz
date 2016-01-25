@@ -1,0 +1,25 @@
+# Author: Laucen wang
+# Filename: .htaccess
+# Create date: 2011-12-27
+# Description: URL Rewrite
+
+<IfModule mod_rewrite.c>
+
+#开启引擎
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php$1 [QSA,PT,L]
+
+#文章详细页匹配
+
+
+#自定义错误页 - 404
+ErrorDocument 404 ./errors/e404.html
+
+</IfModule>
+
+#添加svg woff支持
+AddType application/x-font-woff .woff
+AddType image/svg-xml .svg

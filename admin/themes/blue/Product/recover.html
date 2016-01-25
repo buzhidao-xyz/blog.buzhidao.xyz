@@ -1,0 +1,52 @@
+{include file="Public/control_top.html"}
+<div class="opTop">
+	<a href="__APP__/index.php?s=Product/index">产品列表</a>
+	<a href="__APP__/index.php?s=Product/add">新产品</a>
+	<a href="__APP__/index.php?s=Product/recover" class="opTopOn">回收站</a>
+</div>
+<div class="captitle"><h5>文档回收站 【目前共有{if $total}{$total}{else}0{/if}条文档】</h5></div>
+<ul class="table_list_title">
+	<li class="table_list_l table_list_l30"></li>
+	<li class="table_list_l table_list_l50">ID</li>
+	<li class="table_list_l table_list_l300">文档标题</li>
+	<li class="table_list_l table_list_l150">更新时间</li>
+	<li class="table_list_l table_list_l120">所属栏目</li>
+	<li class="table_list_l table_list_l100">文档作者</li>
+	<li class="table_list_l table_list_l80">点击数</li>
+	<li class="table_list_l table_list_l80">评论数</li>
+	{if $accessStatus == 1}
+	<li class="table_list_l table_list_l120" accessStatus={$accessStatus}>操作</li>
+	{/if}
+</ul>
+<div class="contentTableList">
+    {if $dataList}
+    {foreach $dataList as $d}
+    <ul class="table_list">
+		<li class="table_list_l table_list_l30">
+			<input type="checkbox" name="archiveid[]" value="{$d.id}" flag="archiveID" class="checkbox" />
+		</li>
+		<li class="table_list_l table_list_l50">{$d.id}</li>
+		<li class="table_list_l table_list_l300" title="{$d.title}">
+			{$d.title}
+		</li>
+    	<li class="table_list_l table_list_l150">{$d.updatetime|mkdate}</li>
+    	<li class="table_list_l table_list_l120">{$d.columnname}</li>
+		<li class="table_list_l table_list_l100">{$d.author}</li>
+		<li class="table_list_l table_list_l80">{$d.clicknum}</li>
+		<li class="table_list_l table_list_l80">{$d.commentnum}</li>
+    	{if $accessStatus == 1}
+    	<li class="table_list_l table_list_l120" accessStatus={$accessStatus}>
+    		<a href="__APP__/index.php?s=Product/edit&archiveid={$d.id}">修改</a>
+    		<a delurl="__APP__/index.php?s=Archive/backArchive&archiveid={$d.id}" href="javascript:;" name="del" msg="确定还原吗？">还原</a>
+    		<a delurl="__APP__/index.php?s=Archive/deleteArchive&archiveid={$d.id}" href="javascript:;" name="del" msg="确定删除吗？">删除</a>
+    	</li>
+    	{/if}
+    </ul>
+    {/foreach}
+    {else}
+    <ul class="table_list"><li class="table_list_center">空</li></ul>
+    {/if}
+</div>
+{include file="Public/page.html"}
+{include file="Archive/recoverOpBottom.html"}
+{include file="Public/control_bottom.html"}

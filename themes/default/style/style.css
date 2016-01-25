@@ -1,0 +1,296 @@
+#MainBlock {
+	float: left;
+	width: 73%;
+}
+#MainBlock .ArchiveBlock {
+	background-color: #FFFFFF;
+    box-shadow: 0 1px 2px #CCCCCC;
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding: 20px 30px 10px;
+}
+#MainBlock .ArchiveBlock .title {
+	overflow: hidden;
+    padding: 10px 0;
+    text-overflow: ellipsis;
+}
+#MainBlock .ArchiveBlock .title h1 {
+    font-size: 26px;
+    line-height: 30px;
+}
+#MainBlock .ArchiveBlock .title a {
+	color: #333333;
+    font-size: 26px;
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: 500;
+}
+#MainBlock .ArchiveBlock .title a:hover {
+	color: #FF6600;
+}
+#MainBlock .ArchiveBlock .info {
+    color: #999999;
+    font-size: 12px;
+    margin: 0 0 10px;
+}
+#MainBlock .ArchiveBlock .info a {
+    color: #999999;
+}
+#MainBlock .ArchiveBlock .info a:hover {
+	color: #FF6600;
+}
+#MainBlock .ArchiveBlock .info span {
+    margin-right: 12px;
+}
+#MainBlock .ArchiveBlock .preview {
+    line-height: 24px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+#MainBlock .ArchiveBlock .preview .more {
+    padding-left: 20px;
+    float: right;
+}
+#MainBlock .ArchiveBlock .meta {
+	border-top: 1px solid #EEEEEE;
+    clear: both;
+    color: #999999;
+    font-size: 12px;
+    margin: 10px -30px 0;
+    overflow: hidden;
+    padding: 10px 30px 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#MainBlock .ArchiveBlock .meta span.d {
+    margin-right: 15px;
+}
+#MainBlock .ArchiveBlock .meta a {
+    color: #999999;
+}
+#MainBlock .ArchiveBlock .meta a:hover {
+    color: #333333;
+    text-decoration: underline;
+}
+#MainBlock .ArchiveBlock .text {
+    color: #333333;
+    font-size: 14px;
+    margin: 10px 0;
+    line-height: 24px;
+}
+#MainBlock .ArchiveBlock .text .archiveContent {
+    clear: both;
+    overflow: hidden;
+}
+#MainBlock .ArchiveBlock .text .archiveContent h1 {
+    margin: .67em 0;
+}
+#MainBlock .ArchiveBlock .text .archiveContent h2 {
+    margin: .75em 0;
+}
+#MainBlock .ArchiveBlock .text .archiveContent h3 {
+    margin: .83em 0;
+}
+#MainBlock .ArchiveBlock .text .archiveContent h4,
+#MainBlock .ArchiveBlock .text .archiveContent form,
+#MainBlock .ArchiveBlock .text .archiveContent ol,
+#MainBlock .ArchiveBlock .text .archiveContent ul,
+#MainBlock .ArchiveBlock .text .archiveContent dl,
+#MainBlock .ArchiveBlock .text .archiveContent p,
+#MainBlock .ArchiveBlock .text .archiveContent pre {
+    margin: .12em 0;
+}
+#MainBlock .ArchiveBlock .text .archiveContent ul li {
+    padding: 0 auto;
+}
+#MainBlock .ArchiveBlock .text .archiveContent h5 {
+    margin: .83em 0;
+}
+#MainBlock .ArchiveBlock .text .archiveContent h1,
+#MainBlock .ArchiveBlock .text .archiveContent h2,
+#MainBlock .ArchiveBlock .text .archiveContent h3,
+#MainBlock .ArchiveBlock .text .archiveContent h4,
+#MainBlock .ArchiveBlock .text .archiveContent h5 {
+	font-weight: 500;
+}
+#MainBlock .ArchiveBlock .text .archiveContent a {
+    color: #FF0000;
+    text-decoration: underline;
+}
+#MainBlock .ArchiveBlock .text .archiveContent a:hover {
+    color: #1B918B;
+}
+#MainBlock .ArchiveBlock .statement {
+    margin: 35px 0 0;
+    overflow: hidden;
+    padding: 5px 10px;
+    background: #F1F1F1;
+    border: 1px dashed #C1C1C1;
+}
+#MainBlock .ArchiveBlock .statement .copy {
+    float: left;
+}
+#MainBlock .ArchiveBlock .statement .copy p a {
+    color: #1B918B;
+    text-decoration: underline;
+}
+#MainBlock .ArchiveLink {
+    color: #777777;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+#MainBlock .ArchiveLink dl {
+    clear: both;
+    overflow: hidden;
+}
+#MainBlock .ArchiveLink dl dt, #MainBlock .ArchiveLink dl dd {
+    float: left;
+    padding-right: 5px;
+}
+#MainBlock .ArchiveComment {
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 2px 0 #CCCCCC;
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding: 20px 30px 10px;
+}
+#MainBlock .ArchiveComment ul,#MainBlock .ArchiveComment li {
+    list-style: none;
+}
+#MainBlock .ArchiveComment h3 {
+    border-bottom: 1px dashed #CCCCCC;
+    margin: 0 -30px;
+    padding: 0 0 10px 20px;
+}
+#MainBlock .ArchiveComment ul.list {
+    margin-bottom: 30px;
+}
+#MainBlock .ArchiveComment ul.list li {
+    border-bottom: 1px dashed #E5E5E5;
+    margin: 0;
+    padding: 10px 0;
+    overflow: hidden;
+    clear: both;
+}
+#MainBlock .ArchiveComment ul.list li img {
+    float: left;
+    margin-right: 5px;
+    margin-top: 4px;
+}
+#MainBlock .ArchiveComment ul.list li span {
+
+}
+#MainBlock .ArchiveComment .MsgPanel {
+    margin: 20px;
+}
+#MainBlock .ArchiveComment .MsgPanel h3.title {
+    border-bottom: 1px dashed #CCCCCC;
+    margin: 0 -30px;
+    padding: 0 0 10px 20px;
+}
+#MainBlock .ArchiveComment .MsgPanel ul li {
+    clear: both;
+    margin-top: 5px;
+    overflow: hidden;
+}
+#MainBlock .ArchiveComment .MsgPanel ul li label {
+    display: inline-block;
+    padding-left: 5px;
+}
+#MainBlock .ArchiveComment .MsgPanel ul li input {
+    width: 230px;
+    height: 16px;
+    line-height: 16px;
+}
+#MainBlock .ArchiveComment .MsgPanel ul li input, #MainBlock .ArchiveComment .MsgPanel ul li textarea {
+    float: left;
+    font-size: 14px;
+    margin: 0px;
+    background: #F3F3F3;
+    border: 1px solid #BBBBBB;
+    box-shadow: 2px 3px 5px #EEEEEE inset;
+}
+#MainBlock .ArchiveComment .MsgPanel ul li input.subtn {
+    width: 70px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    box-shadow: none;
+    background: #777777;
+    color: #F1F1F1;
+}
+#MainBlock .ArchiveComment .MsgPanel ul li input.subtn:hover {
+    background: #666666;
+    color: #FFFFFF;
+}
+#MainBlock .ArchiveComment ul.list li a.reply {
+    float: right;
+    color: #666;
+}
+#MainBlock .ArchiveComment ul.list li a.reply:hover {
+    color: #FF6600;
+}
+
+#SideBlock {
+	float: right;
+	width: 25%;
+}
+#SideBlock ul, #SideBlock li {
+    list-style: none;
+}
+#SideBlock .SideBlockTap {
+	width: 100%;
+	height: 20px;
+	background: #FE9800;
+    float: none;
+    margin: 0 0 10px;
+    overflow: hidden;
+}
+#SideBlock .SideBlockBox {
+    background-color: #FFFFFF;
+    border-bottom: 2px solid #CCCCCC;
+    box-shadow: 0 1px 2px #CCCCCC;
+    overflow: hidden;
+}
+#SideBlock .SideBlockBox .Widget {
+    color: #666666;
+    margin-bottom: 10px;
+    overflow: hidden;
+    /*padding: 10px 10px 0;*/
+}
+#SideBlock .SideBlockBox .Widget h3 {
+    border-bottom: 1px solid #E5E5E5;
+    color: #333333;
+    font-size: 18px;
+    margin: 0 -10px;
+    padding: 15px 10px 10px 20px;
+    text-shadow: 0 2px 0 #EEEEEE;
+}
+#SideBlock .SideBlockBox .Widget ul {
+    padding: 10px 10px 0 10px;
+    list-style: none;
+}
+#SideBlock .SideBlockBox .Widget ul li {
+    border-bottom: 1px dashed #E0E0E0;
+    line-height: 20px;
+    margin-bottom: 5px;
+    padding: 0 0 5px 8px;
+    list-style: none;
+}
+#SideBlock .SideBlockBox .Widget ul li a {
+    color: #666666;
+}
+#SideBlock .SideBlockBox .Widget ul li a:hover {
+    color: #FF6600;
+}
+#SideBlock .SideBlockBox .Widget_Catalog {
+
+}
+#SideBlock .SideBlockBox .Widget_Comment ul li img {
+    margin-right: 5px;
+    float: left;
+    margin-top: 4px;
+}
+#SideBlock .SideBlockBox .Widget_TagCloud {
+    position: relative;
+}

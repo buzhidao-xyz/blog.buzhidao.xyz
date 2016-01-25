@@ -1,0 +1,111 @@
+<div class="articleTpl imageTpl">
+	<h2 class="title">{$archiveInfo.title}</h2>
+	<div class="status">
+		<span class="title">点击次数:</span>
+		<span class="content">{$archiveInfo.clicknum} 次</span>
+		<span class="title">发布时间:</span>
+		<span class="content">{$archiveInfo.publishtime|mkdate}</span>
+		<span class="title">作者:</span>
+		<span class="content">{$archiveInfo.author}</span>
+	</div>
+	<div class="body">
+		<div id="container" class="transitions-enabled infinite-scroll clearfix">
+			{if isset($archiveInfo.archiveImage)&&!empty($archiveInfo.archiveImage)}
+			{foreach $archiveInfo.archiveImage as $image}
+		  	<div class="box col{$image.coln}">
+		    	<p>
+		      		<a rel="group" href="__APP__{$image.imagepath}" title="{$image.imagetitle}"><img src="__APP__{$image.thumbpath}" alt="{$image.imagetitle}" /></a>
+		    	</p>
+		  	</div>
+		  	{/foreach}
+		  	{/if}
+		</div>
+		<nav id="page-nav"><a href="__APP__/index.php?s=Image/Msonary&columnid={$columnid}&archiveid={$archiveInfo.id}&page=2"></a></nav>
+	</div>
+	<div class="operate">
+		{include file="include/share0.html"}
+		<div class="operateLink"><a href="javascript:;">[打印此页]</a>&nbsp;&nbsp;&nbsp;<a href="javascript:self.close();">[关闭]</a></div>
+	</div>
+	<div class="about">
+		<dl>
+			<dt>上一篇:</dt>
+			<dd>
+				{if !empty($archiveInfo.prev)}
+				<a href="__APP__/index.php?s=Image/view&columnid={$columnid}&archiveid={$archiveInfo.prev.id}" title="{$archiveInfo.prev.title}">{$archiveInfo.prev.title}</a>
+				{else}
+				<font color="grey">没有了！</font>
+				{/if}
+			</dd>
+		</dl>
+		<dl>
+			<dt>下一篇:</dt>
+			<dd>
+				{if !empty($archiveInfo.next)}
+				<a href="__APP__/index.php?s=Image/view&columnid={$columnid}&archiveid={$archiveInfo.next.id}" title="{$archiveInfo.next.title}">{$archiveInfo.next.title}</a>
+				{else}
+				<font color="grey">没有了！</font>
+				{/if}
+			</dd>
+		</dl>
+	</div>
+</div>
+<link type="text/css" rel="stylesheet" href="public/plugin/masonry/style.css" media="screen">
+<script type="text/javascript" src="public/plugin/masonry/jquery.masonry.js"></script>
+<script type="text/javascript" src="public/plugin/masonry/jquery.infinitescroll.min.js"></script>
+<script type="text/javascript" src="public/plugin/masonry/modernizr-transitions.js"></script>
+<link type="text/css" rel="stylesheet" href="public/plugin/colorbox/colorbox.css" media="screen">
+<script type="text/javascript" src="public/plugin/colorbox/jquery.colorbox.js"></script>
+<script type="text/javascript">
+$(function(){
+    var $container = $('#container');
+
+    $container.imagesLoaded(function(){
+		$container.masonry({
+			itemSelector: '.box',
+			columnWidth: 1,
+        	isAnimated: !Modernizr.csstransitions
+		});
+    });
+    
+    $container.infinitescroll({
+		navSelector  : '#page-nav',    // selector for the paged navigation 
+		nextSelector : '#page-nav a',  // selector for the NEXT link (to page 2)
+		itemSelector : '.box',     // selector for all items you'll retrieve
+			loading: {
+				finishedMsg: '没有了',
+				img: JS_APP+'/public/plugin/masonry/loading.gif'
+			}
+		},
+		// trigger Masonry as a callback
+		function( newElements ) {
+			// hide new items while they are loading
+			var $newElems = $( newElements ).css({ opacity: 0 });
+			// ensure that images load before adding to masonry layout
+			$newElems.imagesLoaded(function(){
+				// show elems now they're ready
+				$newElems.animate({ opacity: 1 });
+				$container.masonry( 'appended', $newElems, true );
+
+				colorBoxImageShow();
+			});
+		}
+    );
+
+	//colorbox展示大图
+	var colorBoxImageShow = function (){
+	    $("#container .box a").colorbox({
+	    	//图集标记
+	    	rel: "group",
+	    	//图集图片自动切换
+	    	slideshow: true,
+	    	//图片切换时间间隔
+	    	slideshowSpeed : 30000,
+	    	//图片标题
+	    	title: function (){
+	    		return $(this).attr("title");
+	    	}
+	    });
+	}
+    colorBoxImageShow();
+});
+</script>

@@ -1,0 +1,33 @@
+{include file="Public/control_top.html"}
+<div class="control_nav"><h3>系统提示</h3></div>
+<div class="opinfo">
+	<div class="opinfo_msg">操作成功！</div>
+	<div class="opinfo_Link">
+		{if isset($NextOperation) && is_array($NextOperation) && !empty($NextOperation)}
+		{foreach $NextOperation as $d}
+		<a href="{$d.link}">{$d.name}</a>&nbsp;&nbsp;&nbsp;
+		{/foreach}
+		{/if}
+	</div>
+</div>
+<style type="text/css">
+#control #controlContent {
+    border: 1px solid #3A6EA5;
+}
+.opinfo {
+	height: auto;
+	overflow: hidden;
+	padding: 10px 21px 20px 21px;
+	border-top: 1px solid #3A6EA5;
+}
+.opinfo .opinfo_msg {
+	padding: 10px 0;
+	color: #006600;
+	font-weight: 600;
+	border-bottom: 1px dashed #E2E9EA;
+}
+.opinfo .opinfo_Link {
+	padding-top: 10px;
+}
+</style>
+{include file="Public/control_bottom.html"}

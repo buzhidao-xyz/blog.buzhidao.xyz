@@ -1,0 +1,52 @@
+<div id="opBottom" class="opBottom">
+	<a href="javascript:;" name="checkAll">全选</a>
+	<a href="javascript:;" name="unCheckAll">取消</a>
+	<a href="javascript:;" name="archiveBack">还原</a>
+	<a href="javascript:;" name="archiveDelete">删除</a>
+</div>
+<script type="text/javascript">
+$(document).ready(function (){
+var archiveClass = function (){
+	var archiveObj = {
+		checkAll: $("#opBottom a[name=checkAll]"),
+		unCheckAll: $("#opBottom a[name=unCheckAll]"),
+		archiveBack: $("#opBottom a[name=archiveBack]"),
+		archiveDelete: $("#opBottom a[name=archiveDelete]")
+	}
+	var getArchiveID = function (){
+		var archiveid= "";
+		$("input[name='archiveid[]']").each(function (){
+			if ($(this).attr("checked")) archiveid += archiveid ? ","+$(this).val() : $(this).val();
+		});
+		return archiveid;
+	};
+	archiveObj.checkAll.click(function (){
+		$("input[flag=archiveID]").attr("checked","checked");
+	});
+	archiveObj.unCheckAll.click(function (){
+		$("input[flag=archiveID]").attr("checked",false);
+	});
+	//回收文档
+	archiveObj.archiveBack.click(function (){
+		var d = {
+			archiveid: getArchiveID()
+		};
+		$.post("__APP__/index.php?s=archive/backarchive",d,function (data){
+			alert(data.info);
+			if (!data.status) location.href = location.href;
+		},'json');
+	});
+	//删除文档
+	archiveObj.archiveDelete.click(function (){
+		var d = {
+			archiveid: getArchiveID()
+		};
+		$.post("__APP__/index.php?s=Archive/deleteArchive",d,function (data){
+			alert(data.info);
+			if (!data.status) location.href = location.href;
+		},'json');
+	});
+}
+archiveClass();
+});
+</script>

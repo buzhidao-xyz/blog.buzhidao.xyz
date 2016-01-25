@@ -1,0 +1,122 @@
+<div class="ArchiveBlock">
+	<div class="title">
+		<h1><a href="__APP__/?s=a.v.{$archiveInfo.id}" title="{$archiveInfo.title}">{$archiveInfo.title}</a></h1>
+	</div>
+	<div class="info">
+		<span>作者: {$archiveInfo.author}</span>
+		<span>分类: 
+			<a href="__APP__/?s=a.l.{$archiveInfo.columnid}">{$archiveInfo.columnname}</a>
+		</span>
+		<span>发布时间: {$archiveInfo.updatetime|mkdate}</span>
+		<span><i class="iconfont">&#x351a;</i>{$archiveInfo.clicknum|number_format:0:null:","}次浏览</span>
+		<span><i class="iconfont">&#13463;</i><a href="javascript:;">{$archiveInfo.commentnum|number_format:0:null:","}条评论</a></span>
+	</div>
+	<div class="text">
+		<div class="archiveContent">
+			{$archiveInfo.content|html_entity_decode}
+		</div>
+	</div>
+	<div class="statement">
+		<div class="copy">
+			<p style="color:#FF0000;">本文出自 {$Config.sitename} 转载时请注明出处及相应链接</p>
+			<p style="color:#777;">本文永久链接: <a href="{$archiveURL}">{$archiveURL}</a></p>
+		</div>
+	</div>
+	<div class="meta">
+		<span class="d tag">
+			<i class="iconfont">&#x3548;</i>
+			{if isset($archiveInfo.tag)&&is_array($archiveInfo.tag)&&!empty($archiveInfo.tag)}
+			{foreach $archiveInfo.tag as $kt=>$t}
+			<a href="__APP__/?s=t.s.{$t}">{$t}</a>&nbsp;
+			{/foreach}
+			{/if}
+		</span>
+	</div>
+</div>
+<div class="ArchiveLink">
+	<dl>
+		<dt>上一篇 :</dt>
+		<dd>
+			{if !empty($archiveInfo.prev)}
+			<a href="__APP__?s=a.v.{$archiveInfo.prev.id}" title="{$archiveInfo.prev.title}">{$archiveInfo.prev.title}</a>
+			{else}
+			没有了！
+			{/if}
+		</dd>
+	</dl>
+	<dl>
+		<dt>下一篇 :</dt>
+		<dd>
+			{if !empty($archiveInfo.next)}
+			<a href="__APP__?s=a.v.{$archiveInfo.next.id}" title="{$archiveInfo.next.title}">{$archiveInfo.next.title}</a>
+			{else}
+			没有了！
+			{/if}
+		</dd>
+	</dl>
+</div>
+<div class="ArchiveComment">
+	<h3>{$commentList.total}条评论</h3>
+	<ul class="list">
+		{if is_array($commentList.data) && !empty($commentList.data)}
+		{foreach $commentList.data as $d}
+		<li id="comment{$d.id}">
+			<span><img width="36" height="36" src="{$d.email|get_gravatar}" alt="{$d.username}"></span>
+			<span>
+				{if $d.site}
+				<a href="{$d.site|httpType}" target="_blank" style="color:#1B918B;text-decoration:underline;">{$d.username}</a>
+				{else}
+				{$d.username}
+				{/if}
+				&nbsp;&nbsp;&nbsp;<font style="color:#A9A9A9;font-size:13px;">{$d.createtime|mkdate}</font>
+				<a href="javascript:;" class="reply" name="Reply" sourcecid="{$d.id}" username="{$d.username}">回复</a>
+				<br/>
+				{$d.content}
+			</span>
+		</li>
+		{/foreach}
+		{/if}
+	</ul>
+	<div class="MsgPanel">
+		<h3 class="title">发表评论</h3>
+		<form name="msgform" action="__APP__/?s=c.asc.{$archiveInfo.id}" method="post">
+			<input type="hidden" name="sourcecid" value="0">
+			<ul>
+				<li>电子邮件地址不会被公开。 必填项已用<font color="red">*</font>标注</li>
+				<li>
+					<label for="author">姓名 <font color="red">*</font></label>
+					<input type="text" size="30" value="" name="username">
+				</li>
+				<li>
+					<label for="author">邮箱</label>
+					<input type="text" size="30" value="" name="email">
+				</li>
+				<li>
+					<label for="author">站点</label>
+					<input type="text" size="30" value="" name="site">
+				</li>
+				<li>
+					<textarea rows="7" cols="40" name="content"></textarea>
+					<font color="red">*</font>
+				</li>
+				<li>
+					<input type="submit" name="subtn" value="发表评论" class="subtn">
+				</li>
+			</ul>
+		</form>
+	</div>
+</div>
+<link type="text/css" rel="stylesheet" href="{$STATIC_FILE_HOST}themes/default/style/shCoreImbzd.css" media="screen">
+<script type="text/javascript" src="{$STATIC_FILE_HOST}themes/default/js/shCore.js"></script>
+<script type="text/javascript">
+//为了在编辑器之外能展示高亮代码
+SyntaxHighlighter.highlight();
+//调整左右对齐
+for(var i=0,di;di=SyntaxHighlighter.highlightContainers[i++];){
+    var tds = di.getElementsByTagName('td');
+    for(var j=0,li,ri;li=tds[0].childNodes[j];j++){
+        ri = tds[1].firstChild.childNodes[j];
+        ri.style.height = li.style.height = ri.offsetHeight + 'px';
+    }
+}
+</script>

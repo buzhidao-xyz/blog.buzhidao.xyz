@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="{$Config.keywords}{if isset($SEOInfo)&&is_array($SEOInfo)&&isset($SEOInfo.keywords)}{$SEOInfo.keywords}{/if}">
+<meta name="description" content="{$Config.description}{if isset($SEOInfo)&&is_array($SEOInfo)&&isset($SEOInfo.description)}{$SEOInfo.description}{/if}">
+<link type="image/ico" rel="shortcut icon" href="favicon.ico">
+<script type="text/javascript" src="{$STATIC_FILE_HOST}public/js/jquery.js"></script>
+<title>
+	{if isset($SEOInfo)&&is_array($SEOInfo)&&isset($SEOInfo.title)}
+	{$SEOInfo.title} --- {$Config.sitename}
+	{else}
+	{$Config.sitename}
+	{/if}
+</title>
+<script type="text/javascript">
+var JS_APP = '__APP__';
+var JS_STATIC_FILE_HOST = '{$STATIC_FILE_HOST}';
+</script>
+</head>
+
+<body>
+<!-- The default timeline stylesheet -->
+<link type="text/css" rel="stylesheet" href="{$STATIC_FILE_HOST}public/plugin/timeline/css/timeline.css" media="screen">
+<!-- Our customizations to the theme -->
+<link type="text/css" rel="stylesheet" href="{$STATIC_FILE_HOST}public/plugin/timeline/css/styles.css" media="screen">
+<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- <header>
+<a href="javascript:;">Header</a>
+</header> -->
+
+<div id="timeline">
+	<!-- Timeline.js will genereate the markup here -->
+</div>
+
+<!-- JavaScript includes - jQuery, turn.js and our own script.js -->
+<script type="text/javascript" src="{$STATIC_FILE_HOST}public/plugin/timeline/js/timeline-min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var timeline = new VMM.Timeline();
+	timeline.init("data/timeline/timeline-data.php");
+});
+</script>
+</body>
+</html>

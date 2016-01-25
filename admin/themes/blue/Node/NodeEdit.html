@@ -1,0 +1,58 @@
+<div class="box">
+<div class="boxContent">
+<div class="boxPopupForm">
+	<div class="boxTitle">
+		<h5>编辑节点信息</h5>
+	</div>
+	<form name="boxform" action="__APP__/index.php?s=Node/NodeEditSave" method="post" id="colorBoxAjaxForm">
+	<input type="hidden" name="nodeid" value="{$nodeid}" />
+	<ul>
+		<li class="formblock">
+			<span>组: </span>
+			<select id="select" name="groupid" style="width:150px;">
+				<option value="">|-组菜单</option>
+				{foreach $groupTree as $g}
+				<option value="{$g.id}" {if $NodeInfo.groupid==$g.id}selected{/if}>&nbsp;|-{$g.title}</option>
+				{/foreach}
+			</select>
+		</li>
+		<li class="formblock">
+			<span>父节点: </span>
+			<select name="pid" flag="nodepid" style="width:150px;">
+				<option value="">|-节点菜单</option>
+				{foreach $nodeTree as $d}
+				<option value="{$d.id}" {if $NodeInfo.pid==$d.id}selected{/if}>&nbsp;|-{$d.title}</option>
+				{/foreach}
+			</select>
+		</li>
+		<li class="formblock">
+			<span>名称: </span>
+			<input type="text" name="title" value="{$NodeInfo.title}" class="input w150" />
+		</li>
+		<li class="formblock">
+			<span>描述: </span>
+			<input type="text" name="remark" value="{$NodeInfo.remark}" class="input w150" />
+		</li>
+		<li class="formblock">
+			<span>Control: </span>
+			<input type="text" name="control" value="{$NodeInfo.control}" class="input w100" />
+		</li>
+		<li class="formblock">
+			<span>Action: </span>
+			<input type="text" name="action" value="{$NodeInfo.action}" class="input w150" />
+		</li>
+		<li class="formblock">
+			<span>是否显示: </span>
+			<div class="item_list fleft">
+				<label><input type="radio" name="isshow" value="1" class="radio" {if $NodeInfo.isshow==1}checked{/if} />是</label>
+				<label><input type="radio" name="isshow" value="0" class="radio" {if $NodeInfo.isshow==0}checked{/if} />否</label>
+			</div>
+		</li>
+		<li class="formblock bordernone">
+			<input type="submit" name="subut" class="button btnblue2" value="确定" />
+		</li>
+	</ul>
+	</form>
+</div>
+</div>
+</div>

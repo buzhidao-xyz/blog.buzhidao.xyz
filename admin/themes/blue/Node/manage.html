@@ -1,0 +1,56 @@
+{include file="Public/control_top.html"}
+<div class="captitle"><h5>节点列表 【节点数{if $total}{$total}{else}0{/if}】</h5></div>
+<ul class="table_list_title">
+	<li class="table_list_l table_list_l150">名称</li>
+	<li class="table_list_l table_list_l200">描述</li>
+	<li class="table_list_l table_list_l100">Control</li>
+	<li class="table_list_l table_list_l120">Action</li>
+	<li class="table_list_l table_list_l150">创建时间</li>
+	<li class="table_list_l table_list_l80">是/否显示</li>
+	{if $accessStatus == 1}
+	<li class="table_list_l table_list_l100" accessStatus={$accessStatus}>操作</li>
+	{/if}
+</ul>
+<div class="contentTableList">
+    {if $nodeList}
+    {foreach $nodeList as $d}
+    <ul class="table_list">
+		<li class="table_list_l table_list_l150">{$d.title}</li>
+		<li class="table_list_l table_list_l200" tooltip=1 title="{$d.remark}">{$d.remark}</li>
+    	<li class="table_list_l table_list_l100">{$d.control}</li>
+    	<li class="table_list_l table_list_l120">{$d.action}</li>
+    	<li class="table_list_l table_list_l150">{$d.createtime|mkdate}</li>
+    	<li class="table_list_l table_list_l80">{if $d.isshow}显{else}隐{/if}</li>
+    	{if $accessStatus == 1}
+    	<li class="table_list_l table_list_l100" accessStatus={$accessStatus}>
+    		<a name="colorboxEdit" href="__APP__/index.php?s=Node/NodeEdit&id={$d.id}">修改</a>
+    		<a delurl="__APP__/index.php?s=Node/deleteNode&id={$d.id}" href="javascript:;" name="del" msg="确定删除吗？">删除</a>
+    	</li>
+    	{/if}
+    </ul>
+    <div class="cnodelist">
+    	{if is_array($d.cnode)&&!empty($d.cnode)}
+    	{foreach $d.cnode as $dd}
+    	<ul class="table_list">
+			<li class="table_list_l table_list_l150" style="text-indent:13px;">{$dd.title}</li>
+			<li class="table_list_l table_list_l200" tooltip=1 title="{$dd.remark}">{$dd.remark}</li>
+	    	<li class="table_list_l table_list_l100">{$dd.control}</li>
+	    	<li class="table_list_l table_list_l120">{$dd.action}</li>
+	    	<li class="table_list_l table_list_l150">{$dd.createtime|mkdate}</li>
+	    	<li class="table_list_l table_list_l80">{if $dd.isshow}显{else}隐{/if}</li>
+	    	{if $accessStatus == 1}
+	    	<li class="table_list_l table_list_l100" accessStatus={$accessStatus}>
+	    		<a name="colorboxEdit" href="__APP__/index.php?s=Node/NodeEdit&id={$dd.id}">修改</a>
+	    		<a delurl="__APP__/index.php?s=Node/deleteNode&id={$dd.id}" href="javascript:;" name="del" msg="确定删除吗？">删除</a>
+	    	</li>
+	    	{/if}
+	    </ul>
+	    {/foreach}
+    	{/if}
+    </div>
+    {/foreach}
+    {else}
+    <ul class="table_list"><li class="table_list_center">空</li></ul>
+    {/if}
+</div>
+{include file="Public/control_bottom.html"}

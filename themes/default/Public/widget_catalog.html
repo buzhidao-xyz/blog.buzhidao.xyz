@@ -1,0 +1,8 @@
+<div class="Widget Widget_Catalog">
+	<h3>分类目录</h3>
+	<ul>
+		{foreach $ColumnList as $d}
+		<li><a href="__APP__?s=a.l.{$d.id}" class="{if ($d.id==$Column.topid)||(!$Column.topid&&$d.id==1)}on{/if}">{$d.columnname}</a> ({$d.archivenum})</li>
+		{/foreach}
+	</ul>
+</div>

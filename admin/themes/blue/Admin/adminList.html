@@ -1,0 +1,48 @@
+{include file="Public/control_top.html"}
+<div class="captitle"><h5>组节点列表【目前共有{if $total}{$total}{else}0{/if}条数据】</h5></div>
+<ul class="table_list_title">
+	<li class="table_list_l table_list_l120">用户名</li>
+	<li class="table_list_l table_list_l150">拥有权限角色</li>
+	<li class="table_list_l table_list_l150">创建时间</li>
+	<li class="table_list_l table_list_l150">最后登录时间</li>
+	<li class="table_list_l table_list_l120">最后登录IP</li>
+	<li class="table_list_l table_list_l80">登录次数</li>
+	{if $accessStatus == 1}
+	<li class="table_list_l table_list_l80" accessStatus={$accessStatus}>账户状态</li>
+	<li class="table_list_l table_list_l150" accessStatus={$accessStatus}>操作</li>
+	{/if}
+</ul>
+<div class="contentTableList">
+	{if $adminList}
+	{foreach $adminList as $d}
+	<ul class="table_list role_send_table">
+		<li class="table_list_l table_list_l120">{$d.adminname}</li>
+		<li class="table_list_l table_list_l150" name="role" roleid="{$d.roleid}" title="{$d.rolename}">{$d.rolename}</li>
+		<li class="table_list_l table_list_l150">{$d.createtime|mkdate}</li>
+		<li class="table_list_l table_list_l150">{$d.lastlogintime|mkdate}</li>
+		<li class="table_list_l table_list_l120">{$d.lastloginip|longs2ip}</li>
+		<li class="table_list_l table_list_l80">{$d.logincount}</li>
+		{if $accessStatus == 1}
+		<li class="table_list_l table_list_l80" accessStatus={$accessStatus}>
+			{if in_array($d.id,$superAdmin)}
+				{$d._status}
+			{else}
+				<a delurl="__APP__/index.php?s=Admin/AdminStatusEdit&id={$d.id}&status={if $d.status}0{else}1{/if}" href="javascript:;" name="del" msg="确定{if $d.status}禁用{else}启用{/if}吗？">{$d._status}</a>
+			{/if}
+		</li>
+		<li class="table_list_l table_list_l150" accessStatus={$accessStatus}>
+			{if !in_array($d.id,$superAdmin)}
+			<a delurl="__APP__/index.php?s=Admin/AdminPasswdReset&id={$d.id}" href="javascript:;" name="del" msg="确定重置密码吗？">重置密码</a>
+	    	<a name="colorboxEdit" href="__APP__/index.php?s=Admin/AdminEdit&id={$d.id}">修改</a>
+			<a delurl="__APP__/index.php?s=Admin/AdminDelete&id={$d.id}" href="javascript:;" name="del" msg="确定删除吗？">删除</a>
+			{/if}
+		</li>
+		{/if}
+	</ul>
+	{/foreach}
+	{else}
+	<ul class="table_list"><li class="table_list_center">空</li></ul>
+	{/if}
+</div>
+{include file="Public/page.html"}
+{include file="Public/control_bottom.html"}

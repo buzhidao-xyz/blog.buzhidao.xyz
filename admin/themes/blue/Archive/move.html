@@ -1,0 +1,38 @@
+<div class="box">
+<div class="boxContent">
+<div class="boxPopupForm">
+	<div class="boxTitle">
+		<h5>移动文档栏目</h5>
+	</div>
+	<form name="boxform" action="__APP__/index.php?s=Archive/moveArchive&action=save" method="post" id="colorBoxAjaxForm">
+	<ul>
+		<li>
+			<span>文档ID:</span>
+			<input type="text" name="archiveid" value="{$ArchiveID}" class="input w200" readonly /> (','号分开)
+		</li>
+		<li>
+			<span>目标栏目: </span>
+			<select id="select" name="columnid" style="width:230px;">
+				{$columnTree}
+			</select>
+		</li>
+		<li class="bordernone bgf6">
+			<input type="submit" name="subut" class="button btnblue2" value="修改" />
+		</li>
+	</ul>
+	</form>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+$("form[name=boxform]").submit(function (){
+	if (!$("input[name=archiveid]").val()) {
+		alert("请选择文档！");
+		return false;
+	}
+	if (!$("select[name=columnid]").val()) {
+		alert("请选择目标栏目！");
+		return false;
+	}
+});
+</script>

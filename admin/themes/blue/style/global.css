@@ -1,0 +1,806 @@
+/** control */
+#control {
+    clear: both;
+    margin: 5px 10px;
+    margin-bottom: 0;
+    overflow: visible;
+    padding-bottom: 20px;
+    position: relative;
+    color: #333333;
+}
+#control #controlContent {
+  overflow: hidden;
+  zoom: 1;
+}
+#control .control_nav {
+    width: auto;
+    height: 20px;
+    line-height: 20px;
+    margin: 10px 5px;
+    clear: both;
+}
+#control .control_nav .control_nav_tab {
+    float: left;
+    margin-left: 20px;
+}
+#control .control_nav .control_nav_tab li {
+    float: left;
+    margin-right: 5px;
+    text-align: center;
+}
+#control .control_nav .control_nav_tab li a:link, #control .control_nav .control_nav_tab li a:visited {
+    line-height: 20px;
+    display: block;
+    text-decoration: none;
+}
+#control .control_nav .control_nav_tab li a:hover {
+    background: url("../images/btn_block_3.gif") no-repeat scroll 0 -40px #F5F5F5;
+}
+#control .control_nav .control_nav_tab li a span {
+    padding: 0 7px;
+    display: block;
+}
+#control .control_nav .control_nav_tab li a:hover span {
+    background: url("../images/btn_block_3.gif") no-repeat scroll right -60px transparent;
+}
+#control .control_nav .control_nav_tab li.current a {
+    color: #FFFFFF;
+    font-weight: 700;
+    background: url("../images/btn_block_3.gif") no-repeat scroll 0 0 transparent !important;
+}
+#control .control_nav .control_nav_tab li.current a span {
+    padding: 0 7px;
+    display: block;
+    background: url("../images/btn_block_3.gif") no-repeat scroll right -20px transparent;
+}
+#control .captitle {
+    line-height:21px;
+    background: url("../images/captitle_icon2.gif") no-repeat 0 10px;
+    padding: 5px 15px;
+    clear: both;
+    color: #000;
+}
+.contentTableList a:link, .contentTableList a:visited {
+    text-decoration: underline;
+}
+.contentTableList a.nonetextdecoration {
+    text-decoration: none;
+}
+.table_list_title, .table_list {
+    position: relative;
+    height: 32px;
+    clear: both;
+    /*border-right: 1px solid #B5D0D9;
+    border-bottom: 1px solid #B5D0D9;*/
+}
+.table_list_title {
+  color: #FFFFFF;
+  font-weight: 600;
+  background: #3A6EA5;
+  /*border-top: 1px solid #B5D0D9;*/
+  color: #333333;
+  background: #EEF3F7;
+  border-bottom: 1px solid #D5DFE8;
+}
+.table_list {
+  overflow:visible;
+  /*background: #EBF2F6;*/
+  border-bottom: 1px solid #EEEEEE;
+}
+.table_list:hover {
+    background: #FBFFE4;
+}
+.table_list_l, .table_list_center {
+    float: left;
+    width: auto;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 3px;
+    overflow: hidden;
+    /*border-left: 1px solid #B5D0D9;*/
+}
+.table_list_l span.icon {
+  padding-left: 18px;
+}
+.table_list_center {
+    width: 100%;
+    text-align: center;
+}
+.table_list_l20 {
+    width: 20px;
+}
+.table_list_l30 {
+    width: 30px;
+}
+.table_list_l50 {
+    width: 50px;
+}
+.table_list_l70 {
+    width: 70px;
+}
+.table_list_l80 {
+    width: 80px;
+}
+.table_list_l100 {
+    width: 100px;
+}
+.table_list_l120 {
+    width: 120px;
+}
+.table_list_l130 {
+    width: 130px;
+}
+.table_list_l150 {
+    width: 150px;
+}
+.table_list_l170 {
+    width: 170px;
+}
+.table_list_l200 {
+    width: 200px;
+}
+.table_list_l230 {
+    width: 230px;
+}
+.table_list_l250 {
+    width: 250px;
+}
+.table_list_l280 {
+    width: 280px;
+}
+.table_list_l300 {
+    width: 300px;
+}
+.table_list_l350 {
+    width: 350px;
+}
+.table_list_l400 {
+    width: 400px;
+}
+.table_list_l500 {
+    width: 500px;
+}
+.rowspanhover {
+    height:33px;
+    background:#FFF;
+    border-right:1px solid #B5D0D9;
+    border-top:1px solid #B5D0D9;
+    margin-top:-1px;
+}
+.rowspan {
+    margin-top:-1px;
+    background:#FFF;
+    border-right:1px solid #B5D0D9;
+}
+.bgfff {
+    background: #FFF;
+}
+.lineTop {
+    border-top: 1px solid #D4D4D4;
+}
+.lineBottom {
+    border-top: 1px solid #3A6EA5;
+}
+input.w50 {
+  width: 50px;
+}
+input.w100 {
+  width: 100px;
+}
+input.w150 {
+  width: 150px;
+}
+input.w250 {
+  width: 250px;
+}
+input.w350 {
+  width: 350px;
+}
+
+.nonefloat label {
+  float: none;
+}
+.lineOrange {
+  border-bottom: 1px dashed #FF6600;
+}
+.lineGray {
+  border-bottom: 1px dashed #E2E9EA;
+}
+
+.bgf6 {
+  background: #F6F6F6;
+}
+
+/**form表单样式表*/
+div.formContainer {
+    clear: both;
+    overflow: hidden;
+    padding: 10px 0;
+}
+div.formContainer .formtitle {
+    clear: both;
+    overflow: hidden;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #3A6EA5;
+}
+div.formContainer .formtitle h5 {
+    padding: 7px 15px;
+    margin: 0 50px;
+    color: #FFFFFF;
+    background: #019ddd;
+    background: #3A6EA5;
+}
+form.newform {
+  overflow: hidden;
+  clear: both;
+  background: #FFFFFF;
+}
+form.editform {
+  overflow: hidden;
+  clear: both;
+  background: #FFFFFF;
+}
+ul.formbody {
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    z-index: 50;
+    clear: both;
+    background: #FFFFFF;
+    padding: 10px 0;
+}
+ul.formbody li.formblock {
+    width: auto;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #EEEEEE;
+    overflow: hidden;
+}
+ul.formbody li.formautoblock {
+    width: auto;
+    height: auto;
+    line-height: auto;
+    overflow: hidden;
+    padding: 5px 0;
+    border-bottom: 1px dashed #E1E1E1;
+}
+ul.formbody li.formautoblock span {
+  height: 40px;
+  line-height: 40px;
+}
+ul.formbody li.bordernone {
+    border: 0;
+}
+ul li.colorblock:hover {
+    background: #E2E7ED;
+}
+ul.formbody li span {
+    display: block;
+    float: left;
+    margin-right: 15px;
+    overflow: hidden;
+    padding-left: 0;
+    padding-left: 30px;
+    width: 160px;
+}
+ul.formbody li.auto {
+    height: auto;
+    line-height: auto;
+    padding: 10px 0px;
+    padding-bottom:10px;
+    clear: both;
+    overflow: hidden;
+    border-bottom: 1px solid #DEEFFA;
+}
+ul.formbody input.button {
+    margin-left: 210px;
+}
+ul.formbody input.mauto {
+    margin:5px auto;
+}
+
+/**show_list样式表**/
+.show_list {
+    width: auto;
+	  max-width: 900px;
+    height: auto;
+    border-bottom: 0px solid #DEEFFA;
+}
+.show_list .show_list_title {
+    height: 20px;
+    line-height: 20px;
+    padding: 2px 0px;
+}
+.show_list .show_list_content {
+    width: 100%;
+    height: auto;
+    padding: 3px 0px;
+    overflow:hidden;
+}
+.show_list .show_list_content li {
+    float: left;
+    line-height: 20px;
+    border-bottom: none;
+}
+
+/*item列表*/
+.item_list {
+  height: 40px;
+  overflow: hidden;
+}
+.item_list label{
+  float: left;
+  height: 20px;
+  line-height: 18px;
+  padding: 12px 5px;
+  display: block;
+}
+.item_listh {
+  overflow: hidden;
+}
+.item_listh label{
+  float: left;
+  height: 20px;
+  line-height: 18px;
+  padding: 3px 5px;
+  display: block;
+}
+
+/*分页*/
+.pagination {
+  float: right;
+  zoom:1;
+  clear:both;
+  position:relative;
+  padding: 20px 10px 10px 10px;
+  text-align:right;
+  font-size:12px;
+  overflow: hidden;
+}
+.pagenext, .pageprev {
+  display:inline-block;
+  width:56px;
+  height:24px;
+  margin:0 5px;
+  line-height:24px;
+  color:#73797c;
+  text-align:center;
+  background:url('../images/btn_page.png') no-repeat;
+}
+.pageNum {
+  display:inline-block;
+  height:24px;
+  line-height:24px;
+  padding:0 12px 0 10px;
+  color:#7aafe0;
+  background:url('../images/p_arrow.gif') no-repeat 86% 10px;
+}
+.pageList {
+  z-index:99;
+  right:100px;
+  bottom:48px;
+  _width:80px;
+  width:auto;
+  padding:1px;
+  background:#ffffff;
+}
+.pageList a, .current {
+  display:block;
+  height:24px;
+  line-height:24px;
+  padding:0 10px;
+  text-align:center;
+  color:#666666;
+  margin: 0 1px;
+}
+.current {
+  color:#0078b6;
+}
+.pageList a:hover {
+  background:#e7e7e7;
+  color:#0078b6;
+}
+.bge7 {
+	background:#E7E7E7;
+}
+/*分页*/
+
+.stable_box1 {
+	background: #F2F9FD;
+	padding: 20px;
+}
+.stable {
+	width: 400px;
+	margin-left: 50px;
+}
+.stgap {
+    color: #333333;
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+}
+.buttonml10 {
+  margin: 10px;
+  margin-left: 50px;
+}
+.userrole {
+	text-align:center;
+}
+.profileblock {
+  clear: both;
+  width: auto;
+  overflow: hidden;
+}
+
+/*************************************选项卡切换样式*************************************/
+#control .shtabtitlec .shtabtitle a {
+    text-decoration: none;
+}
+.shtabtitlec {
+  clear: both;
+  overflow: hidden;
+  padding: 5px 30px;
+  border-bottom: 1px dashed #E2E9EA;
+}
+.shtabtitlec .shtabtitle {
+    float: left;
+    font-weight: 700;
+    margin-right: 5px;
+    text-align: center;
+}
+.shtabtitlec .shtabtitle a {
+  line-height: 20px;
+  display: block;
+  color: #333333;
+  text-decoration: none;
+}
+.shtabtitlec .shtabtitle a:hover {
+  color: #395A7B;
+  background: url("../images/btn_block_3.gif") no-repeat 0 -40px #F5F5F5;
+}
+.shtabtitlec .shtabtitle a span {
+  padding: 2px 10px;
+}
+.shtabtitlec .shtabtitle a:hover span {
+  background: url("../images/btn_block_3.gif") no-repeat scroll right -60px transparent;
+}
+.shtabtitlec .shtabcurrent a {
+  color: #FFFFFF;
+  background: url("../images/btn_block_3.gif") no-repeat;
+}
+.shtabtitlec .shtabcurrent a span {
+  color: #FFFFFF;
+  background: url("../images/btn_block_3.gif") no-repeat scroll right -20px;
+}
+.shtabtitlec .shtabcurrent a:hover {
+  color: #FFFFFF;
+  background: url("../images/btn_block_3.gif") no-repeat;
+}
+.shtabtitlec .shtabcurrent a:hover span {
+  background: url("../images/btn_block_3.gif") no-repeat scroll right -20px;
+  color: #FFFFFF;
+}
+.shtabcontentc .shtabcontent {
+  display: none;
+  overflow: hidden;
+  padding-top: 10px;
+}
+.shtabcontentc .shtabcontentcurrent {
+  display: block;
+}
+
+/**************UEditor************/
+.FullTextEditor {
+  float: left;
+}
+form ul.formbody li .edui-default span {
+  width: auto;
+  margin: 0;
+  display: inline;
+  float: none;
+  font-weight: 500;
+  height: 20px;
+  line-height: 20px;
+  padding-left: 0;
+}
+.edui-default {
+}
+
+/******************文档列表****************/
+.opTop {
+  height: 35px;
+  line-height: 35px;
+  color: #DDDDDD;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #EEEEEE;
+}
+.opTop a {
+  margin: 0 5px;
+  padding: 4px 7px;
+  color: #004499;
+  background: #EFEFEF;
+  text-decoration: none;
+}
+.opTop a:hover {
+  color: #FFFFFF;
+  background: #498CD0;
+  text-decoration: underline;
+}
+.opTop a.opTopOn {
+  color: #FFFFFF;
+  background: #498CD0;
+}
+.opBottom {
+  height: 35px;
+  line-height: 35px;
+  color: #DDDDDD;
+  margin-top: 10px;
+  border-top: 1px solid #EEEEEE;
+  background: #F6F6F6;
+}
+.opBottom a {
+  text-decoration: none;
+  border-color: -moz-use-text-color #ACACAC #ACACAC -moz-use-text-color;
+  border-image: none;
+  border-style: none solid solid none;
+  border-width: medium 1px 1px medium;
+  margin: 0 2px;
+  padding: 4px 10px;
+  color: #000000;
+  background: url("../images/allbtbg.gif") repeat-x left bottom #CCCCCC;
+}
+
+/******************文档列表****************/
+.box {
+  float: left;
+  min-width: 480px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.box .boxTitle {
+  width: auto;
+  height: 30px;
+  line-height: 30px;
+  background: #EEEEEE;
+  margin: 10px 0;
+  border-right: 1px solid #DDDDDD;
+  border-bottom: 1px solid #DDDDDD;
+}
+.box .boxTitle h5 {
+  float: left;
+  color: #3865B8;
+  padding-left: 15px;
+}
+.box .boxTitle h5 span {
+  color: #CCCCCC;
+  font-size: 10px;
+  margin-left: 10px;
+}
+.box .boxTitle ul.boxTab {
+  float: right;
+  margin-right: 10px;
+}
+.box .boxTitle ul.boxTab li {
+  float: left;
+  margin-top: 1px;
+}
+.box .boxTitle ul.boxTab li a {
+  color: #FFFFFF;
+  background: #498CD0;
+  margin-left: 1px;
+  padding: 6px 10px;
+  text-decoration: none;
+}
+.box .boxTitle ul.boxTab li a.selected {
+  color: #498CD0;
+  background: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  border-bottom: 1px solid #FFF;
+}
+.box .boxContent {
+  background: #FFF;
+}
+.box .boxContent a {
+  padding: 5px;
+}
+.box .boxTabContent {
+  background: #FFF;
+  padding: 5px 10px;
+}
+.box .boxContent .boxPopupForm {
+  
+}
+.box .boxContent .boxPopupForm .boxTitle {
+  margin: 1px;
+  border: 0;
+  background: #3A6EA5;
+}
+.box .boxContent .boxPopupForm .boxTitle h5 {
+  float: none;
+  display: block;
+  padding: 0;
+  text-align: center;
+  color: #FFFFFF;
+}
+.box .boxContent .boxPopupForm ul {
+  padding:5px 10px;
+}
+.box .boxContent .boxPopupForm ul li {
+  height: 35px;
+  border-bottom: 1px dashed #CCC;
+}
+.box .boxContent .boxPopupForm ul li.bordernone {
+  border-bottom: 0;
+}
+.box .boxContent .boxPopupForm ul li span {
+  float: left;
+  width: 120px;
+  display: block;
+  padding: 9px 5px 0 0;
+  text-align: right;
+  color: #027263;
+}
+.box .boxContent .boxPopupForm ul li div.caption {
+  float: left;
+  padding: 10px 5px;
+}
+.box .boxPopupForm ul li div.item_list {
+  height: 35px;
+}
+.box .boxPopupForm ul li div.item_list label {
+  padding: 8px 0px;
+}
+
+/*信息表格*/
+.box .boxContent ul.tableBlock {
+}
+.box .boxContent ul.tableBlock li {
+    border-bottom: 1px solid #DDDDDD;
+    color: #777777;
+    height: 26px;
+    line-height: 26px;
+    overflow: hidden;
+    padding-left: 5px;
+}
+.box .boxContent ul.tableBlock li span {
+    color: #777777;
+    display: block;
+    float: left;
+    width: 150px;
+}
+
+/*并排信息表格*/
+.box .boxContent ul.statsBlock {
+    height: 132px;
+    overflow: hidden;
+    padding: 2px 0 0 2px;
+    border-bottom: 1px solid #DDDDDD;
+}
+.box .boxContent ul.statsBlock li {
+    border-bottom: medium none;
+    border-right: 1px solid #FFFFFF;
+    float: left;
+    height: 44px;
+    text-align: center;
+    width: 78px;
+}
+.box .boxContent ul.statsBlock li b {
+    background: none repeat scroll 0 0 #EFEFEF;
+    color: #777777;
+    float: left;
+    font-weight: normal;
+    height: 21px;
+    line-height: 22px;
+    width: 100%;
+}
+.box .boxContent ul.statsBlock li span {
+    background: none repeat scroll 0 0 #F8F8F8;
+    color: #3865B8;
+    float: left;
+    height: 21px;
+    line-height: 21px;
+    overflow: hidden;
+    width: 100%;
+}
+
+/******************基本CSS****************/
+
+/*统一margin CSS*/
+.mleft10 {
+    margin-left: 10px;
+}
+.mleft20 {
+    margin-left: 20px;
+}
+.mleft30 {
+    margin-left: 30px;
+}
+.mleft50 {
+    margin-left: 50px;
+}
+.mtop10 {
+    margin-top: 10px;
+}
+.mbottom30 {
+    margin-bottom: 30px;
+}
+.padding10 {
+    padding: 10px;
+}
+
+/*宽度CSS*/
+.w100 {
+    width:100px;
+}
+.w200 {
+    width:200px;
+}
+.w230 {
+    width: 230px;
+}
+.w300 {
+    width:300px;
+}
+
+.uploadWrap{
+  position: relative;
+}
+#upbtn{
+  cursor: pointer;
+}
+#ccoverBox{
+  position:absolute;
+  top:10px;
+  left:55px;
+  width:66px;
+  height:30px;
+  overflow:hidden;
+}
+#ccover{
+  position:absolute;
+  right:0;
+  cursor:pointer;
+  width:120px;
+  height:30px;
+  _right:5px;
+  opacity:0;
+  filter:alpha(opacity=0);
+}
+
+#bottom {
+  margin: 0;
+  padding: 0;
+  clear: both;
+  overflow: hidden;
+  text-align: right;
+  font-size: 11px;
+  font-family: Lucida Grande,Verdana,Lucida Sans Regular,Lucida Sans Unicode,Arial,sans-serif;
+  background: url("../images/bg_repx.gif");
+  background: #DEEFFA;
+}
+
+#bottom p {
+    padding: 0;
+    margin: 4px 60px 0 60px;
+    color: #333333;
+}
+
+/***********************文件上传CSS***********************/
+#fileBox {
+  float: left;
+  width: 500px;
+  height: auto;
+  overflow: hidden;
+  padding: 10px;
+  margin-top: 5px;
+  margin-left: 120px;
+  border: 1px solid #E1E1E1;
+}
+#fileBox .fileBoxName, #fileBox .fileBoxSize, #fileBox .fileBoxNum {
+  width: 100%;
+  padding: 5px;
+  clear: both;
+  overflow: hidden;
+  font-weight: 600;
+}

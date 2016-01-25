@@ -1,0 +1,28 @@
+<div class="box">
+<div class="boxContent">
+<div class="boxPopupForm">
+	<div class="boxTitle">
+		<h5>编辑组菜单</h5>
+	</div>
+	<form name="boxform" action="__APP__/index.php?s=Group/GroupEditSave" method="post" id="colorBoxAjaxForm">
+	<input type="hidden" name="groupid" value="{$groupid}" />
+	<ul>
+		<li class="formblock">
+			<span>组菜单名称: </span>
+			<input type="text" name="title" value="{$GroupInfo.title}" class="input w200" />
+		</li>
+		<li class="formblock">
+			<span>是否显示: </span>
+			<div class="item_list fleft">
+				<label><input type="radio" name="isshow" value="1" class="radio" {if $GroupInfo.isshow==1}checked{/if} />是</label>
+				<label><input type="radio" name="isshow" value="0" class="radio" {if $GroupInfo.isshow==0}checked{/if} />否</label>
+			</div>
+		</li>
+		<li class="bordernone bgf6">
+			<input type="submit" name="subut" class="button btnblue2" value="确定" />
+		</li>
+	</ul>
+	</form>
+</div>
+</div>
+</div>

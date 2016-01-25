@@ -1,0 +1,42 @@
+{include file="Public/control_top.html"}
+{if $accessStatus == 1}
+<div class="formContainer" accessStatus={$accessStatus}>
+	<div class="formtitle"><h5>新组节点表单</h5></div>
+	<form name="newform" action="__APP__/index.php?s=Image/saveUpdateHomeScrollImage" method="post" class="newform" enctype="multipart/form-data">
+		<input type="hidden" name="id" value="{$HomeScrollImageInfo.id}" />
+		<ul class="formbody">
+			<li class="formautoblock">
+				<span>原图片:</span>
+				<img src="__APPM__{$HomeScrollImageInfo.path}" />
+			</li>
+			<li class="formblock">
+				<span>图片:</span>
+				<input type="file" name="scrollImage" class="input inputfile" style="width:230px;" />
+				*尺寸 730*300
+			</li>
+			<li class="formblock">
+				<span>标题:</span>
+				<input type="text" name="title" value="{$HomeScrollImageInfo.title}" value="" class="input" style="width:250px;" />
+			</li>
+			<li class="formblock">
+				<span>链接:</span>
+				<input type="text" name="link" value="{$HomeScrollImageInfo.link}" value="" class="input" style="width:300px;" />
+			</li>
+			<li class="formblock bordernone bgf6">
+				<input type="submit" name="subut" class="button btnblue2" value="确定" />
+			</li>
+		</ul>
+	</form>
+</div>
+{/if}
+<script type="text/javascript">
+$(document).ready(function (){
+$("form[name=newform]").submit(function (){
+	if (!$("input[name=link]").val()) {
+		alert("请填写链接！");
+		return false;
+	}
+});
+});
+</script>
+{include file="Public/control_bottom.html"}

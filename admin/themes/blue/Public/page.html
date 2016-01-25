@@ -1,0 +1,38 @@
+{if isset($page) && $page && $page.page|@count >1}
+<div id="{if isset($isface)}facepage{else}compage{/if}" class="pagination">
+	{if $page.firstpage.row}
+	<a class="pageprev graya fleft" href="{if $page.firstpage.href}{$page.firstpage.href}{else}javascript:;{/if}">首页</a> 
+	{/if}
+	<a class="pageprev graya fleft" href="{if $page.prev.href}{$page.prev.href}{else}javascript:;{/if}">上一页</a> 
+	<span class="pageList none">
+	{foreach from=$page.page key=k item=v}
+		{if $v}
+			<a class="jumpPageBtn fleft" href="{$v}">第 {$k} 页</a>
+		{else}
+			{$nowpage=$k}
+			<span class="current fleft bge7" href="{$v}" style="">第 {$k} 页</span>
+		{/if}
+	{/foreach}
+	</span>
+	<a class="pagenext graya fleft" href="{if $page.next.href}{$page.next.href}{else}javascript:;{/if}">下一页</a>
+	{if $page.endpage.row}
+	<a class="pageprev graya fleft" href="{if $page.endpage.href}{$page.endpage.href}{else}javascript:;{/if}">尾页</a> 
+	{/if}
+</div>
+
+<script>
+var bindpage = function($obj){
+    $obj.find('.pagecur').hover(function(){
+		$obj.find('.pageList').show();
+	},function(){
+		$obj.find('.pageList').hide();
+	})
+}
+if($('#compage').length>0){
+    //bindpage($('#compage'));
+} else if ($('#facepage').length>0) {
+    //bindpage($('#facepage'));   
+}
+</script>
+
+{/if}

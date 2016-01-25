@@ -1,0 +1,9 @@
+{if isset($archiveInfo.archiveImage)&&!empty($archiveInfo.archiveImage)}
+{foreach $archiveInfo.archiveImage as $image}
+  <div class="box col{$image.coln}">
+    <p>
+        <a rel="group" href="__APP__{$image.imagepath}" title="{$image.imagetitle}"><img src="__APP__{$image.thumbpath}" alt="{$image.imagetitle}" /></a>
+    </p>
+  </div>
+{/foreach}
+{/if}
