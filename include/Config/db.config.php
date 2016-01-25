@@ -7,7 +7,7 @@ $db_config = array(
 		'port'     => 3306,
         'username' => 'root',
         'password' => 123456,
-        'database' => 'imbzd',
+        'database' => 'blog_buzhidao_xyz',
         'prefix'   => 'la_'
 	),
 	//sae
